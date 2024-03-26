@@ -1,0 +1,38 @@
+---
+title: "NYC Boroughs"
+author: "Eric W. Bridgeford"
+date: "2024-03-26"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+require(sf)
+```
+
+# Download NYC Borough Boundaries
+
+```{r}
+download.file("https://data.cityofnewyork.us/api/geospatial/tqmj-j8zm?method=export&format=Original", "NYCboroughs.zip")
+unzip("NYCboroughs.zip")
+```
+
+```{r}
+borough.dat <- st_read("nybb_23d/nybb.shp") %>%
+  mutate(BoroAbbr=recode_factor(BoroName, "Staten Island"="SI", "Manhattan"="MH",
+                                "Bronx"="BX", "Brooklyn"="BK", "Queens"="Q"))
+```
+
+```{r}
+boro.plt <- ggplot(borough.dat) + 
+  geom_sf(aes(fill=BoroAbbr)) +
+  geom_sf_text(aes(label=BoroAbbr), size=10) +
+  guides(fill=FALSE) +
+  theme(axis.title=element_blank(), axis.text=element_blank(),
+        axis.ticks = element_blank())
+
+ggsave("Images/NYC_boros.png", plot=boro.plt, width=5, height=5)
+```
