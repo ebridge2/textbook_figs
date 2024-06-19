@@ -1,4 +1,4 @@
-﻿Number,Year,Date,County,Area,Status,Sex,TotalLength(TL),CrusherClawWidth(CW),CrusherLoss,SiccorLoss,ClawRatio
+﻿Number,Year,Date,County,Area,Status,Sex,TotalLength,CrusherClawWidth,CrusherLoss,SiccorLoss,ClawRatio
 1,2017,29/08/2017,Aust-Agder,Flodevigen,MPA,Males,345,80,0,0,0.231884058
 2,2017,29/08/2017,Aust-Agder,Flodevigen,MPA,Males,250,48,0,0,0.192
 3,2017,29/08/2017,Aust-Agder,Flodevigen,MPA,Females,272,43,0,0,0.158088235
