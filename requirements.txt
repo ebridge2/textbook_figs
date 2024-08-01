@@ -1,0 +1,40 @@
+# book stuff
+wheel
+git+https://github.com/ebridge2/jupyter-book@master
+ghp-import
+setuptools>=61.0.0
+jupyterbook_latex
+sphinx-jupyterbook-latex
+sphinx-proof
+jinja2==3.0.3
+myst_nb
+latex
+typing-extensions
+nibabel
+boto3
+torch
+torch_geometric
+torch_sparse
+torch_scatter
+rdkit
+cairosvg
+
+# data science python stack
+numpy  # weird dependency issues
+scipy >= 1.6.0
+scikit-learn >= 0.23.0
+matplotlib >= 3.4.1
+networkx
+pandas
+seaborn
+autograd
+celluloid
+hyppo==0.4.0
+graspologic==3.4.1
+# grab hyppo + code directly from source
+git+https://github.com/bdpedigo/giskard.git@main
+git+https://github.com/ebridge2/pkg@main
+
+# grab graspologic + code directly from source
+# must be public repo
+git+https://github.com/neurodata/graphbook-code.git
