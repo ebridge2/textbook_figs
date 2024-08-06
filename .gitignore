@@ -1,3 +1,8 @@
+# alex additions
+code_reproducibility.py
+*.DS_Store
+**/datasets/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
