@@ -2,8 +2,10 @@
 code_reproducibility.py
 *.DS_Store
 **/datasets/*
-*.png
-*.svg
+**/Figures/*
+**/Figures/**
+
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
