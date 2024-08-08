@@ -138,7 +138,6 @@ Xhat_human1 = Xhat_tensor[0, :, :]
 Phat_hum1 = Xhat_human1 @ Xhat_human1.T
 # %% # Section 5.6
 from graphbook_code import heatmap
-?heatmap
 # %%
 from graspologic.simulations import sbm
 import numpy as np
