@@ -208,7 +208,7 @@ A_xfm2 = num_pipeline.fit_transform(As[1])
 
 from graspologic.embed import AdjacencySpectralEmbed
 
-embedding = AdjacencySpectralEmbed(n_components=3).fit_transform(A_xfm)
+embedding = AdjacencySpectralEmbed(n_components=3, svd_seed=0).fit_transform(A_xfm)
 # %%
 from graspologic.plot import pairplot
 
@@ -216,7 +216,7 @@ _ = pairplot(embedding, title="Spectral Embedding for connectome")
 # %%
 from sklearn.cluster import KMeans
 
-labels = KMeans(n_clusters=2).fit_predict(embedding)
+labels = KMeans(n_clusters=2, random_state=0).fit_predict(embedding)
 _ = pairplot(
     embedding,
     labels=labels,
@@ -226,7 +226,7 @@ _ = pairplot(
 # %%
 from graspologic.cluster import KMeansCluster
 
-labels = KMeansCluster(max_clusters=10).fit_predict(embedding)
+labels = KMeansCluster(max_clusters=10, random_state=0).fit_predict(embedding)
 _ = pairplot(
     embedding,
     labels=labels,
@@ -236,7 +236,7 @@ _ = pairplot(
 # %%
 from graspologic.cluster import AutoGMMCluster
 
-labels = AutoGMMCluster(max_components=10).fit_predict(embedding)
+labels = AutoGMMCluster(max_components=10, random_state=0).fit_predict(embedding)
 _ = pairplot(
     embedding,
     labels=labels,
@@ -250,7 +250,7 @@ from graspologic.embed import MultipleASE
 # transform all the networks with pipeline utility
 As_xfm = [num_pipeline.fit_transform(A) for A in As]
 # and embed them
-embedding = MultipleASE(n_components=5).fit_transform(As_xfm)
+embedding = MultipleASE(n_components=5, svd_seed=0).fit_transform(As_xfm)
 _ = pairplot(embedding, title="Multiple spectral embedding of all connectomes")
 
 # %%
