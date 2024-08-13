@@ -1,13 +1,4 @@
-#%%  section 2.2
-
-mode = "png"
-
-import matplotlib
-
-font = {"family": "Dejavu Sans", "weight": "bold", "size": 20}
-
-matplotlib.rc("font", **font)
-# %%
+#%%
 import os
 import urllib
 import boto3
@@ -17,9 +8,6 @@ from graspologic.utils import import_edgelist
 import numpy as np
 import glob
 from tqdm import tqdm
-
-np.random.seed(0)
-
 
 # the AWS bucket the data is stored in
 BUCKET_ROOT = "open-neurodata"
@@ -75,36 +63,13 @@ from graphbook_code import heatmap
 A = As[0]
 ax = heatmap(A, vmin=0, vmax=1, title="Heatmap of Functional Connectome")
 # %%
-from graphbook_code import heatmap
-from matplotlib import pyplot as plt
-
-
-A = As[0]
-
-fig, axs = plt.subplots(1, 2, gridspec_kw={"width_ratios": [1.2, 2]}, figsize=(20, 6))
-heatmap(
-    A,
-    vmin=0,
-    vmax=1,
-    ax=axs[0],
-    xticks=[0, 199, 399],
-    xticklabels=[1, 200, 400],
-    yticks=[0, 199, 399],
-    yticklabels=[1, 200, 400],
-    ytitle="Brain Area",
-    xtitle="Brain Area",
-    title="(A) Heatmap of Functional Connectome",
-)
 import seaborn as sns
+import matplotlib.pyplot as plt
 
-sns.histplot(A.flatten(), ax=axs[1], bins=50, color="gray")
-axs[1].set_xlabel("Edge weight")
-axs[1].set_title("(B) Histogram of functional connectome edge-weights", size=20)
-# fig.savefig("Figures/raw.svg")
-os.makedirs("Figures", exist_ok=True)
-fig.savefig("Figures/raw.{}".format(mode))
-
-# %% section 2.3
+ax = sns.histplot(A.flatten(), bins=50)
+ax.set_xlabel("Edge weight")
+ax.set_title("Histogram of functional connectome edge-weights")
+# %%
 def remove_isolates(A):
     """
     A function which removes isolated nodes from the
@@ -160,7 +125,6 @@ from graspologic.utils import pass_to_ranks
 A_ptr = pass_to_ranks(A_clean)
 # %%
 import seaborn as sns
-import matplotlib.pyplot as plt
 
 fig, axs = plt.subplots(2, 1, figsize=(10, 10))
 sns.histplot(A_clean[A_clean > 0].flatten(), ax=axs[0], color="gray")
@@ -204,8 +168,7 @@ A_xfm2 = num_pipeline.fit_transform(As[1])
 # Cleaning data...
 # Purging 0 nodes...
 # Scaling edge-weights...
-# %%  section 2.4
-
+# %%  Section 1.4
 from graspologic.embed import AdjacencySpectralEmbed
 
 embedding = AdjacencySpectralEmbed(n_components=3, svd_seed=0).fit_transform(A_xfm)
@@ -243,7 +206,7 @@ _ = pairplot(
     title="AutoGMM Clustering, automatic selection",
     legend_name="Predicted Clusters",
 )
-# %%  section 2.5
+# %%  Section 1.5
 
 from graspologic.embed import MultipleASE
 
@@ -252,22 +215,21 @@ As_xfm = [num_pipeline.fit_transform(A) for A in As]
 # and embed them
 embedding = MultipleASE(n_components=5, svd_seed=0).fit_transform(As_xfm)
 _ = pairplot(embedding, title="Multiple spectral embedding of all connectomes")
-
 # %%
-labels = AutoGMMCluster(max_components=10).fit_predict(embedding)
+labels = AutoGMMCluster(max_components=10, random_state=0).fit_predict(embedding)
 _ = pairplot(
     embedding,
     labels=labels,
     title="Multiple spectral embedding of all connectomes",
     legend_name="Predicted Clusters",
 )
-# %%
+# %%  Section 1.6
 from urllib import request
 import json
 import pandas as pd
 from pathlib import Path
 
-coord_dest = os.path.join(FMRI_PATH, "coordinates.json")
+coord_dest = os.path.join(FMRI_PATH,  "coordinates.json")
 with open(coord_dest) as coord_f:
     coords = []
     for roiname, contents in json.load(coord_f)["rois"].items():
@@ -283,6 +245,16 @@ with open(coord_dest) as coord_f:
             continue
 
 coords_df = pd.DataFrame(coords)
+
+# %%
+import matplotlib.image as mpimg
+
+coords_df["Community"] = labels
+coords_df["Community"] = coords_df["Community"].astype("category")
+fig, axs = plt.subplots(1, 2, figsize=(18, 6))
+axs[0].imshow(mpimg.imread("./Images/lobes.png"))
+axs[0].set_axis_off()
+sns.scatterplot(x="y", y="z", data=coords_df, hue="Community", ax=axs[1])
 # %%
 import matplotlib.image as mpimg
 
