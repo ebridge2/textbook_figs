@@ -229,6 +229,7 @@ G_clus.add_node("BX", pos=(6, 6))
 pos = nx.get_node_attributes(G, "pos")
 G_clus.add_edge("MH", "BX")
 G_clus.add_edge("MH", "BK")
+G_clus.add_edge("BK", "Q")
 G_clus.add_edge("MH", "Q")
 G_clus.add_edge("Q", "BX")
 
