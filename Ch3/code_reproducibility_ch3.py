@@ -204,9 +204,9 @@ def out_degrees(A):
 print(in_degrees(A)[2])
 # 3.0
 # %%
-L = nx.floyd_warshall_numpy(G)
+D = nx.floyd_warshall_numpy(G)
 heatmap(
-    L,
+    D,
     title="Distance matrix",
     xticklabels=["SI", "MH", "BK", "Q", "BX"],
     yticklabels=["SI", "MH", "BK", "Q", "BX"],
