@@ -12,29 +12,18 @@ jobs:
         os: [ubuntu-latest]
         python-version: [3.12]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
-
-    - name: Install dependencies
+        cache: 'pip'
       run: |
         pip install wheel setuptools
         pip install torch
         pip install torch_geometric
         pip install -r requirements.txt
-
-    - name: Cache dependencies
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.cache/pip
-          ${{ env.pythonLocation }}
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}-${{ hashFiles('**/setup.py') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
 
     - name: Build the book
       run: |
