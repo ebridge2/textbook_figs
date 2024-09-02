@@ -43,7 +43,7 @@ else:
 ------------------
 
 ----- stderr -----
-/tmp/ipykernel_1999/2181549552.py:7: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
+/tmp/ipykernel_2011/2181549552.py:7: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
   sns.scatterplot(data=data, x="Dimension 2", y="Dimension 3", ax=ax, **color_kwarg[i],
 ------------------
 
