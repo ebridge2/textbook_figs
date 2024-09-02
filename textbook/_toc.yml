@@ -12,75 +12,75 @@ parts:
         - file: foundations/Ch2/Section23
         - file: foundations/Ch2/Section24
         - file: foundations/Ch2/Section25_26
-#
-#  - caption: Representations
-#    chapters:
-#    - file: representations/Ch3/index
-#      sections:
-#        - file: representations/Ch3/Section31
-#        - file: representations/Ch3/Section32
-#        - file: representations/Ch3/Section33
-#        - file: representations/Ch3/Section34
-#        - file: representations/Ch3/Section35
-#        - file: representations/Ch3/Section36
-#        - file: representations/Ch3/Section37
-#        - file: representations/Ch3/Section38
-#    - file: representations/Ch4/index
-#      sections:
-#        - file: representations/Ch4/Section41
-#        - file: representations/Ch4/Section42
-#        - file: representations/Ch4/Section43
-#        - file: representations/Ch4/Section44
-#        - file: representations/Ch4/Section45
-#        - file: representations/Ch4/Section47
-#        - file: representations/Ch4/Section48
-#        - file: representations/Ch4/Section49
-#        - file: representations/Ch4/Section410
-#    - file: representations/Ch5/index
-#      sections:
-#        - file: representations/Ch5/Section51
-#        - file: representations/Ch5/Section52
-#        - file: representations/Ch5/Section53
-#        - file: representations/Ch5/Section54
-#        - file: representations/Ch5/Section55
-#        - file: representations/Ch5/Section56
-#        - file: representations/Ch5/Section57
-#
-#  - caption: Applications
-#    chapters:
-#    - file: applications/Ch6/index
-#      sections:
-#        - file: applications/Ch6/Section61
-#        - file: applications/Ch6/Section62
-#        - file: applications/Ch6/Section63
-#        - file: applications/Ch6/Section64
-#        - file: applications/Ch6/Section65
-#        - file: applications/Ch6/Section66
-#    - file: applications/Ch7/index
-#      sections:
-#        - file: applications/Ch7/Section71
-#        - file: applications/Ch7/Section72
-#        - file: applications/Ch7/Section73
-#    - file: applications/Ch8/index
-#      sections:
-#        - file: applications/Ch8/Section81
-#        - file: applications/Ch8/Section82
-#        - file: applications/Ch8/Section83
-#    - file: applications/Ch9/index
-#      sections:
-#        - file: applications/Ch9/Section91
-#        - file: applications/Ch9/Section92
-#
-#  - caption: Appendices
-#    chapters:
-#    - file: Appendix/AppA/index
-#      sections:
-#        - file: Appendix/AppA/Section4
-#        - file: Appendix/AppA/Section6
-#    - file: Appendix/AppB/index
-#      sections:
-#        - file: Appendix/AppB/Section1
-#        - file: Appendix/AppB/Section2
-#    - file: Appendix/AppC/index
-#      sections:
-#        - file: Appendix/AppC/Section1
+
+  - caption: Representations
+    chapters:
+    - file: representations/Ch3/index
+      sections:
+        - file: representations/Ch3/Section31
+        - file: representations/Ch3/Section32
+        - file: representations/Ch3/Section33
+        - file: representations/Ch3/Section34
+        - file: representations/Ch3/Section35
+        - file: representations/Ch3/Section36
+        - file: representations/Ch3/Section37
+        - file: representations/Ch3/Section38
+    - file: representations/Ch4/index
+      sections:
+        - file: representations/Ch4/Section41
+        - file: representations/Ch4/Section42
+        - file: representations/Ch4/Section43
+        - file: representations/Ch4/Section44
+        - file: representations/Ch4/Section45
+        - file: representations/Ch4/Section47
+        - file: representations/Ch4/Section48
+        - file: representations/Ch4/Section49
+        - file: representations/Ch4/Section410
+    - file: representations/Ch5/index
+      sections:
+        - file: representations/Ch5/Section51
+        - file: representations/Ch5/Section52
+        - file: representations/Ch5/Section53
+        - file: representations/Ch5/Section54
+        - file: representations/Ch5/Section55
+        - file: representations/Ch5/Section56
+        - file: representations/Ch5/Section57
+
+  - caption: Applications
+    chapters:
+    - file: applications/Ch6/index
+      sections:
+        - file: applications/Ch6/Section61
+        - file: applications/Ch6/Section62
+        - file: applications/Ch6/Section63
+        - file: applications/Ch6/Section64
+        - file: applications/Ch6/Section65
+        - file: applications/Ch6/Section66
+    - file: applications/Ch7/index
+      sections:
+        - file: applications/Ch7/Section71
+        - file: applications/Ch7/Section72
+        - file: applications/Ch7/Section73
+    - file: applications/Ch8/index
+      sections:
+        - file: applications/Ch8/Section81
+        - file: applications/Ch8/Section82
+        - file: applications/Ch8/Section83
+    - file: applications/Ch9/index
+      sections:
+        - file: applications/Ch9/Section91
+        - file: applications/Ch9/Section92
+
+  - caption: Appendices
+    chapters:
+    - file: Appendix/AppA/index
+      sections:
+        - file: Appendix/AppA/Section4
+        - file: Appendix/AppA/Section6
+    - file: Appendix/AppB/index
+      sections:
+        - file: Appendix/AppB/Section1
+        - file: Appendix/AppB/Section2
+    - file: Appendix/AppC/index
+      sections:
+        - file: Appendix/AppC/Section1
