@@ -573,7 +573,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3839/1108938879.py:16: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3887/1108938879.py:16: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   fig.tight_layout()
 </pre></div>
 </div>
@@ -676,7 +676,7 @@ document.write(`
         <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span>
         <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">zs</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(B) Third human network $A^{(3)}$&quot;</span><span class="p">)</span>
 
-<span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">Xhat2</span><span class="p">]);</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">Xhat2</span><span class="p">])</span>
+<span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">Xhat3</span><span class="p">]);</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">Xhat3</span><span class="p">])</span>
 <span class="n">lpm_heatmap</span><span class="p">(</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;Latent Dim.&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
             <span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">ytitle</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span>
             <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(C) $</span><span class="se">\\</span><span class="s2">hat X^{(1)}$&quot;</span><span class="p">)</span>
@@ -695,27 +695,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">A_humans</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">zs</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(A) First human network $A^{(1)}$&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">A_humans</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Edge?&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>         <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>         <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">zs</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(B) Third human network $A^{(3)}$&quot;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">12</span> <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">Xhat2</span><span class="p">]);</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">Xhat2</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">lpm_heatmap</span><span class="p">(</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;Latent Dim.&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>             <span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">ytitle</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>             <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(C) $</span><span class="se">\\</span><span class="s2">hat X^{(1)}$&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">lpm_heatmap</span><span class="p">(</span><span class="n">Xhat3</span><span class="p">,</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;Latent Dim.&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>             <span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">ytitle</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>             <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(D) $</span><span class="se">\\</span><span class="s2">hat X^{(3)}$&quot;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;Xhat2&#39; is not defined
-</pre></div>
-</div>
-<img alt="../../_images/3011d2aa074b4dddc5aa57d7e92d426c0d512c6531e5d4691e7a824782b75bf4.png" src="../../_images/3011d2aa074b4dddc5aa57d7e92d426c0d512c6531e5d4691e7a824782b75bf4.png" />
+<img alt="../../_images/b4c894c1b82314a4242418cc25467ee77c03af8ceae8833b34860b2b57ef918e.png" src="../../_images/b4c894c1b82314a4242418cc25467ee77c03af8ceae8833b34860b2b57ef918e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -737,7 +717,7 @@ document.write(`
         <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span>
         <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">zs</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(B) First alien network $A^{(5)}$&quot;</span><span class="p">)</span>
 
-<span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">Xhat2</span><span class="p">]);</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">Xhat2</span><span class="p">])</span>
+<span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">Xhat_alien</span><span class="p">]);</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">Xhat_alien</span><span class="p">])</span>
 <span class="n">lpm_heatmap</span><span class="p">(</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;Latent Dim.&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
             <span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">ytitle</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span>
             <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(C) $</span><span class="se">\\</span><span class="s2">hat X^{(1)}$&quot;</span><span class="p">)</span>
@@ -755,6 +735,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/882b29153b518740daa39fff665fb416188306b92f76102b09eafe12e3c51cef.png" src="../../_images/882b29153b518740daa39fff665fb416188306b92f76102b09eafe12e3c51cef.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -768,6 +751,12 @@ document.write(`
 <span class="c1"># estimated latent positions</span>
 <span class="n">dist_firsthum_alien</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">Xhat</span> <span class="o">-</span> <span class="n">Xhat_alien</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="s2">&quot;fro&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Frob. norm(first human, alien) = </span><span class="si">{:3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dist_firsthum_alien</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Frob. norm(first human, third human) = 8.798482
+Frob. norm(first human, alien) = 5.991560
 </pre></div>
 </div>
 </div>
@@ -818,6 +807,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/45e354e4d51a9ebe34ed9aa236d7b7c19f1cde937eb042c910c5fd57867c5b47.png" src="../../_images/45e354e4d51a9ebe34ed9aa236d7b7c19f1cde937eb042c910c5fd57867c5b47.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -864,6 +856,9 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/png/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/838d088a245bae431c94f784a6d4d5b70e23d5102ce736a7d0c5fa4494b32bea.png" src="../../_images/838d088a245bae431c94f784a6d4d5b70e23d5102ce736a7d0c5fa4494b32bea.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -924,6 +919,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/02233a2d6126d2aa7bcfc58a123a92a95de2141808457c8984c84778d64435b7.png" src="../../_images/02233a2d6126d2aa7bcfc58a123a92a95de2141808457c8984c84778d64435b7.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -959,6 +957,9 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/png/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/99be26d97089d43984a58ea4591ec96b77711086664759ab731aabfbe1dd061d.png" src="../../_images/99be26d97089d43984a58ea4591ec96b77711086664759ab731aabfbe1dd061d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1018,6 +1019,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, 1, 1], [0.5, 0.5, 0.5], [0, 0, 0]]
+</pre></div>
+</div>
+<img alt="../../_images/daef805a74050f466b19c8bfa408bd87fdd72ff99f3c1dece9f185e0943e299d.png" src="../../_images/daef805a74050f466b19c8bfa408bd87fdd72ff99f3c1dece9f185e0943e299d.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1064,6 +1071,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/64787f25f8965d2b6bf3e0bb4cdc4030d38a8c935b0d9c8e8edfcb2688850c09.png" src="../../_images/64787f25f8965d2b6bf3e0bb4cdc4030d38a8c935b0d9c8e8edfcb2688850c09.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1106,6 +1116,9 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/png/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7f4d5a846b45f9ef8a536d838679a04931bee28e5e5035850d04c315ab5c6683.png" src="../../_images/7f4d5a846b45f9ef8a536d838679a04931bee28e5e5035850d04c315ab5c6683.png" />
 </div>
 </div>
 <div class="cell docutils container">
