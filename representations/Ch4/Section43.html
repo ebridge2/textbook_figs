@@ -256,6 +256,14 @@
 </ul>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Appendix/AppA/index.html">Appendix A: Network Model Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendix/AppA/Section4.html">A.4 Stochastic block models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendix/AppA/Section6.html">A.6 Random Dot Product Graphs</a></li>
+</ul>
+</details></li>
+</ul>
 
     </div>
 </nav></div>
@@ -493,6 +501,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">plot_vector</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># number of students</span>
 
@@ -532,20 +541,6 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
   from .autonotebook import tqdm as notebook_tqdm
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">28</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
-<span class="g g-Whitespace">     </span><span class="mi">23</span>              <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;School&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>              <span class="n">ytitle</span><span class="o">=</span><span class="s2">&quot;School&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(B) Block Matrix $B$&quot;</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Block probability&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">28</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;Figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;sbm&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="s2">&quot;png&quot;</span><span class="p">:</span>
-
-<span class="ne">NameError</span>: name &#39;os&#39; is not defined
 </pre></div>
 </div>
 <img alt="../../_images/fde7fdb56a8291b5c661ce699512fcea3db5284a7993d01d70b818033be38996.png" src="../../_images/fde7fdb56a8291b5c661ce699512fcea3db5284a7993d01d70b818033be38996.png" />
@@ -593,6 +588,9 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/png/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/8f5152a7a02e37199e0259e62ae4310e311f101b2f176602450724aa6480d298.png" src="../../_images/8f5152a7a02e37199e0259e62ae4310e311f101b2f176602450724aa6480d298.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -656,6 +654,9 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/png/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d02ebd1540cfbe2fd456bafb24604f3850e6eb7237d15dd42c8665a4b6728bc5.png" src="../../_images/d02ebd1540cfbe2fd456bafb24604f3850e6eb7237d15dd42c8665a4b6728bc5.png" />
 </div>
 </div>
 </section>

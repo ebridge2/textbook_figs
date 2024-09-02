@@ -256,6 +256,14 @@
 </ul>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Appendix/AppA/index.html">Appendix A: Network Model Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendix/AppA/Section4.html">A.4 Stochastic block models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendix/AppA/Section6.html">A.6 Random Dot Product Graphs</a></li>
+</ul>
+</details></li>
+</ul>
 
     </div>
 </nav></div>
@@ -524,25 +532,6 @@ document.write(`
   from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">25</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="n">A_facebook</span> <span class="o">=</span> <span class="n">sbm</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">nks</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="n">A_insta</span> <span class="o">=</span> <span class="n">sbm</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">nks</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">25</span> <span class="n">A_linkedin</span><span class="p">,</span> <span class="n">P_linkedin</span> <span class="o">=</span> <span class="n">dcsbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">return_prob</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/graphbook_code/sbm.py:54,</span> in <span class="ni">dcsbm</span><span class="nt">(z, theta, B, directed, loops, return_prob)</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span><span class="sd"> A function to sample a DCSBM.</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="n">P</span> <span class="o">=</span> <span class="n">generate_dcsbm_pmtx</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">54</span> <span class="n">robj</span> <span class="o">=</span> <span class="n">sample_edges</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="n">directed</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="n">loops</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">if</span> <span class="n">return_prob</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="n">robj</span> <span class="o">=</span> <span class="p">(</span><span class="n">robj</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;sample_edges&#39; is not defined
-</pre></div>
-</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -578,6 +567,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c2503f410c91ae44943a09c5867bf5a2730335fe01bf85ddcbcb4724aaab723b.png" src="../../_images/c2503f410c91ae44943a09c5867bf5a2730335fe01bf85ddcbcb4724aaab723b.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -610,6 +602,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b0d71c6bd34e913e04d95e083942df82adb61084e12cc1162ac37bdc96cd4673.png" src="../../_images/b0d71c6bd34e913e04d95e083942df82adb61084e12cc1162ac37bdc96cd4673.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -626,6 +621,12 @@ document.write(`
             <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Value&quot;</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s2">&quot;Employee&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;(A) Shared LPs, $V$&#39;}, xlabel=&#39;Latent Dim.&#39;, ylabel=&#39;Employee&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/5f0db4ce20919159fd492c4420a644e23141c6b3b1ba6d47c0bcd001a099e3e3.png" src="../../_images/5f0db4ce20919159fd492c4420a644e23141c6b3b1ba6d47c0bcd001a099e3e3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -663,6 +664,9 @@ document.write(`
 <span class="n">fig</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/782229a00acb392cef795116652c6e648528f1609f4f1484dba41f05981479a2.png" src="../../_images/782229a00acb392cef795116652c6e648528f1609f4f1484dba41f05981479a2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -717,6 +721,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/311026ae970dcac8f428886a8b2791fe6a46b2c52336315229e606c6c2fe5045.png" src="../../_images/311026ae970dcac8f428886a8b2791fe6a46b2c52336315229e606c6c2fe5045.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -757,6 +764,9 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/png/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c38d7c802b01094b03efbe79d38295c8e3d3ad303e41016e003fd8cf8c1e2f4c.png" src="../../_images/c38d7c802b01094b03efbe79d38295c8e3d3ad303e41016e003fd8cf8c1e2f4c.png" />
 </div>
 </div>
 </section>

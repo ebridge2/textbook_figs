@@ -256,6 +256,14 @@
 </ul>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Appendix/AppA/index.html">Appendix A: Network Model Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendix/AppA/Section4.html">A.4 Stochastic block models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendix/AppA/Section6.html">A.6 Random Dot Product Graphs</a></li>
+</ul>
+</details></li>
+</ul>
 
     </div>
 </nav></div>
@@ -510,25 +518,6 @@ document.write(`
   from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="mi">6</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">nk</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">A</span><span class="p">,</span> <span class="n">P</span> <span class="o">=</span> <span class="n">dcsbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">return_prob</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/graphbook_code/sbm.py:54,</span> in <span class="ni">dcsbm</span><span class="nt">(z, theta, B, directed, loops, return_prob)</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span><span class="sd"> A function to sample a DCSBM.</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="n">P</span> <span class="o">=</span> <span class="n">generate_dcsbm_pmtx</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">54</span> <span class="n">robj</span> <span class="o">=</span> <span class="n">sample_edges</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="n">directed</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="n">loops</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">if</span> <span class="n">return_prob</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="n">robj</span> <span class="o">=</span> <span class="p">(</span><span class="n">robj</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;sample_edges&#39; is not defined
-</pre></div>
-</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -598,6 +587,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/fd42190235c40a2c7339f57ef4ab058b5ecadb145a76c08004b9bbf55822774f.png" src="../../_images/fd42190235c40a2c7339f57ef4ab058b5ecadb145a76c08004b9bbf55822774f.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -646,6 +638,9 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/png/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/14447ab405bc178e7fd8f9ee22a322a62ed9a7f277bcdf88fdcb8aa7d080b0a3.png" src="../../_images/14447ab405bc178e7fd8f9ee22a322a62ed9a7f277bcdf88fdcb8aa7d080b0a3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -698,6 +693,9 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/png/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/582cbdf5cf010d74cfa44f0b2be546f85380d1216b7c7e5eb872cabe4c6fda33.png" src="../../_images/582cbdf5cf010d74cfa44f0b2be546f85380d1216b7c7e5eb872cabe4c6fda33.png" />
 </div>
 </div>
 </section>
