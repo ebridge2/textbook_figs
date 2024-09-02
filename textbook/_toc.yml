@@ -1,5 +1,5 @@
 format: jb-book
-root: index
+root: coverpage
 parts:
   - caption: Foundations
     chapters:
@@ -9,9 +9,9 @@ parts:
     - file: foundations/Ch2/index
       sections:
         - file: foundations/Ch2/Section22
-#        - file: foundations/Ch2/Section23
-#        - file: foundations/Ch2/Section24
-#        - file: foundations/Ch2/Section25_26
+        - file: foundations/Ch2/Section23
+        - file: foundations/Ch2/Section24
+        - file: foundations/Ch2/Section25_26
 #
 #  - caption: Representations
 #    chapters:
