@@ -1,4 +1,4 @@
-# Hands-on Network Machine Learning with Scikit-Learn and Graspologic
+# Network Machine Learning
 
 ### Eric W. Bridgeford, Alex Loftus, Joshua T. Vogelstein
 

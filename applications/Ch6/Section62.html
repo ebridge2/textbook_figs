@@ -169,7 +169,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../coverpage.html">
-                    Hands-on Network Machine Learning with Scikit-Learn and Graspologic
+                    Network Machine Learning
                 </a>
             </li>
         </ul>
@@ -498,19 +498,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2555/764351246.py:8: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2445/764351246.py:8: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
   axs[0].plot([0, 440], [int(df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Potential/1000&quot;])]*2, color=&quot;#999999&quot;)
-/tmp/ipykernel_2555/764351246.py:9: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+/tmp/ipykernel_2445/764351246.py:9: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
   axs[0].plot([0, 440], [int(df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Expected&quot;])]*2, color=&quot;#999999&quot;)
-/tmp/ipykernel_2555/764351246.py:14: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+/tmp/ipykernel_2445/764351246.py:14: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
   axs[0].annotate(&quot;Potential = {:d}&quot;.format(int(1000*df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Potential/1000&quot;])), xytext=(550, 100),
-/tmp/ipykernel_2555/764351246.py:16: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+/tmp/ipykernel_2445/764351246.py:16: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   axs[0].annotate(&quot;Expected = {:.1f}&quot;.format(float(df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Expected&quot;])), xytext=(50, 200),
 /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/text.py:1467: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   y = float(self.convert_yunits(y))
 </pre></div>
 </div>
-<img alt="../../_images/296e16fa547038cfb455b07fee580c94557660fc02ca40dade3c865354a21f76.png" src="../../_images/296e16fa547038cfb455b07fee580c94557660fc02ca40dade3c865354a21f76.png" />
+<img alt="../../_images/3c1d2b2045a68e5fa0e0bf6a7e30d8ac785e1126d4ecacf56e8e72a39fbae419.png" src="../../_images/3c1d2b2045a68e5fa0e0bf6a7e30d8ac785e1126d4ecacf56e8e72a39fbae419.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -626,8 +626,8 @@ Size in KB: 1000.000 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive approach: 0.261026 seconds
-Sparse approach: 0.013695 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive approach: 0.235415 seconds
+Sparse approach: 0.011644 seconds
 </pre></div>
 </div>
 </div>
@@ -809,24 +809,35 @@ Sparse approach: 0.013695 seconds
 <span class="g g-Whitespace">    </span><span class="mi">248</span>     <span class="n">transform</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">xo</span><span class="p">,</span> <span class="n">yo</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">249</span> <span class="bp">self</span><span class="o">.</span><span class="n">draw_path</span><span class="p">(</span><span class="n">gc0</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">rgbFace</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/backends/backend_svg.py:671,</span> in <span class="ni">RendererSVG.draw_path</span><span class="nt">(self, gc, path, transform, rgbFace)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/backends/backend_svg.py:672,</span> in <span class="ni">RendererSVG.draw_path</span><span class="nt">(self, gc, path, transform, rgbFace)</span>
 <span class="g g-Whitespace">    </span><span class="mi">669</span> <span class="k">if</span> <span class="n">gc</span><span class="o">.</span><span class="n">get_url</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">670</span>     <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;xlink:href&#39;</span><span class="p">:</span> <span class="n">gc</span><span class="o">.</span><span class="n">get_url</span><span class="p">()})</span>
-<span class="ne">--&gt; </span><span class="mi">671</span> <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">path_data</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_clip_attrs</span><span class="p">(</span><span class="n">gc</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">672</span>                     <span class="n">style</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_style</span><span class="p">(</span><span class="n">gc</span><span class="p">,</span> <span class="n">rgbFace</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span> <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">path_data</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_clip_attrs</span><span class="p">(</span><span class="n">gc</span><span class="p">),</span>
+<span class="ne">--&gt; </span><span class="mi">672</span>                     <span class="n">style</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_style</span><span class="p">(</span><span class="n">gc</span><span class="p">,</span> <span class="n">rgbFace</span><span class="p">))</span>
 <span class="g g-Whitespace">    </span><span class="mi">673</span> <span class="k">if</span> <span class="n">gc</span><span class="o">.</span><span class="n">get_url</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">674</span>     <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/backends/backend_svg.py:235,</span> in <span class="ni">XMLWriter.element</span><span class="nt">(self, tag, text, attrib, **extra)</span>
-<span class="g g-Whitespace">    </span><span class="mi">232</span>     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__tags</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">id</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>         <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">235</span> <span class="k">def</span> <span class="nf">element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attrib</span><span class="o">=</span><span class="p">{},</span> <span class="o">**</span><span class="n">extra</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">236</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">237</span><span class="sd">     Add an entire element.  This is the same as calling :meth:`start`,</span>
-<span class="g g-Whitespace">    </span><span class="mi">238</span><span class="sd">     :meth:`data`, and :meth:`end` in sequence. The *text* argument can be</span>
-<span class="g g-Whitespace">    </span><span class="mi">239</span><span class="sd">     omitted.</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span>     <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">attrib</span><span class="p">,</span> <span class="o">**</span><span class="n">extra</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/backends/backend_svg.py:586,</span> in <span class="ni">RendererSVG._get_style</span><span class="nt">(self, gc, rgbFace)</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="k">def</span> <span class="nf">_get_style</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gc</span><span class="p">,</span> <span class="n">rgbFace</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">586</span>     <span class="k">return</span> <span class="n">_generate_css</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_style_dict</span><span class="p">(</span><span class="n">gc</span><span class="p">,</span> <span class="n">rgbFace</span><span class="p">))</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/backends/backend_svg.py:556,</span> in <span class="ni">RendererSVG._get_style_dict</span><span class="nt">(self, gc, rgbFace)</span>
+<span class="g g-Whitespace">    </span><span class="mi">554</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">555</span>     <span class="k">if</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">rgbFace</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">556</span>         <span class="n">attrib</span><span class="p">[</span><span class="s1">&#39;fill&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rgb2hex</span><span class="p">(</span><span class="n">rgbFace</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rgbFace</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">rgbFace</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">1.0</span>
+<span class="g g-Whitespace">    </span><span class="mi">558</span>             <span class="ow">and</span> <span class="ow">not</span> <span class="n">forced_alpha</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">559</span>         <span class="n">attrib</span><span class="p">[</span><span class="s1">&#39;fill-opacity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_short_float_fmt</span><span class="p">(</span><span class="n">rgbFace</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/colors.py:548,</span> in <span class="ni">to_hex</span><span class="nt">(c, keep_alpha)</span>
+<span class="g g-Whitespace">    </span><span class="mi">546</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">keep_alpha</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">547</span>     <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">548</span> <span class="k">return</span> <span class="s2">&quot;#&quot;</span> <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">val</span> <span class="o">*</span> <span class="mi">255</span><span class="p">),</span> <span class="s2">&quot;02x&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/colors.py:548,</span> in <span class="ni">&lt;genexpr&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">546</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">keep_alpha</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">547</span>     <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">548</span> <span class="k">return</span> <span class="s2">&quot;#&quot;</span> <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">val</span> <span class="o">*</span> <span class="mi">255</span><span class="p">),</span> <span class="s2">&quot;02x&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">c</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
