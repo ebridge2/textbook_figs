@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Network Machine Learning</title>
+    <title>3: Characterizing and preparing network data &#8212; Network Machine Learning</title>
   
   
   
@@ -59,9 +59,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'representations/Ch3/Untitled';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'representations/Ch3/index';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.1: Properties of Networks" href="Section31.html" />
+    <link rel="prev" title="2.5: Fine tune, discover, and visualize" href="../../foundations/Ch2/Section25_26.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -183,11 +183,25 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../foundations/Ch2/index.html">End-to-end Biology Network Machine Learning Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section22.html">Get the Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section23.html">Prepare the Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section24.html">Select and Train</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section25_26.html">Fine tune, discover, and visualize</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../foundations/Ch2/index.html">2: End-to-end Biology Network Machine Learning Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section22.html">2.2: Get the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section23.html">2.3: Prepare the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section24.html">2.4: Select and Train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section25_26.html">2.5: Fine tune, discover, and visualize</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">3: Characterizing and preparing network data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Section31.html">3.1: Properties of Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section32.html">3.2: Node Properties and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section33.html">3.3: Network summary statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section34.html">3.4 Degree Matrices and Laplacians</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section35.html">3.5 Subnetworks and Connected Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section36.html">3.6 Regularization and node pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section37.html">3.7 Edge Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section38.html">3.8 Edge-weight global rescaling</a></li>
 </ul>
 </details></li>
 </ul>
@@ -261,7 +275,7 @@
       
       
       
-      <li><a href="https://github.com/ebridge2/textbook_figs/edit/master/textbook/representations/Ch3/Untitled.ipynb" target="_blank"
+      <li><a href="https://github.com/ebridge2/textbook_figs/edit/master/textbook/representations/Ch3/index.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +292,7 @@
       
       
       
-      <li><a href="https://github.com/ebridge2/textbook_figs/issues/new?title=Issue%20on%20page%20%2Frepresentations/Ch3/Untitled.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ebridge2/textbook_figs/issues/new?title=Issue%20on%20page%20%2Frepresentations/Ch3/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -308,7 +322,7 @@
       
       
       
-      <li><a href="../../_sources/representations/Ch3/Untitled.ipynb" target="_blank"
+      <li><a href="../../_sources/representations/Ch3/index.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -379,9 +393,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -392,19 +404,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>3: Characterizing and preparing network data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -414,65 +418,21 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-
-<span class="n">font</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span> <span class="p">:</span> <span class="s1">&#39;Dejavu Sans&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;weight&#39;</span> <span class="p">:</span> <span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;size&#39;</span>   <span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">font</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-</pre></div>
+  <section class="tex2jax_ignore mathjax_ignore" id="characterizing-and-preparing-network-data">
+<span id="ch3"></span><h1>3: Characterizing and preparing network data<a class="headerlink" href="#characterizing-and-preparing-network-data" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="Section31.html#ch3-propnet"><span class="std std-ref">3.1: Properties of Networks</span></a></p></li>
+<li><p><a class="reference internal" href="Section32.html#ch3-descriptive-nodes"><span class="std std-ref">3.2: Node Properties and Relationships</span></a></p></li>
+<li><p><a class="reference internal" href="Section33.html#ch3-summary-stats"><span class="std std-ref">3.3: Network summary statistics</span></a></p></li>
+<li><p><span class="xref std std-ref">ch3:matrix-representations</span></p></li>
+<li><p><span class="xref std std-ref">ch3:subnetworks</span></p></li>
+<li><p><span class="xref std std-ref">ch3:reg_nodes</span></p></li>
+<li><p><span class="xref std std-ref">ch3:reg_edges</span></p></li>
+<li><p><span class="xref std std-ref">ch3:edge_rescaling</span></p></li>
+</ul>
+<div class="toctree-wrapper compound">
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-
-<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;Figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;basic_mtxs&quot;</span>
-<span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="s2">&quot;png&quot;</span><span class="p">:</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/</span><span class="si">{</span><span class="n">mode</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/</span><span class="si">{</span><span class="n">mode</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">mode</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;Figures/png&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/png/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;Figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;basic_mtxs&quot;</span>
-
-<span class="ne">NameError</span>: name &#39;fig&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-
-<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;basic_mtxs&quot;</span>
-<span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="s2">&quot;png&quot;</span><span class="p">:</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/</span><span class="si">{</span><span class="n">mode</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">mode</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/png/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -504,27 +464,30 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../../foundations/Ch2/Section25_26.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2.5: Fine tune, discover, and visualize</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Section31.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3.1: Properties of Networks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

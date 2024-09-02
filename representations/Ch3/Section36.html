@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Network Machine Learning</title>
+    <title>3.6 Regularization and node pruning &#8212; Network Machine Learning</title>
   
   
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'representations/Ch3/Section36';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.7 Edge Regularization" href="Section37.html" />
+    <link rel="prev" title="3.5 Subnetworks and Connected Components" href="Section35.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -183,11 +183,25 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../foundations/Ch2/index.html">End-to-end Biology Network Machine Learning Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section22.html">Get the Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section23.html">Prepare the Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section24.html">Select and Train</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section25_26.html">Fine tune, discover, and visualize</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../foundations/Ch2/index.html">2: End-to-end Biology Network Machine Learning Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section22.html">2.2: Get the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section23.html">2.3: Prepare the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section24.html">2.4: Select and Train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section25_26.html">2.5: Fine tune, discover, and visualize</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">3: Characterizing and preparing network data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Section31.html">3.1: Properties of Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section32.html">3.2: Node Properties and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section33.html">3.3: Network summary statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section34.html">3.4 Degree Matrices and Laplacians</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section35.html">3.5 Subnetworks and Connected Components</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.6 Regularization and node pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section37.html">3.7 Edge Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section38.html">3.8 Edge-weight global rescaling</a></li>
 </ul>
 </details></li>
 </ul>
@@ -379,9 +393,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -392,19 +404,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>3.6 Regularization and node pruning</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -414,7 +418,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="regularization-and-node-pruning">
+<span id="ch3"></span><h1>3.6 Regularization and node pruning<a class="headerlink" href="#regularization-and-node-pruning" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
 
@@ -506,7 +512,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c63e19f837a625ad83fada6b9a50d63d7098e1b59b9cf64de37450cf9945258d.png" src="../../_images/c63e19f837a625ad83fada6b9a50d63d7098e1b59b9cf64de37450cf9945258d.png" />
+<img alt="../../_images/bab29110627fbb291cb0df536b4b62e2cc0eb8460207809794cb58ceb2b52e02.png" src="../../_images/bab29110627fbb291cb0df536b4b62e2cc0eb8460207809794cb58ceb2b52e02.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
 </pre></div>
 </div>
@@ -558,11 +564,11 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:12: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:12: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3595/1171188953.py:12: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3093/1171188953.py:12: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   axs[0].set_title(&quot;(A) Pruned degree $\leq$ 1&quot;)
 </pre></div>
 </div>
-<img alt="../../_images/64202087d0d81419685dde3ef545d2c5f5f1c7549dcd1f38e2468a8994da1f41.png" src="../../_images/64202087d0d81419685dde3ef545d2c5f5f1c7549dcd1f38e2468a8994da1f41.png" />
+<img alt="../../_images/2aec9ad9997ca72c97128d522ee6400fad02f3a2aba1f1278e8bca0409ceaca3.png" src="../../_images/2aec9ad9997ca72c97128d522ee6400fad02f3a2aba1f1278e8bca0409ceaca3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -587,7 +593,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;(B) Business network, after pruning&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/55c5ecbd8cea81b48d527fc8d04ec4e265a1b0d1ca6176d03345b57720e9bff3.png" src="../../_images/55c5ecbd8cea81b48d527fc8d04ec4e265a1b0d1ca6176d03345b57720e9bff3.png" />
+<img alt="../../_images/bbbdf9d8ed3b196dfb9515cfa286a14776f0906fae377d4e753f4f3a509b2a2a.png" src="../../_images/bbbdf9d8ed3b196dfb9515cfa286a14776f0906fae377d4e753f4f3a509b2a2a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -636,13 +642,14 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:28: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:28: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3595/1896666361.py:28: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3093/1896666361.py:28: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   axs[1].set_title(&quot;(B) Pruned degree $\leq$ 1 and pizza huts&quot;)
 </pre></div>
 </div>
-<img alt="../../_images/1adf2d0542d10cc95100a66ac2e916b002c1b0f43f6b8f3644dcfdab6f2ee3ec.png" src="../../_images/1adf2d0542d10cc95100a66ac2e916b002c1b0f43f6b8f3644dcfdab6f2ee3ec.png" />
+<img alt="../../_images/5180cce3c0ca6d35bc186c86fb179548a5bd667211aadefa1796d2e2b23686a8.png" src="../../_images/5180cce3c0ca6d35bc186c86fb179548a5bd667211aadefa1796d2e2b23686a8.png" />
 </div>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -674,27 +681,30 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Section35.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3.5 Subnetworks and Connected Components</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Section37.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3.7 Edge Regularization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

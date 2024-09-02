@@ -183,11 +183,25 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../foundations/Ch2/index.html">End-to-end Biology Network Machine Learning Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section22.html">Get the Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section23.html">Prepare the Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section24.html">Select and Train</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section25_26.html">Fine tune, discover, and visualize</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../foundations/Ch2/index.html">2: End-to-end Biology Network Machine Learning Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section22.html">2.2: Get the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section23.html">2.3: Prepare the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section24.html">2.4: Select and Train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section25_26.html">2.5: Fine tune, discover, and visualize</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../representations/Ch3/index.html">3: Characterizing and preparing network data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../representations/Ch3/Section31.html">3.1: Properties of Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../representations/Ch3/Section32.html">3.2: Node Properties and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../representations/Ch3/Section33.html">3.3: Network summary statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../representations/Ch3/Section34.html">3.4 Degree Matrices and Laplacians</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../representations/Ch3/Section35.html">3.5 Subnetworks and Connected Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../representations/Ch3/Section36.html">3.6 Regularization and node pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../representations/Ch3/Section37.html">3.7 Edge Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../representations/Ch3/Section38.html">3.8 Edge-weight global rescaling</a></li>
 </ul>
 </details></li>
 </ul>
@@ -570,19 +584,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2635/764351246.py:8: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2031/764351246.py:8: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
   axs[0].plot([0, 440], [int(df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Potential/1000&quot;])]*2, color=&quot;#999999&quot;)
-/tmp/ipykernel_2635/764351246.py:9: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+/tmp/ipykernel_2031/764351246.py:9: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
   axs[0].plot([0, 440], [int(df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Expected&quot;])]*2, color=&quot;#999999&quot;)
-/tmp/ipykernel_2635/764351246.py:14: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+/tmp/ipykernel_2031/764351246.py:14: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
   axs[0].annotate(&quot;Potential = {:d}&quot;.format(int(1000*df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Potential/1000&quot;])), xytext=(550, 100),
-/tmp/ipykernel_2635/764351246.py:16: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+/tmp/ipykernel_2031/764351246.py:16: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   axs[0].annotate(&quot;Expected = {:.1f}&quot;.format(float(df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Expected&quot;])), xytext=(50, 200),
 /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/text.py:1467: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   y = float(self.convert_yunits(y))
 </pre></div>
 </div>
-<img alt="../../_images/51a10f1b56b8aa0065759d879a9124cf65ac84333b1b8a4f9e5722393d200af8.png" src="../../_images/51a10f1b56b8aa0065759d879a9124cf65ac84333b1b8a4f9e5722393d200af8.png" />
+<img alt="../../_images/15df2328a190acdac05758409d74bba17643bbd75bbdbdf12dc3e89de4847065.png" src="../../_images/15df2328a190acdac05758409d74bba17643bbd75bbdbdf12dc3e89de4847065.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -698,8 +712,8 @@ Size in KB: 1000.000 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive approach: 0.242227 seconds
-Sparse approach: 0.011615 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive approach: 0.239251 seconds
+Sparse approach: 0.012727 seconds
 </pre></div>
 </div>
 </div>
