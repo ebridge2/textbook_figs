@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Network Machine Learning</title>
+    <title>B.2 Theoretical considerations for spectral embeddings &#8212; Network Machine Learning</title>
   
   
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Appendix/AppB/Section2';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Appendix C: Overview of machine learning techniques" href="../AppC/index.html" />
+    <link rel="prev" title="B.1 The basics of maximum likelihood estimation" href="Section1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -257,10 +257,19 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../AppA/index.html">Appendix A: Network Model Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../AppA/Section4.html">A.4 Stochastic block models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../AppA/Section6.html">A.6 Random Dot Product Graphs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Appendix B: Learning representations theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Section1.html">B.1 The basics of maximum likelihood estimation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">B.2 Theoretical considerations for spectral embeddings</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../AppC/index.html">Appendix C: Overview of machine learning techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../AppC/Section1.html">C.1 Unsupervised machine learning</a></li>
 </ul>
 </details></li>
 </ul>
@@ -452,9 +461,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -465,19 +472,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>B.2 Theoretical considerations for spectral embeddings</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -487,9 +486,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="b-2-theoretical-considerations-for-spectral-embeddings">
+<span id="appb-spectral"></span><h1>B.2 Theoretical considerations for spectral embeddings<a class="headerlink" href="#b-2-theoretical-considerations-for-spectral-embeddings" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;png&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 
@@ -553,6 +554,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
                         
@@ -563,91 +565,19 @@ document.write(`
 
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;Figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;spectral_unif_cl&quot;</span>
-<span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;png&quot;</span><span class="p">:</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figures/</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figures/</span><span class="si">{}</span><span class="s2">.svg&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figures/</span><span class="si">{}</span><span class="s2">.svg&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="s2">&quot;png&quot;</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/</span><span class="si">{</span><span class="n">mode</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/</span><span class="si">{</span><span class="n">mode</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">mode</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;Figures/png&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/png/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;spectral_unif_cl&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;png&quot;</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figures/</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figures/</span><span class="si">{}</span><span class="s2">.svg&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/figure.py:3395,</span> in <span class="ni">Figure.savefig</span><span class="nt">(self, fname, transparent, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3393</span>     <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3394</span>         <span class="n">_recursively_make_axes_transparent</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">3395</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">print_figure</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/backend_bases.py:2204,</span> in <span class="ni">FigureCanvasBase.print_figure</span><span class="nt">(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2200</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2201</span>     <span class="c1"># _get_renderer may change the figure dpi (as vector formats</span>
-<span class="g g-Whitespace">   </span><span class="mi">2202</span>     <span class="c1"># force the figure dpi to 72), so we need to set it again here.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2203</span>     <span class="k">with</span> <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">2204</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">print_method</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2205</span>             <span class="n">filename</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2206</span>             <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2207</span>             <span class="n">edgecolor</span><span class="o">=</span><span class="n">edgecolor</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2208</span>             <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2209</span>             <span class="n">bbox_inches_restore</span><span class="o">=</span><span class="n">_bbox_inches_restore</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2210</span>             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2211</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2212</span>     <span class="k">if</span> <span class="n">bbox_inches</span> <span class="ow">and</span> <span class="n">restore_bbox</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/backend_bases.py:2054,</span> in <span class="ni">FigureCanvasBase._switch_canvas_and_return_print_method.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2050</span>     <span class="n">optional_kws</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Passed by print_figure for other renderers.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2051</span>         <span class="s2">&quot;dpi&quot;</span><span class="p">,</span> <span class="s2">&quot;facecolor&quot;</span><span class="p">,</span> <span class="s2">&quot;edgecolor&quot;</span><span class="p">,</span> <span class="s2">&quot;orientation&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2052</span>         <span class="s2">&quot;bbox_inches_restore&quot;</span><span class="p">}</span>
-<span class="g g-Whitespace">   </span><span class="mi">2053</span>     <span class="n">skip</span> <span class="o">=</span> <span class="n">optional_kws</span> <span class="o">-</span> <span class="p">{</span><span class="o">*</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">meth</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="p">}</span>
-<span class="ne">-&gt; </span><span class="mi">2054</span>     <span class="n">print_method</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">meth</span><span class="p">)(</span><span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">meth</span><span class="p">(</span>
-<span class="nn">   2055         *args, **{k: v for k, v</span> in <span class="ni">kwargs.items</span><span class="nt">() if k not in skip}))</span>
-<span class="g g-Whitespace">   </span><span class="mi">2056</span> <span class="k">else</span><span class="p">:</span>  <span class="c1"># Let third-parties do as they see fit.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2057</span>     <span class="n">print_method</span> <span class="o">=</span> <span class="n">meth</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py:496,</span> in <span class="ni">FigureCanvasAgg.print_png</span><span class="nt">(self, filename_or_obj, metadata, pil_kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="k">def</span> <span class="nf">print_png</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename_or_obj</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pil_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">451</span><span class="sd">     Write the figure to a PNG file.</span>
-<span class="g g-Whitespace">    </span><span class="mi">452</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span><span class="sd">         *metadata*, including the default &#39;Software&#39; key.</span>
-<span class="g g-Whitespace">    </span><span class="mi">495</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">496</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_print_pil</span><span class="p">(</span><span class="n">filename_or_obj</span><span class="p">,</span> <span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">pil_kwargs</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py:445,</span> in <span class="ni">FigureCanvasAgg._print_pil</span><span class="nt">(self, filename_or_obj, fmt, pil_kwargs, metadata)</span>
-<span class="g g-Whitespace">    </span><span class="mi">440</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">441</span><span class="sd"> Draw the canvas, then save it using `.image.imsave` (to which</span>
-<span class="g g-Whitespace">    </span><span class="mi">442</span><span class="sd"> *pil_kwargs* and *metadata* are forwarded).</span>
-<span class="g g-Whitespace">    </span><span class="mi">443</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">444</span> <span class="n">FigureCanvasAgg</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">445</span> <span class="n">mpl</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">446</span>     <span class="n">filename_or_obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_rgba</span><span class="p">(),</span> <span class="nb">format</span><span class="o">=</span><span class="n">fmt</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;upper&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">447</span>     <span class="n">dpi</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">dpi</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span> <span class="n">pil_kwargs</span><span class="o">=</span><span class="n">pil_kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/image.py:1676,</span> in <span class="ni">imsave</span><span class="nt">(fname, arr, vmin, vmax, cmap, format, origin, dpi, metadata, pil_kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1674</span> <span class="n">pil_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;format&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1675</span> <span class="n">pil_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;dpi&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">dpi</span><span class="p">,</span> <span class="n">dpi</span><span class="p">))</span>
-<span class="ne">-&gt; </span><span class="mi">1676</span> <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">**</span><span class="n">pil_kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/PIL/Image.py:2563,</span> in <span class="ni">Image.save</span><span class="nt">(self, fp, format, **params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2561</span>         <span class="n">fp</span> <span class="o">=</span> <span class="n">builtins</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r+b&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2562</span>     <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2563</span>         <span class="n">fp</span> <span class="o">=</span> <span class="n">builtins</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w+b&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2564</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2565</span>     <span class="n">fp</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">IO</span><span class="p">[</span><span class="nb">bytes</span><span class="p">],</span> <span class="n">fp</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/runner/work/textbook_figs/textbook_figs/textbook/Appendix/AppB/Figures/spectral_unif_cl.png&#39;
-</pre></div>
-</div>
-<img alt="../../_images/c0c382a4e350982f9a5474f8f42891bac176973cc1170857063f340e44dfa7f2.png" src="../../_images/c0c382a4e350982f9a5474f8f42891bac176973cc1170857063f340e44dfa7f2.png" />
+<img alt="../../_images/ac1f1a3f48c852aa321bc1003b3cabac774e4351a24bcbfc82e270b26d10649b.png" src="../../_images/ac1f1a3f48c852aa321bc1003b3cabac774e4351a24bcbfc82e270b26d10649b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -675,15 +605,18 @@ document.write(`
 <span class="n">fig</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">fig</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;spectral_asy_norm&quot;</span>
-<span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;png&quot;</span><span class="p">:</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figures/</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figures/</span><span class="si">{}</span><span class="s2">.svg&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figures/</span><span class="si">{}</span><span class="s2">.svg&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="s2">&quot;png&quot;</span><span class="p">:</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/</span><span class="si">{</span><span class="n">mode</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">mode</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Figures/png/</span><span class="si">{</span><span class="n">fname</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2e0b44d5a25059fab088311079a93cdc35bb030e4ed25699d379a55cf4c055f8.png" src="../../_images/2e0b44d5a25059fab088311079a93cdc35bb030e4ed25699d379a55cf4c055f8.png" />
 </div>
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -715,27 +648,30 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Section1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">B.1 The basics of maximum likelihood estimation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../AppC/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Appendix C: Overview of machine learning techniques</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
