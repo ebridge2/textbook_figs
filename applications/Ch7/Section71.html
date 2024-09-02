@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Network Machine Learning</title>
+    <title>7.1 Two-sample testing for networks &#8212; Network Machine Learning</title>
   
   
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'applications/Ch7/Section71';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.2 Two-sample testing for SBMs" href="Section72.html" />
+    <link rel="prev" title="7 Applications for two networks" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -228,7 +228,7 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch6/index.html">6 Applications for a single network</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Ch6/Section61.html">6.1 The community detection problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Ch6/Section62.html">6.2 Sparsity and Storage</a></li>
@@ -236,6 +236,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../Ch6/Section64.html">6.4 Model selection with stochastic block models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Ch6/Section65.html">6.5 The vertex nomination problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Ch6/Section66.html">6.6 Out-of-sample embedding</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">7 Applications for two networks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.1 Two-sample testing for networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section72.html">7.2 Two-sample testing for SBMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section73.html">7.3 The graph matching problem</a></li>
 </ul>
 </details></li>
 </ul>
@@ -427,9 +433,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -440,19 +444,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>7.1 Two-sample testing for networks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -462,7 +458,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="two-sample-testing-for-networks">
+<span id="ch7-twosample"></span><h1>7.1 Two-sample testing for networks<a class="headerlink" href="#two-sample-testing-for-networks" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
 
@@ -562,9 +560,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/c55ec74a5b8168752b4ed02c8ca44c33a987839f9d722432bc1a9236d9253664.png" src="../../_images/c55ec74a5b8168752b4ed02c8ca44c33a987839f9d722432bc1a9236d9253664.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -661,11 +656,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>estimate of p-value: 0.00100
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -678,11 +668,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>estimate of p-value: 0.00100
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -692,11 +677,6 @@ document.write(`
 <span class="n">lpt_hum2hum</span> <span class="o">=</span> <span class="n">latent_position_test</span><span class="p">(</span><span class="n">A_human</span><span class="p">,</span> <span class="n">A_human2</span><span class="p">,</span> <span class="n">n_bootstraps</span><span class="o">=</span><span class="n">nreps</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">workers</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;estimate of p-value: </span><span class="si">{:.5f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lpt_hum2hum</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 <span class="c1"># estimate of p-value: 0.84715</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>estimate of p-value: 0.76024
 </pre></div>
 </div>
 </div>
@@ -718,12 +698,6 @@ document.write(`
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">| </span><span class="se">\\</span><span class="s2">hat X^{</span><span class="se">\\</span><span class="s2">prime} - </span><span class="se">\\</span><span class="s2">hat X^{</span><span class="se">\\</span><span class="s2">prime </span><span class="se">\\</span><span class="s2">prime}</span><span class="se">\\</span><span class="s2">hat W&#39;&#39;</span><span class="se">\\</span><span class="s2">|_F$&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#000000&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.7, 0.1, &quot;$\\| \\hat X^{\\prime} - \\hat X^{\\prime \\prime}\\hat W&#39;&#39;\\|_F$&quot;)
-</pre></div>
-</div>
-<img alt="../../_images/f8e25f4f8781abe0ae4738977a94374c5c8630daf0033eef674e57d30e1677fd.png" src="../../_images/f8e25f4f8781abe0ae4738977a94374c5c8630daf0033eef674e57d30e1677fd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -763,9 +737,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/4400e1bb4bf17d21f2db1550efe1b43481cd1c3c2b08b8721b028228c2723538.png" src="../../_images/4400e1bb4bf17d21f2db1550efe1b43481cd1c3c2b08b8721b028228c2723538.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -775,11 +746,6 @@ document.write(`
 <span class="n">approach</span> <span class="o">=</span> <span class="s1">&#39;mgc&#39;</span>  <span class="c1"># the strategy for the latent distribution test</span>
 <span class="n">ldt_dcorr</span> <span class="o">=</span> <span class="n">latent_distribution_test</span><span class="p">(</span><span class="n">A_human</span><span class="p">,</span> <span class="n">A_alien</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="n">approach</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">n_bootstraps</span><span class="o">=</span><span class="n">nreps</span><span class="p">,</span> <span class="n">workers</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;estimate of p-value: </span><span class="si">{:.5f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ldt_dcorr</span><span class="o">.</span><span class="n">pvalue</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>estimate of p-value: 0.00100
 </pre></div>
 </div>
 </div>
@@ -808,6 +774,7 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -839,27 +806,30 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">7 Applications for two networks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Section72.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">7.2 Two-sample testing for SBMs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
