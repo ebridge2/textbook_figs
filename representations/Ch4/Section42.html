@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Network Machine Learning</title>
+    <title>4.2 Erdös-Rényi Random Networks &#8212; Network Machine Learning</title>
   
   
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'representations/Ch4/Section42';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.3 Stochastic Block Models" href="Section43.html" />
+    <link rel="prev" title="4.1 Inhomogeneous Erdös-Rényi Random Networks" href="Section41.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -192,7 +192,7 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representations</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3/index.html">3: Characterizing and preparing network data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Ch3/Section31.html">3.1: Properties of Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Ch3/Section32.html">3.2: Node Properties and Relationships</a></li>
@@ -202,6 +202,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../Ch3/Section36.html">3.6 Regularization and node pruning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Ch3/Section37.html">3.7 Edge Regularization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Ch3/Section38.html">3.8 Edge-weight global rescaling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">4: Statistical Models of Random Networks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Section41.html">4.1 Inhomogeneous Erdös-Rényi Random Networks</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.2 Erdös-Rényi Random Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section43.html">4.3 Stochastic Block Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section44.html">4.4 Random Dot Product Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section45.html">4.5 Positive Semi-Definite Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section47.html">4.7 Degree-Corrected Stochastic Block Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section48.html">4.8 Structured Independent-Edge Random Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section49.html">4.9 Multiple Network Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section410.html">4.10 Models with Covariates</a></li>
 </ul>
 </details></li>
 </ul>
@@ -393,9 +405,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -406,19 +416,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>4.2 Erdös-Rényi Random Networks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -428,7 +430,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="erdos-renyi-random-networks">
+<span id="ch4-er"></span><h1>4.2 Erdös-Rényi Random Networks<a class="headerlink" href="#erdos-renyi-random-networks" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
 
@@ -495,7 +499,7 @@ document.write(`
   from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
-<img alt="../../_images/d0dd6ee71ca66280a6dd076af97639c4d14740fce54035d93c026cd57f8b319d.png" src="../../_images/d0dd6ee71ca66280a6dd076af97639c4d14740fce54035d93c026cd57f8b319d.png" />
+<img alt="../../_images/7110f9b52e8f71a29d3470f6a95a388536d2a88b817879b9adf619bf88095353.png" src="../../_images/7110f9b52e8f71a29d3470f6a95a388536d2a88b817879b9adf619bf88095353.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -508,9 +512,10 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;Axes: &gt;, &lt;Axes: &gt;], dtype=object)
 </pre></div>
 </div>
-<img alt="../../_images/52ba0cee10baa020de4544769e59443478e262cbb7297090de72561e4f51aa0a.png" src="../../_images/52ba0cee10baa020de4544769e59443478e262cbb7297090de72561e4f51aa0a.png" />
+<img alt="../../_images/a37302bacffbeb45931e05b003b6b1429649589e53a864697d33c6e9a101af24.png" src="../../_images/a37302bacffbeb45931e05b003b6b1429649589e53a864697d33c6e9a101af24.png" />
 </div>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -542,27 +547,30 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Section41.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">4.1 Inhomogeneous Erdös-Rényi Random Networks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Section43.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">4.3 Stochastic Block Models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
