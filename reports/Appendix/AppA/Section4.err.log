@@ -96,26 +96,26 @@ else:
 <>:37: SyntaxWarning: invalid escape sequence '\p'
 <>:38: SyntaxWarning: invalid escape sequence '\p'
 <>:39: SyntaxWarning: invalid escape sequence '\p'
-/tmp/ipykernel_2281/2695085801.py:14: SyntaxWarning: invalid escape sequence '\p'
+/tmp/ipykernel_2398/2695085801.py:14: SyntaxWarning: invalid escape sequence '\p'
   ax.set_xlabel("$\pi_1$")
-/tmp/ipykernel_2281/2695085801.py:15: SyntaxWarning: invalid escape sequence '\p'
+/tmp/ipykernel_2398/2695085801.py:15: SyntaxWarning: invalid escape sequence '\p'
   ax.set_ylabel("$\pi_2$")
-/tmp/ipykernel_2281/2695085801.py:37: SyntaxWarning: invalid escape sequence '\p'
+/tmp/ipykernel_2398/2695085801.py:37: SyntaxWarning: invalid escape sequence '\p'
   ax.set_xlabel("$\pi_1$", labelpad=10)
-/tmp/ipykernel_2281/2695085801.py:38: SyntaxWarning: invalid escape sequence '\p'
+/tmp/ipykernel_2398/2695085801.py:38: SyntaxWarning: invalid escape sequence '\p'
   ax.set_ylabel("$\pi_2$", labelpad=10)
-/tmp/ipykernel_2281/2695085801.py:39: SyntaxWarning: invalid escape sequence '\p'
+/tmp/ipykernel_2398/2695085801.py:39: SyntaxWarning: invalid escape sequence '\p'
   ax.set_zlabel("$\pi_3$", labelpad=10, rotation=0)
 ----- stderr -----
-/tmp/ipykernel_2281/2695085801.py:14: SyntaxWarning: invalid escape sequence '\p'
+/tmp/ipykernel_2398/2695085801.py:14: SyntaxWarning: invalid escape sequence '\p'
   ax.set_xlabel("$\pi_1$")
-/tmp/ipykernel_2281/2695085801.py:15: SyntaxWarning: invalid escape sequence '\p'
+/tmp/ipykernel_2398/2695085801.py:15: SyntaxWarning: invalid escape sequence '\p'
   ax.set_ylabel("$\pi_2$")
-/tmp/ipykernel_2281/2695085801.py:37: SyntaxWarning: invalid escape sequence '\p'
+/tmp/ipykernel_2398/2695085801.py:37: SyntaxWarning: invalid escape sequence '\p'
   ax.set_xlabel("$\pi_1$", labelpad=10)
-/tmp/ipykernel_2281/2695085801.py:38: SyntaxWarning: invalid escape sequence '\p'
+/tmp/ipykernel_2398/2695085801.py:38: SyntaxWarning: invalid escape sequence '\p'
   ax.set_ylabel("$\pi_2$", labelpad=10)
-/tmp/ipykernel_2281/2695085801.py:39: SyntaxWarning: invalid escape sequence '\p'
+/tmp/ipykernel_2398/2695085801.py:39: SyntaxWarning: invalid escape sequence '\p'
   ax.set_zlabel("$\pi_3$", labelpad=10, rotation=0)
 ------------------
 
