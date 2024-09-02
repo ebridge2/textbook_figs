@@ -1,0 +1,38 @@
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options:
+# https://jupyterbook.org/customize/config.html
+
+# Book settings
+title: Network Machine Learning
+author: Eric Bridgeford, Alex Loftus, and Joshua Vogelstein
+copyright: "2024" # to be placed in the footer
+logo: logo.png
+parse:
+  myst_enable_extensions:
+    - dollarmath
+    - amsmath
+repository:
+  url: https://github.com/ebridge2/textbook_figs
+  path_to_book: textbook
+sphinx:
+  extra_extensions:
+    - sphinx_togglebutton
+    - sphinx_proof
+    # - jupyterbook_latex
+    # - sphinx_jupyterbook_latex
+bibtex_bibfiles:
+  - references.bib
+# HTML-specific settings
+html:
+  navbar_number_sections: true # Add a number to each section in your left navbar
+  use_edit_page_button: true
+  use_repository_button: true
+  use_issues_button: true
+  comments:
+    hypothesis: true # to allow comments on pages. https://jupyterbook.org/interactive/comments/hypothesis.html
+
+# latex settings
+latex:
+  latex_engine: pdflatex
+execute:
+  timeout: 1000
