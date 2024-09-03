@@ -11,6 +11,17 @@ Begin by cloning this repository locally:
 ```
 git clone git@github.com:ebridge2/textbook_figs.git <destination>/<directory>/
 ```
+## Opening notebooks for individual sections in a pre-configured jupyter notebook
+
+This repository has been designed alongside the docker container to allow seamless usage with the book in conjunction with jupyter notebooks. To use the docker container to launch a jupyter server that you can access in your browser, use the following command:
+
+```
+docker run -ti -v <destination>/<directory>/textbook_figs:/home/book -p <port>:8888 neurodata/graph-stats-book \
+    jupyter-lab --ip=0.0.0.0 --port=8888 /home/book/ \
+    --NotebookApp.token="graphbook"
+```
+
+The jupyter server can then be accessed in your browser at `localhost:<port>`, with the password `graphbook`. You should then be able to navigate to an appropriate notebook to reproduce figures as-is in the textbook, or begin your own notebook for usage as you learn and experiment with the content of the book.
 
 ## Compiling the figures via docker
 
@@ -24,7 +35,7 @@ docker pull neurodata/graph-stats-book
 Finally, enter the docker container while provisioning the repository, navigate to the appropriate directory, and then compile the book:
 
 ```
-docker run -ti --entrypoint /bin/bash -v <destination>/<directory>/textbook_figs:/book -p neurodata/graph-stats-book
+docker run -ti --entrypoint /bin/bash -v <destination>/<directory>/textbook_figs:/home/book neurodata/graph-stats-book
 cd /book
 jupyter-book build textbook_figs/
 ```
@@ -46,11 +57,11 @@ and then compile the book:
 jupyter-book build textbook_figs/
 ```
 
-## Credits
+# Credits
 
 This project is created using the excellent open source [Jupyter Book project](https://jupyterbook.org/) and the [executablebooks/cookiecutter-jupyter-book template](https://github.com/executablebooks/cookiecutter-jupyter-book).
 
-## Code
+# Code
 
 Functions specific to this book - e.g., plotting functions we use regularly - has been stored in the corresponding package [graphbook-code](https://github.com/neurodata/graphbook-code/tree/main).
 
