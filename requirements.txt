@@ -31,9 +31,7 @@ autograd
 celluloid
 hyppo==0.4.0
 graspologic==3.4.1
-# grab hyppo + code directly from source
-git+https://github.com/bdpedigo/giskard.git@main
-git+https://github.com/ebridge2/pkg@main
+ipywidgets
 
 # grab graspologic + code directly from source
 # must be public repo
