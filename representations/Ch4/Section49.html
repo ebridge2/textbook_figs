@@ -571,7 +571,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fac66cbbdf69cdb91ed12a983196714b022387bc7cd737ac80af2d362e7eedff.png" src="../../_images/fac66cbbdf69cdb91ed12a983196714b022387bc7cd737ac80af2d362e7eedff.png" />
+<img alt="../../_images/3ca9434ba9d596c5c3b24a765f2153b06f1f1bd4a66782f78a58a8fd403dc0b6.png" src="../../_images/3ca9434ba9d596c5c3b24a765f2153b06f1f1bd4a66782f78a58a8fd403dc0b6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -616,20 +616,20 @@ document.write(`
 
 <span class="n">embedder</span> <span class="o">=</span> <span class="n">MASE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">svd_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="c1"># obtain shared latent positions</span>
-<span class="n">V</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">P_facebook_insta</span><span class="p">,</span> <span class="n">P_facebook_insta</span><span class="p">,</span> <span class="n">P_linkedin</span><span class="p">])</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">P_facebook_insta</span><span class="p">,</span> <span class="n">P_facebook_insta</span><span class="p">,</span> <span class="n">P_linkedin</span><span class="p">])</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;width_ratios&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.27</span><span class="p">]})</span>
-<span class="n">lpm_heatmap</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(A) Shared LPs, $V$&quot;</span><span class="p">,</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;Latent Dim.&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span>
+<span class="n">lpm_heatmap</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(A) Shared LPs, $S$&quot;</span><span class="p">,</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;Latent Dim.&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span>
             <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">74.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
             <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Value&quot;</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s2">&quot;Employee&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;(A) Shared LPs, $V$&#39;}, xlabel=&#39;Latent Dim.&#39;, ylabel=&#39;Employee&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;(A) Shared LPs, $S$&#39;}, xlabel=&#39;Latent Dim.&#39;, ylabel=&#39;Employee&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/5f0db4ce20919159fd492c4420a644e23141c6b3b1ba6d47c0bcd001a099e3e3.png" src="../../_images/5f0db4ce20919159fd492c4420a644e23141c6b3b1ba6d47c0bcd001a099e3e3.png" />
+<img alt="../../_images/37f1962c0eee7b61dd06786885aed6ab81431aaa593ff00a3aa061bccfa222d7.png" src="../../_images/37f1962c0eee7b61dd06786885aed6ab81431aaa593ff00a3aa061bccfa222d7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -669,7 +669,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/782229a00acb392cef795116652c6e648528f1609f4f1484dba41f05981479a2.png" src="../../_images/782229a00acb392cef795116652c6e648528f1609f4f1484dba41f05981479a2.png" />
+<img alt="../../_images/f78c6d9dd91fa9cc1d135d1b9c2b809ce517658b71d90645b4914bc8c4d2c23b.png" src="../../_images/f78c6d9dd91fa9cc1d135d1b9c2b809ce517658b71d90645b4914bc8c4d2c23b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -725,7 +725,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e77c463a703f6e64d21a8bee07b8a1012a587ebfcde019f7c73c1a42ca154bc3.png" src="../../_images/e77c463a703f6e64d21a8bee07b8a1012a587ebfcde019f7c73c1a42ca154bc3.png" />
+<img alt="../../_images/0c5c189c157928c39a4e77c914e539c64578277f14f2750a79bbfe168a07f16d.png" src="../../_images/0c5c189c157928c39a4e77c914e539c64578277f14f2750a79bbfe168a07f16d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -769,7 +769,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/edf37c1a035be4ac4bc655435c394036d5849db9b8a29b102b6535613282a5f6.png" src="../../_images/edf37c1a035be4ac4bc655435c394036d5849db9b8a29b102b6535613282a5f6.png" />
+<img alt="../../_images/8a764a7c8ce7ceb9937637f6bf4a3020278c4416d69608ac6ebe4c58e92b7df0.png" src="../../_images/8a764a7c8ce7ceb9937637f6bf4a3020278c4416d69608ac6ebe4c58e92b7df0.png" />
 </div>
 </div>
 </section>
