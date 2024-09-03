@@ -638,19 +638,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2053/764351246.py:8: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2052/764351246.py:8: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
   axs[0].plot([0, 440], [int(df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Potential/1000&quot;])]*2, color=&quot;#999999&quot;)
-/tmp/ipykernel_2053/764351246.py:9: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+/tmp/ipykernel_2052/764351246.py:9: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
   axs[0].plot([0, 440], [int(df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Expected&quot;])]*2, color=&quot;#999999&quot;)
-/tmp/ipykernel_2053/764351246.py:14: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+/tmp/ipykernel_2052/764351246.py:14: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
   axs[0].annotate(&quot;Potential = {:d}&quot;.format(int(1000*df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Potential/1000&quot;])), xytext=(550, 100),
-/tmp/ipykernel_2053/764351246.py:16: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+/tmp/ipykernel_2052/764351246.py:16: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   axs[0].annotate(&quot;Expected = {:.1f}&quot;.format(float(df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Expected&quot;])), xytext=(50, 200),
 /opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/matplotlib/text.py:1467: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   y = float(self.convert_yunits(y))
 </pre></div>
 </div>
-<img alt="../../_images/d84f83745e852fe17c8f9c48951f789fdb706a319663c5e4a5d6596982493840.png" src="../../_images/d84f83745e852fe17c8f9c48951f789fdb706a319663c5e4a5d6596982493840.png" />
+<img alt="../../_images/b556b133243c8ce4608e97765b805b35a4e4fedfa4f191c49792ce4820c02fd1.png" src="../../_images/b556b133243c8ce4608e97765b805b35a4e4fedfa4f191c49792ce4820c02fd1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -766,8 +766,8 @@ Size in KB: 1000.000 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive approach: 0.251984 seconds
-Sparse approach: 0.012730 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive approach: 0.242676 seconds
+Sparse approach: 0.012961 seconds
 </pre></div>
 </div>
 </div>
