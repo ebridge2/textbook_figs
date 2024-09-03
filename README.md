@@ -11,12 +11,22 @@ This repository provides the programming component for an introductory book to n
 
 # Usage
 
+
 Begin by cloning this repository locally:
 
 ```
 git clone git@github.com:ebridge2/textbook_figs.git <destination>/<directory>/
 ```
-## Opening notebooks for individual sections in a pre-configured jupyter notebook
+
+## Docker
+
+The simplest way to interact with the book is via the docker container. You can obtain the docker container locally with a properly configured docker engine using:
+
+```
+docker pull neurodata/graph-stats-book
+```
+
+#### Opening notebooks for individual sections in a pre-configured jupyter notebook
 
 This repository has been designed alongside the docker container to allow seamless usage with the book in conjunction with jupyter notebooks. To use the docker container to launch a jupyter server that you can access in your browser, use the following command:
 
@@ -28,16 +38,9 @@ docker run -ti -v <destination>/<directory>/textbook_figs:/home/book -p <port>:8
 
 The jupyter server can then be accessed in your browser at `localhost:<port>`, with the password `graphbook`. You should then be able to navigate to an appropriate notebook to reproduce figures as-is in the textbook, or begin your own notebook for usage as you learn and experiment with the content of the book.
 
-## Compiling the figures via docker
+#### Compiling the figures via docker
 
-The simplest way to compile the figures associated with this work is via the docker container. You can obtain the docker container locally with a properly configured docker engine using:
-
-```
-docker pull neurodata/graph-stats-book
-```
-
-
-Finally, enter the docker container while provisioning the repository, navigate to the appropriate directory, and then compile the book:
+To compile all of the figures in the manuscript, we recommend using the docker container. Enter the docker container while provisioning the repository, navigate to the appropriate directory, and then compiling the book:
 
 ```
 docker run -ti --entrypoint /bin/bash -v <destination>/<directory>/textbook_figs:/home/book neurodata/graph-stats-book
