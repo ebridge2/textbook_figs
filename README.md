@@ -63,5 +63,5 @@ This project is created using the excellent open source [Jupyter Book project](h
 
 # Code
 
-Functions specific to this book - e.g., plotting functions we use regularly - has been stored in the corresponding package [graphbook-code](https://github.com/neurodata/graphbook-code/tree/main).
+Functions specific to this book - e.g., plotting functions we use regularly - have been stored in the corresponding package [graphbook-code](https://github.com/neurodata/graphbook-code/tree/main).
 
