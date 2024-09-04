@@ -20,9 +20,9 @@ The book can be cited via the [bib citation](https://github.com/ebridge2/textboo
 }
 ```
 
-and an MLA style citation is:
+and a citation compliant with MLA 9th edition is:
 
-Bridgeford, Eric W., Alexander R. Loftus, and Joshua T. Vogelstein. *Network Machine Learning*. Cambridge University Press, 2025.
+Bridgeford, Eric W. et al. *Network Machine Learning*. Cambridge University Press, 2025.
 
 # Usage
 
