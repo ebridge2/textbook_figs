@@ -22,7 +22,7 @@ The book can be cited via the [bib citation](https://github.com/ebridge2/textboo
 
 and an MLA style citation is:
 
-Bridgeford, EW, Loftus, A and Vogelstein, JT. *Network Machine Learning*. Cambridge University Press, 2025.
+Bridgeford, Eric W., Alexander R. Loftus, and Joshua T. Vogelstein. *Network Machine Learning*. Cambridge University Press, 2025.
 
 # Usage
 
