@@ -187,7 +187,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section22.html">2.2 Get the Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section23.html">2.3 Prepare the Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section24.html">2.4 Select and Train</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section25_26.html">2.5 Fine tune, discover, and visualize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section25_26.html">2.5 and 2.6 Fine tune, discover, and visualize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/foundations_ch2_notebook.html">Code Reproducibility</a></li>
 </ul>
 </details></li>
@@ -713,28 +713,25 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/10 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|███       | 3/10 [00:00&lt;00:00, 19.12it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|███       | 3/10 [00:00&lt;00:00, 20.24it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 5/10 [00:01&lt;00:01,  4.13it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|██████    | 6/10 [00:02&lt;00:01,  2.50it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|██████    | 6/10 [00:02&lt;00:01,  2.21it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|███████   | 7/10 [00:03&lt;00:02,  1.43it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|███████   | 7/10 [00:03&lt;00:02,  1.24it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|████████  | 8/10 [00:06&lt;00:02,  1.17s/it]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|████████  | 8/10 [00:06&lt;00:02,  1.33s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|█████████ | 9/10 [00:10&lt;00:01,  1.88s/it]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|█████████ | 9/10 [00:10&lt;00:02,  2.07s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 10/10 [00:15&lt;00:00,  2.77s/it]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 10/10 [00:15&lt;00:00,  2.99s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 10/10 [00:15&lt;00:00,  1.58s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 10/10 [00:15&lt;00:00,  1.57s/it]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -753,7 +750,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[None]
 </pre></div>
 </div>
-<img alt="../../_images/e353fd3aab49e213d7acc924f8efcd2574a6be814a3a4a4eff0e967f3041558f.png" src="../../_images/e353fd3aab49e213d7acc924f8efcd2574a6be814a3a4a4eff0e967f3041558f.png" />
+<img alt="../../_images/36ed1fd5af29085a76a8f553aeca513ac2fc74f709b89b6cf50b67a6382c3f40.png" src="../../_images/36ed1fd5af29085a76a8f553aeca513ac2fc74f709b89b6cf50b67a6382c3f40.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -901,8 +898,8 @@ Size in KB: 1000.000 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive approach: 0.233337 seconds
-Sparse approach: 0.011528 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive approach: 0.232969 seconds
+Sparse approach: 0.011438 seconds
 </pre></div>
 </div>
 </div>
@@ -928,7 +925,7 @@ Sparse approach: 0.011528 seconds
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f03d867cd10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f9e02e05370&gt;
 </pre></div>
 </div>
 <img alt="../../_images/ff2f89986d7753b2d0fbf9f86b90c49354693741978766cdfc3368687f891e0b.png" src="../../_images/ff2f89986d7753b2d0fbf9f86b90c49354693741978766cdfc3368687f891e0b.png" />
