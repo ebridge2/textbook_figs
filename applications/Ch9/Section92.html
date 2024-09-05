@@ -654,7 +654,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Next node: BK
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Next node: BX
 </pre></div>
 </div>
 </div>
@@ -701,7 +701,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Next node: Q
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Next node: BX
 </pre></div>
 </div>
 </div>
@@ -779,7 +779,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5c8be70a025473492ebae306db4e3f99c1578de3ff4df5f814d04b2b17df941a.png" src="../../_images/5c8be70a025473492ebae306db4e3f99c1578de3ff4df5f814d04b2b17df941a.png" />
+<img alt="../../_images/9d3ba60469299a62f0983b121f2859dccd3cac6db143ca2e37afbecd06477b93.png" src="../../_images/9d3ba60469299a62f0983b121f2859dccd3cac6db143ca2e37afbecd06477b93.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -789,6 +789,7 @@ document.write(`
 <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">q</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span> <span class="n">T</span><span class="o">=</span><span class="mi">200</span><span class="p">;</span> <span class="n">r</span><span class="o">=</span><span class="mi">500</span>
 <span class="n">d</span> <span class="o">=</span> <span class="mi">4</span>
 
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">Xhat1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">node2vec_embed</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">A</span><span class="p">),</span>
                          <span class="n">return_hyperparameter</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">inout_hyperparameter</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">q</span><span class="p">),</span>
                          <span class="n">dimensions</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">num_walks</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">walk_length</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
@@ -826,7 +827,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
-<img alt="../../_images/31f3b00e98457434c5993ddfa4514d449a6eabbb79e5f9bce0fdfa1a610b61b9.png" src="../../_images/31f3b00e98457434c5993ddfa4514d449a6eabbb79e5f9bce0fdfa1a610b61b9.png" />
+<img alt="../../_images/c6385b2d33e08dd6b43c623ce30d78a048e8d52641ccd269f3390d20d023d50c.png" src="../../_images/c6385b2d33e08dd6b43c623ce30d78a048e8d52641ccd269f3390d20d023d50c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -834,6 +835,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">q</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span><span class="p">;</span> <span class="n">T</span><span class="o">=</span><span class="mi">200</span><span class="p">;</span> <span class="n">r</span><span class="o">=</span><span class="mi">500</span>
 <span class="n">d</span> <span class="o">=</span> <span class="mi">4</span>
 
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">Xhat2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">node2vec_embed</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="n">return_hyperparameter</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">inout_hyperparameter</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">q</span><span class="p">),</span>
                    <span class="n">dimensions</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">num_walks</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">walk_length</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
@@ -873,7 +875,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e5412937cfa19aaf45f4aaa78b091228c70919b283fd5f2c96118541f8fc8c8c.png" src="../../_images/e5412937cfa19aaf45f4aaa78b091228c70919b283fd5f2c96118541f8fc8c8c.png" />
+<img alt="../../_images/8aba5a5859cb15585926d63325f119450413408f7aaf04b318b257b1e573c70d.png" src="../../_images/8aba5a5859cb15585926d63325f119450413408f7aaf04b318b257b1e573c70d.png" />
 </div>
 </div>
 </section>
