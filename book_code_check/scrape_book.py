@@ -14,8 +14,12 @@ def extract_python_code(file_path):
     
     return [match.strip() for match in matches]
 
-def create_notebook(code_snippets, output_file):
+def create_notebook(code_snippets, output_file, section):
     nb = nbf.new_notebook()
+    
+    # Add the text cell at the beginning
+    text_content = f"({section}:code_repr)=\n# Code Reproducibility"
+    nb['cells'].append(nbf.new_markdown_cell(text_content))
     
     for snippet in code_snippets:
         nb['cells'].append(nbf.new_code_cell(snippet))
@@ -31,7 +35,6 @@ def get_input_order(main_file):
     pattern = r'\\input{(.*?)}'
     matches = re.findall(pattern, content)
     
-    # Strip out any directory information, keeping only the base filename
     return [os.path.basename(match) for match in matches]
 
 def process_directory(dir_path, main_file_name):
@@ -75,7 +78,8 @@ def main(base_dir, output_dir):
                     
                     if all_code:
                         output_file = os.path.join(output_dir, f'{top_dir}_{sub_dir}_notebook.ipynb')
-                        create_notebook(all_code, output_file)
+                        section = sub_dir  # Keep the 'ch' or 'app' prefix
+                        create_notebook(all_code, output_file, section)
                         print(f'Created notebook: {output_file}')
                     else:
                         print(f'No Python code found in: {dir_path}')
