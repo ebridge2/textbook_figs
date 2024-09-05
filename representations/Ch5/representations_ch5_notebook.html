@@ -529,7 +529,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Difference between phat and p: -0.007
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Difference between phat and p: -0.022
 </pre></div>
 </div>
 </div>
@@ -568,8 +568,8 @@ document.write(`
 </pre></div>
 </div>
 <img alt="../../_images/aeb267c2ae031f3535667503833c2363563b43740e87cf048505ee2472087a50.png" src="../../_images/aeb267c2ae031f3535667503833c2363563b43740e87cf048505ee2472087a50.png" />
-<img alt="../../_images/aef89cb43b1c91d288ff2e7d50bdc7eb944196f99df07c4cb219e4634cff0791.png" src="../../_images/aef89cb43b1c91d288ff2e7d50bdc7eb944196f99df07c4cb219e4634cff0791.png" />
-<img alt="../../_images/dcf905d379ee0f5c5750cb27ab76a283d367936d3478bff8c5871d38bdc3462d.png" src="../../_images/dcf905d379ee0f5c5750cb27ab76a283d367936d3478bff8c5871d38bdc3462d.png" />
+<img alt="../../_images/ab357c94b23006df5190b41bc837c42917d68eb2ded779279dd88f5b47a4e4ee.png" src="../../_images/ab357c94b23006df5190b41bc837c42917d68eb2ded779279dd88f5b47a4e4ee.png" />
+<img alt="../../_images/d65c3ff9a456341456ebcb4e3e15a387343aecea52ec56b6b2832bcde8898dd7.png" src="../../_images/d65c3ff9a456341456ebcb4e3e15a387343aecea52ec56b6b2832bcde8898dd7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -646,7 +646,7 @@ document.write(`
   func(x=x, y=y, **kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fef0cf96780&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f31e8a13020&gt;
 </pre></div>
 </div>
 <img alt="../../_images/d59552f0c2e1c2272ee1a79a34815fea1ac3f48aca081a39d80971b3348585ee.png" src="../../_images/d59552f0c2e1c2272ee1a79a34815fea1ac3f48aca081a39d80971b3348585ee.png" />
@@ -656,21 +656,12 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">pairplot</span><span class="p">(</span><span class="n">Xhat_perm</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">zperm</span><span class="p">,</span> <span class="n">legend_name</span> <span class="o">=</span> <span class="s2">&quot;Community&quot;</span><span class="p">,</span>
              <span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Pairs plot of $\widehat X$ with community annotation&quot;</span><span class="p">,</span>
-             <span class="n">dig_kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">)</span>
+             <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">pairplot</span><span class="p">(</span><span class="n">Xhat_perm</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">zperm</span><span class="p">,</span> <span class="n">legend_name</span> <span class="o">=</span> <span class="s2">&quot;Community&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>              <span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Pairs plot of $\widehat X$ with community annotation&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>              <span class="n">dig_kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: pairplot() got an unexpected keyword argument &#39;dig_kind&#39;
-</pre></div>
-</div>
+<img alt="../../_images/654ecb8503cc532b5357c2f5332ee203c5c44076335a7ec9749367bf50292e43.png" src="../../_images/654ecb8503cc532b5357c2f5332ee203c5c44076335a7ec9749367bf50292e43.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -745,6 +736,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Node degree&#39;, ylabel=&#39;Count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/f8e661548faa36be00b6b1ac732c58ec086b0486b0a303c3153f5d6d6f14f135.png" src="../../_images/f8e661548faa36be00b6b1ac732c58ec086b0486b0a303c3153f5d6d6f14f135.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -813,6 +810,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -823,6 +825,11 @@ document.write(`
 <span class="c1"># check that probability matrix is the same</span>
 <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Zhat</span> <span class="o">@</span> <span class="n">Zhat</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">Xhat</span> <span class="o">@</span> <span class="n">Xhat</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
 <span class="c1"># returns True</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -851,6 +858,12 @@ document.write(`
 <span class="n">dist_firsthum_alien</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">Xhat</span> <span class="o">-</span> <span class="n">Xhat_alien</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="s2">&quot;fro&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Frob. norm(first human, alien) = </span><span class="si">{:3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dist_firsthum_alien</span><span class="p">))</span>
 <span class="c1"># Frob. norm(first human, alien) = 5.991560</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Frob. norm(first human, third human) = 6.302736
+Frob. norm(first human, alien) = 5.182462
 </pre></div>
 </div>
 </div>
@@ -1157,6 +1170,9 @@ document.write(`
 <span class="n">plot_scree</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Scree plot of $L$&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/754b20206b3103e0739a4691d91bb0ab237fdfea53d553bf0317896c830d2214.png" src="../../_images/754b20206b3103e0739a4691d91bb0ab237fdfea53d553bf0317896c830d2214.png" />
 </div>
 </div>
 <div class="cell docutils container">
