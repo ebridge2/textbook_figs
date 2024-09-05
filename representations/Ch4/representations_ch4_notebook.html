@@ -1,0 +1,1370 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Code Reproducibility: Chapter 4 &#8212; Network Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'representations/Ch4/representations_ch4_notebook';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5 Learning Network Representations" href="../Ch5/index.html" />
+    <link rel="prev" title="4.10 Models with Covariates" href="Section410.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../coverpage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Network Machine Learning - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Network Machine Learning - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../coverpage.html">
+                    Network Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../foundations/Ch2/index.html">2 End-to-end Biology Network Machine Learning Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section22.html">2.2 Get the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section23.html">2.3 Prepare the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section24.html">2.4 Select and Train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/Section25_26.html">2.5 Fine tune, discover, and visualize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../foundations/Ch2/foundations_ch2_notebook.html">Code Reproducibility: Chapter 2</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Representations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch3/index.html">3 Characterizing and preparing network data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3/Section31.html">3.1 Properties of Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3/Section32.html">3.2 Node Properties and Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3/Section33.html">3.3 Network summary statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3/Section34.html">3.4 Degree Matrices and Laplacians</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3/Section35.html">3.5 Subnetworks and Connected Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3/Section36.html">3.6 Regularization and node pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3/Section37.html">3.7 Edge Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3/Section38.html">3.8 Edge-weight global rescaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch3/representations_ch3_notebook.html">Code Reproducibility: Chapter 3</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">4 Statistical Models of Random Networks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Section41.html">4.1 Inhomogeneous Erdös-Rényi Random Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section42.html">4.2 Erdös-Rényi Random Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section43.html">4.3 Stochastic Block Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section44.html">4.4 Random Dot Product Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section45.html">4.5 Positive Semi-Definite Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section47.html">4.7 Degree-Corrected Stochastic Block Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section48.html">4.8 Structured Independent-Edge Random Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section49.html">4.9 Multiple Network Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section410.html">4.10 Models with Covariates</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Code Reproducibility: Chapter 4</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Ch5/index.html">5 Learning Network Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5/Section51.html">5.1 Maximum likelihood estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5/Section52.html">5.2 Why do we embed networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5/Section53.html">5.3 Adjacency spectral embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5/Section54.html">5.4 Laplacian spectral embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5/Section55.html">5.5 Multiple network representation learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5/Section56.html">5.6 Joint representation learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5/Section57.html">5.7 Estimating latent dimensionality and non positive semidefiniteness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ch5/representations_ch5_notebook.html">Code Reproducibility: Chapter 5</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../applications/Ch6/index.html">6 Applications for a single network</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch6/Section61.html">6.1 The community detection problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch6/Section62.html">6.2 Sparsity and Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch6/Section63.html">6.3 Testing for differences between groups of edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch6/Section64.html">6.4 Model selection with stochastic block models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch6/Section65.html">6.5 The vertex nomination problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch6/Section66.html">6.6 Out-of-sample embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch6/applications_ch6_notebook.html">Code Reproducibility: Ch6</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../applications/Ch7/index.html">7 Applications for two networks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch7/Section71.html">7.1 Two-sample testing for networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch7/Section72.html">7.2 Two-sample testing for SBMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch7/Section73.html">7.3 The graph matching problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch7/applications_ch7_notebook.html">Code Reproducibility: Chapter 7</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../applications/Ch8/index.html">8 Applications for multiple networks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch8/Section81.html">8.1 Anomaly detection in timeseries of networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch8/Section82.html">8.2 Testing for significant edges in incoherent signal subnetworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch8/Section83.html">8.3 Building coherent signal subnetworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch8/applications_ch8_notebook.html">Code Reproducibility: Chapter 8</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../applications/Ch9/index.html">9 Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch9/Section91.html">9.1 Graph neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch9/Section92.html">9.2 Random walks and diffusion-based methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications/Ch9/applications_ch9_notebook.html">Code Reproducibility: Chapter 9</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Appendix/AppA/index.html">A: Network Model Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendix/AppA/Section4.html">A.4 Stochastic block models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendix/AppA/Section6.html">A.6 Random Dot Product Graphs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Appendix/AppB/index.html">B: Learning representations theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendix/AppB/Section1.html">B.1 The basics of maximum likelihood estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendix/AppB/Section2.html">B.2 Theoretical considerations for spectral embeddings</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Appendix/AppC/index.html">C: Overview of machine learning techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendix/AppC/Section1.html">C.1 Unsupervised machine learning</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/textbook_figs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/textbook_figs/edit/master/textbook/representations/Ch4/representations_ch4_notebook.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/textbook_figs/issues/new?title=Issue%20on%20page%20%2Frepresentations/Ch4/representations_ch4_notebook.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/representations/Ch4/representations_ch4_notebook.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Code Reproducibility: Chapter 4</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="code-reproducibility-chapter-4">
+<h1>Code Reproducibility: Chapter 4<a class="headerlink" href="#code-reproducibility-chapter-4" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+
+<span class="k">def</span> <span class="nf">generate_unit_circle</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+    <span class="n">diameter</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">radius</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">rx</span> <span class="o">=</span> <span class="n">ry</span> <span class="o">=</span> <span class="n">diameter</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="n">diameter</span><span class="p">,</span> <span class="n">diameter</span><span class="p">))</span>
+
+    <span class="n">circle_dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">rx</span> <span class="o">-</span> <span class="n">x</span><span class="p">,</span> <span class="n">ry</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">diff_from_radius</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">circle_dist</span> <span class="o">-</span> <span class="n">radius</span><span class="p">)</span>
+    <span class="n">less_than_half</span> <span class="o">=</span> <span class="n">diff_from_radius</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
+
+    <span class="k">return</span> <span class="n">less_than_half</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">add_smile</span><span class="p">():</span>
+    <span class="n">canvas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">51</span><span class="p">,</span> <span class="mi">51</span><span class="p">))</span>
+    <span class="n">canvas</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">45</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_unit_circle</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">51</span><span class="p">,</span> <span class="mi">51</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="n">mask</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">mask</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">upper_left</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+    <span class="n">canvas</span><span class="p">[</span><span class="n">upper_left</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">canvas</span>
+    
+<span class="k">def</span> <span class="nf">smile_probability</span><span class="p">(</span><span class="n">upper_p</span><span class="p">,</span> <span class="n">lower_p</span><span class="p">):</span>
+    <span class="n">smiley</span> <span class="o">=</span> <span class="n">add_smile</span><span class="p">()</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">generate_unit_circle</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">P</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">:</span><span class="mi">36</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_unit_circle</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">P</span><span class="p">[</span><span class="n">smiley</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">smiley</span><span class="p">[</span><span class="n">smiley</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">51</span><span class="p">,</span> <span class="mi">51</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="n">mask</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">mask</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">P</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># symmetrize the probability matrix</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="p">(</span><span class="n">P</span> <span class="o">+</span> <span class="n">P</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">P</span><span class="p">)))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">P</span><span class="p">[</span><span class="n">P</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">lower_p</span>
+    <span class="n">P</span><span class="p">[</span><span class="n">P</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">upper_p</span>
+    <span class="k">return</span> <span class="n">P</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">smile_probability</span><span class="p">(</span><span class="mf">.95</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Probability matrix $P$&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Probability matrix $P$&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../../_images/61288f5e0d36c5b3c2087ab8d8679003b869e7a70bd06b28391eb24a77da691a.png" src="../../_images/61288f5e0d36c5b3c2087ab8d8679003b869e7a70bd06b28391eb24a77da691a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sample_edges</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">sample_edges</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$IER_n(P)$ sample&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;$IER_n(P)$ sample&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../../_images/374b2acc9801e5d54b47eb1f8067492f82275efd25a61770e1cdfb8f9bc66ccd.png" src="../../_images/374b2acc9801e5d54b47eb1f8067492f82275efd25a61770e1cdfb8f9bc66ccd.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">comb</span>
+
+<span class="n">node_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">51</span><span class="p">)</span>
+<span class="n">log_unique_network_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">comb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node_count</span><span class="p">])</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">draw_multiplot</span>
+<span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">er_np</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># network with 50 nodes</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># probability of an edge existing is .3</span>
+
+<span class="c1"># sample a single simple adjacency matrix from ER(50, .3)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">er_np</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># and plot it</span>
+<span class="n">draw_multiplot</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$ER_</span><span class="si">{50}</span><span class="s2">(0.3)$ Simulation&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;Axes: &gt;, &lt;Axes: &gt;], dtype=object)
+</pre></div>
+</div>
+<img alt="../../_images/f9bbdde5cc619d3dc36af81c614af41da1bcea6b43fb00df9f95b5439baf49cf.png" src="../../_images/f9bbdde5cc619d3dc36af81c614af41da1bcea6b43fb00df9f95b5439baf49cf.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mf">0.7</span>  <span class="c1"># network has an edge probability of 0.7</span>
+
+<span class="c1"># sample a single adjacency matrix from ER(50, 0.7)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">er_np</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">plot_vector</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># number of students</span>
+
+<span class="c1"># z is a column vector of 50 1s followed by 50 2s</span>
+<span class="c1"># this vector gives the school each of the 100 students are from</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">repeats</span><span class="o">=</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plot_vector</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">vec z$, Node Assignment Vector&quot;</span><span class="p">,</span>
+            <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;School&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;qualitative&quot;</span><span class="p">,</span> 
+            <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">ticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+            <span class="n">ticktitle</span><span class="o">=</span><span class="s2">&quot;Student&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;$\\vec z$, Node Assignment Vector&#39;}, ylabel=&#39;Student&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/fe8a945dd8d34eb685d1bed73a8e2e90105a8e5c31889faee46afb6fb0d9d287.png" src="../../_images/fe8a945dd8d34eb685d1bed73a8e2e90105a8e5c31889faee46afb6fb0d9d287.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+
+<span class="n">K</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># community count</span>
+<span class="c1"># construct the block matrix B as described above</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]])</span>
+
+<span class="n">heatmap</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+             <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;School&quot;</span><span class="p">,</span>
+             <span class="n">ytitle</span><span class="o">=</span><span class="s2">&quot;School&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Block Matrix $B$&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Block Matrix $B$&#39;}, xlabel=&#39;School&#39;, ylabel=&#39;School&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/d45cd38043617c2bce0cebf103f1f9d4de62f8c6d9bc610e433ba2048cb800d0.png" src="../../_images/d45cd38043617c2bce0cebf103f1f9d4de62f8c6d9bc610e433ba2048cb800d0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm</span>
+<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">draw_multiplot</span>
+
+<span class="c1"># sample a graph from SBM_{100}(tau, B)</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">sbm</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="n">B</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">draw_multiplot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$SBM_n(z, B)$ Simulation&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/566656101e67151e73d2065f08a7558cfa261b9ba665ed168b0664dd8a62b97b.png" src="../../_images/566656101e67151e73d2065f08a7558cfa261b9ba665ed168b0664dd8a62b97b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># generate a reordering of the n nodes</span>
+<span class="n">permutation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">Aperm</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">permutation</span><span class="p">][:,</span><span class="n">permutation</span><span class="p">]</span>
+<span class="n">yperm</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">permutation</span><span class="p">]</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">Aperm</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Nodes randomly reordered&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Nodes randomly reordered&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../../_images/9d2673f0a51e165285fca116c36a16e1740312258e6d8d685413b449f0453649.png" src="../../_images/9d2673f0a51e165285fca116c36a16e1740312258e6d8d685413b449f0453649.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ohe_comm_vec</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A function to generate the one-hot-encoded community</span>
+<span class="sd">    assignment matrix from a community assignment vector.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">K</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">zi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">zi</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">C</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">lpm_heatmap</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># the number of nodes in our network</span>
+<span class="c1"># design the latent position matrix X according to </span>
+<span class="c1"># the rules we laid out previously</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[(</span><span class="n">n</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">]</span>
+
+<span class="n">lpm_heatmap</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s2">&quot;Person&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
+            <span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+            <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;Latent Dimension&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Latent Position Matrix, X&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Latent Position Matrix, X&#39;}, xlabel=&#39;Latent Dimension&#39;, ylabel=&#39;Person&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/f3248d563d246ad7ef9d1a042216b70a52c784b4b588e834005a007e944cc6a1.png" src="../../_images/f3248d563d246ad7ef9d1a042216b70a52c784b4b588e834005a007e944cc6a1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">rdpg</span>
+<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+
+<span class="c1"># sample an RDPG with the latent position matrix</span>
+<span class="c1"># created above</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">rdpg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># and plot it</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">xtitle</span><span class="o">=</span><span class="s2">&quot;Person&quot;</span><span class="p">,</span> <span class="n">ytitle</span><span class="o">=</span><span class="s2">&quot;Person&quot;</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$RDPG_</span><span class="si">{100}</span><span class="s2">(X)$ Simulation&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;$RDPG_{100}(X)$ Simulation&#39;}, xlabel=&#39;Person&#39;, ylabel=&#39;Person&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/e4aac686243a42a0060553b38ca6d1d542a7b67ae28df7a64501334e5ec520f1.png" src="../../_images/e4aac686243a42a0060553b38ca6d1d542a7b67ae28df7a64501334e5ec520f1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">block_mtx_psd</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A function which indicates whether a matrix</span>
+<span class="sd">    B is positive semidefinite.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]])</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;A homophilic block matrix&quot;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">block_mtx_psd</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="c1"># True</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<img alt="../../_images/1bf7096dbbc7f2b668f63dfa122bc7f1ea3e3005daebec51737443b7de47fd8b.png" src="../../_images/1bf7096dbbc7f2b668f63dfa122bc7f1ea3e3005daebec51737443b7de47fd8b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B_indef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.2</span><span class="p">],</span> 
+                    <span class="p">[</span><span class="mf">.2</span><span class="p">,</span> <span class="mf">.1</span><span class="p">]])</span>
+<span class="n">block_mtx_psd</span><span class="p">(</span><span class="n">B_indef</span><span class="p">)</span>
+<span class="c1"># False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a positive semidefinite kidney-egg block matrix</span>
+<span class="n">B_psd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">.6</span><span class="p">,</span> <span class="mf">.2</span><span class="p">],</span> 
+                  <span class="p">[</span><span class="mf">.2</span><span class="p">,</span> <span class="mf">.2</span><span class="p">]])</span>
+<span class="n">block_mtx_psd</span><span class="p">(</span><span class="n">B_psd</span><span class="p">)</span>
+<span class="c1"># True</span>
+
+<span class="c1"># an indefinite kidney-egg block matrix</span>
+<span class="n">B_indef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.2</span><span class="p">],</span> 
+                    <span class="p">[</span><span class="mf">.2</span><span class="p">,</span> <span class="mf">.2</span><span class="p">]])</span>
+<span class="n">block_mtx_psd</span><span class="p">(</span><span class="n">B_indef</span><span class="p">)</span>
+<span class="c1">#False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a positive semidefinite core-periphery block matrix</span>
+<span class="n">B_psd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">.6</span><span class="p">,</span> <span class="mf">.2</span><span class="p">],</span> 
+                  <span class="p">[</span><span class="mf">.2</span><span class="p">,</span> <span class="mf">.1</span><span class="p">]])</span>
+<span class="n">block_mtx_psd</span><span class="p">(</span><span class="n">B_psd</span><span class="p">)</span>
+<span class="c1"># True</span>
+
+<span class="c1"># an indefinite core-periphery block matrix</span>
+<span class="n">B_indef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">.6</span><span class="p">,</span> <span class="mf">.2</span><span class="p">],</span> 
+                    <span class="p">[</span><span class="mf">.2</span><span class="p">,</span> <span class="mf">.05</span><span class="p">]])</span>
+<span class="n">block_mtx_psd</span><span class="p">(</span><span class="n">B_indef</span><span class="p">)</span>
+<span class="c1"># False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># an indefinite disassortative block matrix</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.2</span><span class="p">]])</span>
+<span class="n">block_mtx_psd</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="c1"># False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># homophilic, and hence positive semidefinite, block matrix</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]])</span>
+
+<span class="c1"># generate square root matrix</span>
+<span class="n">sqrtB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="c1"># verify that the process worked through by equality element-wise</span>
+<span class="c1"># use allclose instead of array_equal because of tiny</span>
+<span class="c1"># numerical precision errors</span>
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">sqrtB</span> <span class="o">@</span> <span class="n">sqrtB</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="c1"># True</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">ohe_comm_vec</span>
+
+<span class="k">def</span> <span class="nf">lpm_from_sbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A function to produce a latent position matrix from a</span>
+<span class="sd">    community assignment vector and a block matrix.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">block_mtx_psd</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Latent position matrices require PSD block matrices!&quot;</span><span class="p">)</span>
+    <span class="c1"># one-hot encode the community assignment vector</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">ohe_comm_vec</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="c1"># compute square root matrix</span>
+    <span class="n">sqrtB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+    <span class="c1"># X = C*sqrt(B)</span>
+    <span class="k">return</span> <span class="n">C</span> <span class="o">@</span> <span class="n">sqrtB</span>
+
+<span class="c1"># make a community assignment vector for 25 nodes / community</span>
+<span class="n">nk</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">nk</span><span class="p">)</span>
+
+<span class="c1"># latent position matrix for an equivalent RDPG</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">lpm_from_sbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">generate_sbm_pmtx</span>
+
+<span class="c1"># generate the probability matrices for an RDPG using X and SBM</span>
+<span class="n">P_rdpg</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span>
+<span class="n">P_sbm</span> <span class="o">=</span> <span class="n">generate_sbm_pmtx</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+<span class="c1"># verify equality element-wise</span>
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">P_rdpg</span><span class="p">,</span> <span class="n">P_sbm</span><span class="p">)</span>
+<span class="c1"># True</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sample_edges</span>
+<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span><span class="p">,</span> <span class="n">plot_vector</span><span class="p">,</span> \
+    <span class="n">generate_sbm_pmtx</span>
+
+<span class="k">def</span> <span class="nf">dcsbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_prob</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A function to sample a DCSBM.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># uncorrected probability matrix</span>
+    <span class="n">Pp</span> <span class="o">=</span> <span class="n">generate_sbm_pmtx</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># apply the degree correction</span>
+    <span class="n">Theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">Theta</span> <span class="o">@</span> <span class="n">Pp</span> <span class="o">@</span> <span class="n">Theta</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="n">network</span> <span class="o">=</span> <span class="n">sample_edges</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="n">directed</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="n">loops</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">return_prob</span><span class="p">:</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">network</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Observe a network from a DCSBM</span>
+<span class="n">nk</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># students per school</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]])</span>  <span class="c1"># same probabilities as from SBM section</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">nk</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">P</span> <span class="o">=</span> <span class="n">dcsbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">return_prob</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Visualize</span>
+<span class="n">plot_vector</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">vec z$&quot;</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;School&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;qualitative&quot;</span><span class="p">,</span> 
+            <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">ticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+            <span class="n">ticktitle</span><span class="o">=</span><span class="s2">&quot;Student&quot;</span><span class="p">)</span>
+<span class="n">plot_vector</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">vec </span><span class="se">\\</span><span class="s2">theta$&quot;</span><span class="p">,</span> 
+            <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Degree-Correction Factor&quot;</span><span class="p">,</span> 
+            <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">],</span> <span class="n">ticklabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+            <span class="n">ticktitle</span><span class="o">=</span><span class="s2">&quot;Student&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$P = </span><span class="se">\\</span><span class="s2">Theta C B C^</span><span class="se">\\</span><span class="s2">top </span><span class="se">\\</span><span class="s2">Theta^</span><span class="se">\\</span><span class="s2">top$&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sample of $DCSBM_n(</span><span class="se">\\</span><span class="s2">vec z, </span><span class="se">\\</span><span class="s2">vec </span><span class="se">\\</span><span class="s2">theta, B)$&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Sample of $DCSBM_n(\\vec z, \\vec \\theta, B)$&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../../_images/2351bace32aabdc0734b2d90808ea4646f52e3256a11bfff9f209bfb84931338.png" src="../../_images/2351bace32aabdc0734b2d90808ea4646f52e3256a11bfff9f209bfb84931338.png" />
+<img alt="../../_images/7e3a8e073560ae2568dc6d54841d16041267f2c5f5b272e0156f0bb55fd226f3.png" src="../../_images/7e3a8e073560ae2568dc6d54841d16041267f2c5f5b272e0156f0bb55fd226f3.png" />
+<img alt="../../_images/af95731c94f69ca006b20ec75911b6b23a413e20580dce36b4346039a18f4622.png" src="../../_images/af95731c94f69ca006b20ec75911b6b23a413e20580dce36b4346039a18f4622.png" />
+<img alt="../../_images/de2f5c31ca8b936b991f4bdb666da8b58b4cfd24d78585f40f8594e17818030c.png" src="../../_images/de2f5c31ca8b936b991f4bdb666da8b58b4cfd24d78585f40f8594e17818030c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)):</span>
+    <span class="n">Z</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">Z</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">],</span> <span class="n">repeats</span><span class="o">=</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Cluster assignment matrix&quot;</span><span class="p">,</span> 
+        <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Cluster assignment matrix&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../../_images/19e737a945f3ab176210c48b02eeac06e1a564e274b737e98eb93986130f10d0.png" src="../../_images/19e737a945f3ab176210c48b02eeac06e1a564e274b737e98eb93986130f10d0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">siem</span><span class="p">,</span> <span class="n">plot_vector</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">siem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+<span class="n">plot_vector</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;probability vector&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$SIEM_n(Z, </span><span class="se">\\</span><span class="s2">vec p)$ sample&quot;</span><span class="p">,</span> 
+        <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;$SIEM_n(Z, \\vec p)$ sample&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../../_images/f960115c3ddc08ee991d5eda2a6421d9cc60aff9c31384c3a29ec51a7be7c33a.png" src="../../_images/f960115c3ddc08ee991d5eda2a6421d9cc60aff9c31384c3a29ec51a7be7c33a.png" />
+<img alt="../../_images/5befaf38e6712007f6cb82bfde5fd005967e27c5b7e6230ae909853cf5fc7ed9.png" src="../../_images/5befaf38e6712007f6cb82bfde5fd005967e27c5b7e6230ae909853cf5fc7ed9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">dcsbm</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+
+<span class="c1"># Create block probability matrix B</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">K</span><span class="p">),</span> <span class="n">fill_value</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># degree-correct the different groups for linkedin</span>
+<span class="n">ml</span><span class="p">,</span> <span class="n">admin</span><span class="p">,</span> <span class="n">marketing</span> <span class="o">=</span> <span class="n">nks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">nks</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">theta</span><span class="p">[(</span><span class="n">ml</span><span class="p">):(</span><span class="n">ml</span> <span class="o">+</span> <span class="n">admin</span><span class="p">),</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># our dcsbm function only works with communities encoded 1,2,...,K</span>
+<span class="c1"># so we&#39;ll use a LabelEncoder to map labels to natural numbers</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s2">&quot;ML&quot;</span><span class="p">,</span> <span class="s2">&quot;AD&quot;</span><span class="p">,</span> <span class="s2">&quot;MA&quot;</span><span class="p">],</span> <span class="n">nks</span><span class="p">)</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># sample the random networks</span>
+<span class="n">A_facebook</span> <span class="o">=</span> <span class="n">sbm</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">nks</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
+<span class="n">A_insta</span> <span class="o">=</span> <span class="n">sbm</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">nks</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
+<span class="n">A_linkedin</span><span class="p">,</span> <span class="n">P_linkedin</span> <span class="o">=</span> <span class="n">dcsbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">return_prob</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">generate_sbm_pmtx</span><span class="p">,</span> <span class="n">heatmap</span>
+
+<span class="c1"># we already returned P_linkedin for the linkedin</span>
+<span class="c1"># probability matrix from dcsbm() function</span>
+<span class="n">P_facebook_insta</span> <span class="o">=</span> <span class="n">generate_sbm_pmtx</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+<span class="c1"># when plotting for comparison purposes, make sure you are</span>
+<span class="c1"># using the same scale from 0 to 1</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">P_facebook_insta</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">P_linkedin</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">P_linkedin</span> <span class="o">-</span> <span class="n">P_facebook_insta</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../../_images/80d613e4a935c84278b27500d33ed4dc8468b16b4837bc9626612b7e14a4844b.png" src="../../_images/80d613e4a935c84278b27500d33ed4dc8468b16b4837bc9626612b7e14a4844b.png" />
+<img alt="../../_images/62d1c0bbb01ed29f6adb076a78305b2081e95aca11a06d90af5eb2b140aabf7f.png" src="../../_images/62d1c0bbb01ed29f6adb076a78305b2081e95aca11a06d90af5eb2b140aabf7f.png" />
+<img alt="../../_images/e9625e4f900681dddbb7bfda09c6edfc706afdc6531de1dae3da691f6f30dbef.png" src="../../_images/e9625e4f900681dddbb7bfda09c6edfc706afdc6531de1dae3da691f6f30dbef.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">MultipleASE</span> <span class="k">as</span> <span class="n">mase</span>
+<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">lpm_heatmap</span>
+
+<span class="n">embedder</span> <span class="o">=</span> <span class="n">mase</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">svd_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># obtain shared latent positions</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">P_facebook_insta</span><span class="p">,</span> <span class="n">P_facebook_insta</span><span class="p">,</span> <span class="n">P_linkedin</span><span class="p">])</span>
+
+<span class="n">lpm_heatmap</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../../_images/430afa9be28e5760e0f807b9cbb445fa01515d2e15e0b4d872d271d55f9ff6b7.png" src="../../_images/430afa9be28e5760e0f807b9cbb445fa01515d2e15e0b4d872d271d55f9ff6b7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">R_facebook</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">scores_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">R_insta</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">scores_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">R_linkedin</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">scores_</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># and plot them</span>
+<span class="n">smin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">embedder</span><span class="o">.</span><span class="n">scores_</span><span class="p">)</span>
+<span class="n">smax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">embedder</span><span class="o">.</span><span class="n">scores_</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">R_facebook</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">smin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">smax</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;facebook score matrix&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">R_insta</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">smin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">smax</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Instagram score matrix&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">R_linkedin</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">smin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">smax</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;LinkedIn score matrix&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;LinkedIn score matrix&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../../_images/d150176eb0ca88aefc58ba46cfdca13457956993f43522a9293d0cc011867491.png" src="../../_images/d150176eb0ca88aefc58ba46cfdca13457956993f43522a9293d0cc011867491.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">lpm_from_sbm</span>
+<span class="n">X_facebook_insta</span> <span class="o">=</span> <span class="n">lpm_from_sbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">rdpg_corr</span>
+
+<span class="c1"># generate the network samples</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">facebook_correlated_network</span><span class="p">,</span> <span class="n">insta_correlated_network</span> <span class="o">=</span> <span class="n">rdpg_corr</span><span class="p">(</span>
+    <span class="n">X_facebook_insta</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">rho</span>
+<span class="p">)</span>
+
+<span class="c1"># the difference matrix</span>
+<span class="n">correlated_difference_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span>
+    <span class="n">facebook_correlated_network</span> <span class="o">-</span> <span class="n">insta_correlated_network</span>
+<span class="p">)</span>
+<span class="c1"># the total number of differences</span>
+<span class="n">correlated_differences</span> <span class="o">=</span> <span class="n">correlated_difference_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho_nil</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">facebook_uncorrelated_network</span><span class="p">,</span> <span class="n">insta_uncorrelated_network</span> <span class="o">=</span> <span class="n">rdpg_corr</span><span class="p">(</span>
+    <span class="n">X_facebook_insta</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">rho_nil</span>
+<span class="p">)</span>
+
+<span class="c1"># the difference matrix</span>
+<span class="n">uncorrelated_difference_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span>
+    <span class="n">facebook_uncorrelated_network</span> <span class="o">-</span> <span class="n">insta_uncorrelated_network</span>
+<span class="p">)</span>
+<span class="c1"># the total number of differences</span>
+<span class="n">uncorrelated_differences</span> <span class="o">=</span> <span class="n">uncorrelated_difference_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sample_edges</span>
+
+<span class="n">nodenames</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;SI&quot;</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="s2">&quot;H/E&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;T/M&quot;</span><span class="p">,</span> <span class="s2">&quot;BS&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># generate probability matrices</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># the number of nodes</span>
+<span class="n">P_earthling</span> <span class="o">=</span> <span class="mf">0.3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+<span class="n">signal_subnetwork</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">signal_subnetwork</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">signal_subnetwork</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">P_astronaut</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">P_earthling</span><span class="p">)</span>
+<span class="n">P_astronaut</span><span class="p">[</span><span class="n">signal_subnetwork</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># sample two networks</span>
+<span class="n">A_earthling</span> <span class="o">=</span> <span class="n">sample_edges</span><span class="p">(</span><span class="n">P_earthling</span><span class="p">)</span>
+<span class="n">A_astronaut</span> <span class="o">=</span> <span class="n">sample_edges</span><span class="p">(</span><span class="n">P_astronaut</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot probability matrices and their differences on the same scale</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">P_earthling</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">P_astronaut</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">P_astronaut</span> <span class="o">-</span> <span class="n">P_earthling</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../../_images/56a4ebdc88f49ff2dfaf9489f1e113faa6ed09f7080567e20cca1916ed750501.png" src="../../_images/56a4ebdc88f49ff2dfaf9489f1e113faa6ed09f7080567e20cca1916ed750501.png" />
+<img alt="../../_images/edf478e641a6c01328768b7dd1c1b072d4ea2d0463234f47ea76c64952d990d6.png" src="../../_images/edf478e641a6c01328768b7dd1c1b072d4ea2d0463234f47ea76c64952d990d6.png" />
+<img alt="../../_images/ce979a77c24bc1ae1bc1fcefd6aa42366f7fdc74c3f9b5e45c1f010bad8c3b79.png" src="../../_images/ce979a77c24bc1ae1bc1fcefd6aa42366f7fdc74c3f9b5e45c1f010bad8c3b79.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the signal subnetwork</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">signal_subnetwork</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2a899ec7e469f31bdcb2f834ee49095a1b40b2ede32e278fabfa0431b4f58c5a.png" src="../../_images/2a899ec7e469f31bdcb2f834ee49095a1b40b2ede32e278fabfa0431b4f58c5a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sample the classes of each sample</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># the number of training and testing samples</span>
+<span class="n">pi_astronaut</span> <span class="o">=</span> <span class="mf">0.45</span>
+<span class="n">pi_earthling</span> <span class="o">=</span> <span class="mf">0.55</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">yvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">pi_earthling</span><span class="p">,</span> <span class="n">pi_astronaut</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
+
+<span class="c1"># sample network realizations given the class of each sample</span>
+<span class="n">Ps</span> <span class="o">=</span> <span class="p">[</span><span class="n">P_earthling</span><span class="p">,</span> <span class="n">P_astronaut</span><span class="p">]</span>
+
+<span class="n">As</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">sample_edges</span><span class="p">(</span><span class="n">Ps</span><span class="p">[</span><span class="n">y</span><span class="p">])</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">yvec</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./representations/Ch4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Section410.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">4.10 Models with Covariates</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Ch5/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">5 Learning Network Representations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eric Bridgeford, Alex Loftus, and Joshua Vogelstein
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
