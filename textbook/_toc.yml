@@ -85,13 +85,13 @@ parts:
       sections:
         - file: Appendix/AppA/Section4
         - file: Appendix/AppA/Section6
-        - file: Applendix/AppA/Appendix_appA_notebook
+        - file: Appendix/AppA/appendix_appA_notebook
     - file: Appendix/AppB/index
       sections:
         - file: Appendix/AppB/Section1
         - file: Appendix/AppB/Section2
-        - file: Appendix/AppB/Appendix_appB_notebook
+        - file: Appendix/AppB/appendix_appB_notebook
     - file: Appendix/AppC/index
       sections:
         - file: Appendix/AppC/Section1
-        - file: Appendix/AppC/Appendix_appC_notebook
+        - file: Appendix/AppC/appendix_appC_notebook
