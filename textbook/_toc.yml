@@ -12,6 +12,7 @@ parts:
         - file: foundations/Ch2/Section23
         - file: foundations/Ch2/Section24
         - file: foundations/Ch2/Section25_26
+        - file: foundations/Ch2/foundations_ch2_notebook
 
   - caption: Representations
     chapters:
@@ -25,6 +26,7 @@ parts:
         - file: representations/Ch3/Section36
         - file: representations/Ch3/Section37
         - file: representations/Ch3/Section38
+        - file: representations/Ch3/representations_ch3_notebook
     - file: representations/Ch4/index
       sections:
         - file: representations/Ch4/Section41
@@ -36,6 +38,7 @@ parts:
         - file: representations/Ch4/Section48
         - file: representations/Ch4/Section49
         - file: representations/Ch4/Section410
+        - file: representations/Ch4/representations_ch4_notebook
     - file: representations/Ch5/index
       sections:
         - file: representations/Ch5/Section51
@@ -45,6 +48,7 @@ parts:
         - file: representations/Ch5/Section55
         - file: representations/Ch5/Section56
         - file: representations/Ch5/Section57
+        - file: representations/Ch5/representations_ch5_notebook
 
   - caption: Applications
     chapters:
@@ -56,20 +60,24 @@ parts:
         - file: applications/Ch6/Section64
         - file: applications/Ch6/Section65
         - file: applications/Ch6/Section66
+        - file: applications/Ch6/applications_ch6_notebook
     - file: applications/Ch7/index
       sections:
         - file: applications/Ch7/Section71
         - file: applications/Ch7/Section72
         - file: applications/Ch7/Section73
+        - file: applications/Ch7/applications_ch7_notebook
     - file: applications/Ch8/index
       sections:
         - file: applications/Ch8/Section81
         - file: applications/Ch8/Section82
         - file: applications/Ch8/Section83
+        - file: applications/Ch8/applications_ch8_notebook
     - file: applications/Ch9/index
       sections:
         - file: applications/Ch9/Section91
         - file: applications/Ch9/Section92
+        - file: applications/Ch9/applications_ch9_notebook
 
   - caption: Appendices
     chapters:
@@ -77,10 +85,13 @@ parts:
       sections:
         - file: Appendix/AppA/Section4
         - file: Appendix/AppA/Section6
+        - file: Applendix/AppA/Appendix_appA_notebook
     - file: Appendix/AppB/index
       sections:
         - file: Appendix/AppB/Section1
         - file: Appendix/AppB/Section2
+        - file: Appendix/AppB/Appendix_appB_notebook
     - file: Appendix/AppC/index
       sections:
         - file: Appendix/AppC/Section1
+        - file: Appendix/AppC/Appendix_appC_notebook
