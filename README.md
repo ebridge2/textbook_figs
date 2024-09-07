@@ -22,7 +22,7 @@ The book can be cited via the [bib citation](https://github.com/ebridge2/textboo
 
 and a citation compliant with MLA 9th edition is:
 
-Bridgeford, Eric W. et al. *Network Machine Learning*. Cambridge University Press, 2025.
+EW Bridgeford, AR Loftus, JT Vogelstein. *Network Machine Learning*. Cambridge University Press, 2025.
 
 # Usage
 
