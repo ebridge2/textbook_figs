@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -37,10 +39,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -66,6 +69,7 @@
     <link rel="prev" title="9.2 Random walks and diffusion-based methods" href="Section92.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -81,19 +85,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -101,7 +94,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -109,8 +101,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -126,7 +118,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -156,21 +149,17 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt="Network Machine Learning - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Network Machine Learning - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Network Machine Learning - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -454,24 +443,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 
 </div></div>
       
@@ -509,17 +490,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset: ClinTox(1484)
-Number of molecules/graphs: 1484
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset: ClinTox(1480)
+Number of molecules/graphs: 1480
 Number of classes: 2
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/torch_geometric/data/dataset.py:238: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don&#39;t have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
-  if osp.exists(f) and torch.load(f) != _repr(self.pre_transform):
-/opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/torch_geometric/data/dataset.py:246: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don&#39;t have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
-  if osp.exists(f) and torch.load(f) != _repr(self.pre_filter):
-/opt/hostedtoolcache/Python/3.12.5/x64/lib/python3.12/site-packages/torch_geometric/io/fs.py:215: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don&#39;t have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
-  return torch.load(f, map_location)
 </pre></div>
 </div>
 </div>
@@ -533,8 +506,8 @@ Number of classes: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C([C@@H]1[C@H]([C@@H]([C@H]([C@H](O1)O[C@]2([C@H]([C@@H]([C@H](O2)CO)O)O)CO)O)O)O)O
-C1[C@@H]([C@H]([C@@H]([C@H]([NH+]1CCO)CO)O)O)O
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C([C@@H]1[C@H]([C@@H]([C@H](C(=O)O1)O)O)O)O
+C1[C@@H]([C@H](O[C@H]1N2C=NC(=NC2=O)N)CO)O
 </pre></div>
 </div>
 </div>
@@ -555,7 +528,7 @@ C1[C@@H]([C@H]([C@@H]([C@H]([NH+]1CCO)CO)O)O)O
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8183cdbb440e0944ccf3afb7d0c0e5b36013fd3041c1a0b0703faa726d62b0fd.svg" src="../../_images/8183cdbb440e0944ccf3afb7d0c0e5b36013fd3041c1a0b0703faa726d62b0fd.svg" /></div>
+<img alt="../../_images/0fcba8e2acb6da13bc7642e9b8743d300114e3821540b0591bbcd37384948aef.svg" src="../../_images/0fcba8e2acb6da13bc7642e9b8743d300114e3821540b0591bbcd37384948aef.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -565,8 +538,8 @@ C1[C@@H]([C@H]([C@@H]([C@H]([NH+]1CCO)CO)O)O)O
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecule 1: Number of atoms=23, Features per atom=9
-Molecule 2: Number of atoms=14, Features per atom=9
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecule 1: Number of atoms=12, Features per atom=9
+Molecule 2: Number of atoms=16, Features per atom=9
 </pre></div>
 </div>
 </div>
@@ -582,7 +555,7 @@ Molecule 2: Number of atoms=14, Features per atom=9
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cae34053e50afbd0e94b7e8289910d2c97d1093f95a91a08173fb858b5ac8459.svg" src="../../_images/cae34053e50afbd0e94b7e8289910d2c97d1093f95a91a08173fb858b5ac8459.svg" /></div>
+<img alt="../../_images/7702c28a881dec60475a2a69bab010f5d8bddc3edae180a16a2bef25aa47e126.svg" src="../../_images/7702c28a881dec60475a2a69bab010f5d8bddc3edae180a16a2bef25aa47e126.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -619,8 +592,8 @@ Molecule 2: Number of atoms=14, Features per atom=9
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/087c40249d774340bb825f6d41252be586779d390976634e6678b02f3e862d51.png" src="../../_images/087c40249d774340bb825f6d41252be586779d390976634e6678b02f3e862d51.png" />
-<img alt="../../_images/90a7a9865028e633fd847bb33c9fc2673f699ba7790c46c7ca94c34ca363f6dd.png" src="../../_images/90a7a9865028e633fd847bb33c9fc2673f699ba7790c46c7ca94c34ca363f6dd.png" />
+<img alt="../../_images/ac09071f9008c97911efba6ae1d87a17e14b4cd7410e0451cbcc38039279bd8b.png" src="../../_images/ac09071f9008c97911efba6ae1d87a17e14b4cd7410e0451cbcc38039279bd8b.png" />
+<img alt="../../_images/70ce191e684b5db0a20a359c691964d00313a2d62d7ab97a1390338eb15d6c77.png" src="../../_images/70ce191e684b5db0a20a359c691964d00313a2d62d7ab97a1390338eb15d6c77.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -640,7 +613,7 @@ Molecule 2: Number of atoms=14, Features per atom=9
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of training networks: 1334
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of training networks: 1330
 Number of test networks: 150
 </pre></div>
 </div>
@@ -668,67 +641,67 @@ Number of test networks: 150
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step 1:
 Number of networks in the current batch: 64
-DataBatch(x=[1610, 9], edge_index=[2, 3460], edge_attr=[3460, 3], smiles=[64], y=[64, 2], batch=[1610], ptr=[65])
+DataBatch(x=[1778, 9], edge_index=[2, 3824], edge_attr=[3824, 3], smiles=[64], y=[64, 2], batch=[1778], ptr=[65])
 Step 2:
 Number of networks in the current batch: 64
-DataBatch(x=[1541, 9], edge_index=[2, 3318], edge_attr=[3318, 3], smiles=[64], y=[64, 2], batch=[1541], ptr=[65])
+DataBatch(x=[1664, 9], edge_index=[2, 3568], edge_attr=[3568, 3], smiles=[64], y=[64, 2], batch=[1664], ptr=[65])
 Step 3:
 Number of networks in the current batch: 64
-DataBatch(x=[1824, 9], edge_index=[2, 3868], edge_attr=[3868, 3], smiles=[64], y=[64, 2], batch=[1824], ptr=[65])
+DataBatch(x=[1811, 9], edge_index=[2, 3850], edge_attr=[3850, 3], smiles=[64], y=[64, 2], batch=[1811], ptr=[65])
 Step 4:
 Number of networks in the current batch: 64
-DataBatch(x=[1728, 9], edge_index=[2, 3666], edge_attr=[3666, 3], smiles=[64], y=[64, 2], batch=[1728], ptr=[65])
+DataBatch(x=[1475, 9], edge_index=[2, 3140], edge_attr=[3140, 3], smiles=[64], y=[64, 2], batch=[1475], ptr=[65])
 Step 5:
 Number of networks in the current batch: 64
-DataBatch(x=[1651, 9], edge_index=[2, 3502], edge_attr=[3502, 3], smiles=[64], y=[64, 2], batch=[1651], ptr=[65])
+DataBatch(x=[1877, 9], edge_index=[2, 4016], edge_attr=[4016, 3], smiles=[64], y=[64, 2], batch=[1877], ptr=[65])
 Step 6:
 Number of networks in the current batch: 64
-DataBatch(x=[1821, 9], edge_index=[2, 3886], edge_attr=[3886, 3], smiles=[64], y=[64, 2], batch=[1821], ptr=[65])
+DataBatch(x=[1669, 9], edge_index=[2, 3576], edge_attr=[3576, 3], smiles=[64], y=[64, 2], batch=[1669], ptr=[65])
 Step 7:
 Number of networks in the current batch: 64
-DataBatch(x=[1882, 9], edge_index=[2, 3972], edge_attr=[3972, 3], smiles=[64], y=[64, 2], batch=[1882], ptr=[65])
+DataBatch(x=[1637, 9], edge_index=[2, 3484], edge_attr=[3484, 3], smiles=[64], y=[64, 2], batch=[1637], ptr=[65])
 Step 8:
 Number of networks in the current batch: 64
-DataBatch(x=[1557, 9], edge_index=[2, 3294], edge_attr=[3294, 3], smiles=[64], y=[64, 2], batch=[1557], ptr=[65])
+DataBatch(x=[1612, 9], edge_index=[2, 3392], edge_attr=[3392, 3], smiles=[64], y=[64, 2], batch=[1612], ptr=[65])
 Step 9:
 Number of networks in the current batch: 64
-DataBatch(x=[1762, 9], edge_index=[2, 3746], edge_attr=[3746, 3], smiles=[64], y=[64, 2], batch=[1762], ptr=[65])
+DataBatch(x=[1630, 9], edge_index=[2, 3522], edge_attr=[3522, 3], smiles=[64], y=[64, 2], batch=[1630], ptr=[65])
 Step 10:
 Number of networks in the current batch: 64
-DataBatch(x=[1617, 9], edge_index=[2, 3468], edge_attr=[3468, 3], smiles=[64], y=[64, 2], batch=[1617], ptr=[65])
+DataBatch(x=[1595, 9], edge_index=[2, 3394], edge_attr=[3394, 3], smiles=[64], y=[64, 2], batch=[1595], ptr=[65])
 Step 11:
 Number of networks in the current batch: 64
-DataBatch(x=[1541, 9], edge_index=[2, 3278], edge_attr=[3278, 3], smiles=[64], y=[64, 2], batch=[1541], ptr=[65])
+DataBatch(x=[1612, 9], edge_index=[2, 3426], edge_attr=[3426, 3], smiles=[64], y=[64, 2], batch=[1612], ptr=[65])
 Step 12:
 Number of networks in the current batch: 64
-DataBatch(x=[1870, 9], edge_index=[2, 4018], edge_attr=[4018, 3], smiles=[64], y=[64, 2], batch=[1870], ptr=[65])
+DataBatch(x=[1575, 9], edge_index=[2, 3384], edge_attr=[3384, 3], smiles=[64], y=[64, 2], batch=[1575], ptr=[65])
 Step 13:
 Number of networks in the current batch: 64
-DataBatch(x=[1627, 9], edge_index=[2, 3464], edge_attr=[3464, 3], smiles=[64], y=[64, 2], batch=[1627], ptr=[65])
+DataBatch(x=[1825, 9], edge_index=[2, 3930], edge_attr=[3930, 3], smiles=[64], y=[64, 2], batch=[1825], ptr=[65])
 Step 14:
 Number of networks in the current batch: 64
-DataBatch(x=[1787, 9], edge_index=[2, 3822], edge_attr=[3822, 3], smiles=[64], y=[64, 2], batch=[1787], ptr=[65])
+DataBatch(x=[1572, 9], edge_index=[2, 3366], edge_attr=[3366, 3], smiles=[64], y=[64, 2], batch=[1572], ptr=[65])
 Step 15:
 Number of networks in the current batch: 64
-DataBatch(x=[1588, 9], edge_index=[2, 3392], edge_attr=[3392, 3], smiles=[64], y=[64, 2], batch=[1588], ptr=[65])
+DataBatch(x=[1684, 9], edge_index=[2, 3558], edge_attr=[3558, 3], smiles=[64], y=[64, 2], batch=[1684], ptr=[65])
 Step 16:
 Number of networks in the current batch: 64
-DataBatch(x=[1577, 9], edge_index=[2, 3356], edge_attr=[3356, 3], smiles=[64], y=[64, 2], batch=[1577], ptr=[65])
+DataBatch(x=[1644, 9], edge_index=[2, 3530], edge_attr=[3530, 3], smiles=[64], y=[64, 2], batch=[1644], ptr=[65])
 Step 17:
 Number of networks in the current batch: 64
-DataBatch(x=[1603, 9], edge_index=[2, 3460], edge_attr=[3460, 3], smiles=[64], y=[64, 2], batch=[1603], ptr=[65])
+DataBatch(x=[1689, 9], edge_index=[2, 3598], edge_attr=[3598, 3], smiles=[64], y=[64, 2], batch=[1689], ptr=[65])
 Step 18:
 Number of networks in the current batch: 64
-DataBatch(x=[1761, 9], edge_index=[2, 3770], edge_attr=[3770, 3], smiles=[64], y=[64, 2], batch=[1761], ptr=[65])
+DataBatch(x=[1837, 9], edge_index=[2, 3862], edge_attr=[3862, 3], smiles=[64], y=[64, 2], batch=[1837], ptr=[65])
 Step 19:
 Number of networks in the current batch: 64
-DataBatch(x=[1616, 9], edge_index=[2, 3428], edge_attr=[3428, 3], smiles=[64], y=[64, 2], batch=[1616], ptr=[65])
+DataBatch(x=[1496, 9], edge_index=[2, 3162], edge_attr=[3162, 3], smiles=[64], y=[64, 2], batch=[1496], ptr=[65])
 Step 20:
 Number of networks in the current batch: 64
-DataBatch(x=[1431, 9], edge_index=[2, 3064], edge_attr=[3064, 3], smiles=[64], y=[64, 2], batch=[1431], ptr=[65])
+DataBatch(x=[1683, 9], edge_index=[2, 3598], edge_attr=[3598, 3], smiles=[64], y=[64, 2], batch=[1683], ptr=[65])
 Step 21:
-Number of networks in the current batch: 54
-DataBatch(x=[1434, 9], edge_index=[2, 3074], edge_attr=[3074, 3], smiles=[54], y=[54, 2], batch=[1434], ptr=[55])
+Number of networks in the current batch: 50
+DataBatch(x=[1411, 9], edge_index=[2, 3012], edge_attr=[3012, 3], smiles=[50], y=[50, 2], batch=[1411], ptr=[51])
 </pre></div>
 </div>
 </div>
@@ -822,34 +795,34 @@ DataBatch(x=[1434, 9], edge_index=[2, 3074], edge_attr=[3074, 3], smiles=[54], y
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 000, Train Acc: 0.9310, Test Acc: 0.9600
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 000, Train Acc: 0.9353, Test Acc: 0.9467
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 001, Train Acc: 0.9310, Test Acc: 0.9600
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 001, Train Acc: 0.9353, Test Acc: 0.9467
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 002, Train Acc: 0.9310, Test Acc: 0.9600
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 002, Train Acc: 0.9353, Test Acc: 0.9467
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 003, Train Acc: 0.9310, Test Acc: 0.9600
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 003, Train Acc: 0.9353, Test Acc: 0.9467
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 004, Train Acc: 0.9310, Test Acc: 0.9600
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 004, Train Acc: 0.9353, Test Acc: 0.9467
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 005, Train Acc: 0.9310, Test Acc: 0.9600
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 005, Train Acc: 0.9353, Test Acc: 0.9467
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 006, Train Acc: 0.9310, Test Acc: 0.9600
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 006, Train Acc: 0.9353, Test Acc: 0.9467
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 007, Train Acc: 0.9310, Test Acc: 0.9600
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 007, Train Acc: 0.9353, Test Acc: 0.9467
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 008, Train Acc: 0.9310, Test Acc: 0.9600
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 008, Train Acc: 0.9353, Test Acc: 0.9467
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 009, Train Acc: 0.9310, Test Acc: 0.9600
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 009, Train Acc: 0.9353, Test Acc: 0.9467
 </pre></div>
 </div>
 </div>
@@ -939,7 +912,7 @@ DataBatch(x=[1434, 9], edge_index=[2, 3074], edge_attr=[3074, 3], smiles=[54], y
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Next node: BX
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Next node: Q
 </pre></div>
 </div>
 </div>
@@ -1089,8 +1062,8 @@ By Eric Bridgeford, Alex Loftus, and Joshua Vogelstein
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>
