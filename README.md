@@ -5,7 +5,7 @@
 - [Code](#code)
 - [Issues](#issues)
 
-# Network Machine Learning
+# Hands On Network Machine Learning with Python
 
 This repository provides the programming component for an introductory book to network machine learning with python. Our book will be published with Cambridge University Press in early 2025. This book assumes a recent version of python (we use Python `3.11` and `3.12`). The compiled figures for the book can be accessed at [https://ericwb.me/textbook_figs](https://ericwb.me/textbook_figs). These figures were generated programmatically using a github workflow which follows the below-noted steps.
 
