@@ -884,7 +884,7 @@ DataBatch(x=[1411, 9], edge_index=[2, 3012], edge_attr=[3012, 3], smiles=[50], y
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Next node: BK
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Next node: BX
 </pre></div>
 </div>
 </div>
@@ -965,6 +965,12 @@ DataBatch(x=[1411, 9], edge_index=[2, 3012], edge_attr=[3012, 3], smiles=[50], y
 <span class="n">Xhat1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">node2vec_embed</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">A</span><span class="p">),</span>
                          <span class="n">return_hyperparameter</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">inout_hyperparameter</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">q</span><span class="p">),</span>
                          <span class="n">dimensions</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">num_walks</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">walk_length</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/graspologic/embed/n2v.py:148: UserWarning: Isolated nodes found: [179]
+  warnings.warn(f&quot;Isolated nodes found: {isolated_nodes}&quot;)
 </pre></div>
 </div>
 </div>
