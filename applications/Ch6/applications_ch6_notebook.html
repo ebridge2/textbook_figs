@@ -713,13 +713,13 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/10 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|███       | 3/10 [00:00&lt;00:00, 19.19it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|███       | 3/10 [00:00&lt;00:00, 19.50it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 5/10 [00:01&lt;00:01,  3.93it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 5/10 [00:01&lt;00:01,  3.96it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|██████    | 6/10 [00:02&lt;00:01,  2.09it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|██████    | 6/10 [00:02&lt;00:01,  2.10it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|███████   | 7/10 [00:04&lt;00:02,  1.16it/s]
@@ -728,10 +728,10 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|████████  | 8/10 [00:06&lt;00:02,  1.42s/it]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|█████████ | 9/10 [00:11&lt;00:02,  2.22s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|█████████ | 9/10 [00:11&lt;00:02,  2.21s/it]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 10/10 [00:16&lt;00:00,  3.20s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 10/10 [00:16&lt;00:00,  3.19s/it]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 10/10 [00:16&lt;00:00,  1.68s/it]
@@ -745,15 +745,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;#Nodes&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Edges&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yscale</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[None]
-</pre></div>
-</div>
-<img alt="../../_images/a4a7ea7e5c8a0eb4bb85c00b608fdfbb4955fb40af1b123a4676e376c05cce8b.png" src="../../_images/a4a7ea7e5c8a0eb4bb85c00b608fdfbb4955fb40af1b123a4676e376c05cce8b.png" />
+<img alt="../../_images/a3d95e192f45661bfc4b4e1d12a480d829fef394dc7b9c4331e3fa394cbed8da.png" src="../../_images/a3d95e192f45661bfc4b4e1d12a480d829fef394dc7b9c4331e3fa394cbed8da.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -901,8 +897,8 @@ Size in KB: 1000.000 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive approach: 0.232222 seconds
-Sparse approach: 0.006212 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive approach: 0.231332 seconds
+Sparse approach: 0.006168 seconds
 </pre></div>
 </div>
 </div>
@@ -928,7 +924,7 @@ Sparse approach: 0.006212 seconds
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa739266210&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fe9a1f599a0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/7bdbda0f96d6024296cbc25f141875e4da5da46e0186eb5b27b9470764fe04e7.png" src="../../_images/7bdbda0f96d6024296cbc25f141875e4da5da46e0186eb5b27b9470764fe04e7.png" />
@@ -1129,9 +1125,7 @@ Sparse approach: 0.006212 seconds
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
          Current function value: 0.651736
          Iterations 5
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p-value: 0.000
+p-value: 0.000
 </pre></div>
 </div>
 </div>

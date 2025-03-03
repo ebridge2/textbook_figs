@@ -893,7 +893,7 @@ document.write(`
 
 <span class="n">disagreements_noseed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">A1</span> <span class="o">-</span> <span class="n">A2_unshuffle_noseed</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Disagreements, no seeds: </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">disagreements_noseed</span><span class="p">)</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="c1"># Disagreements, no seeds: 12810</span>
+<span class="c1"># Disagreements, no seeds: 12866</span>
 </pre></div>
 </div>
 </div>
@@ -1140,7 +1140,7 @@ Disagreements, seeds: 8041
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A1_induced</span> <span class="o">=</span> <span class="n">remove_vertices</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">nodes_to_remove</span><span class="p">)</span>
 <span class="n">disagreements_naive</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">A1_induced</span> <span class="o">-</span> <span class="n">A2_N_unshuffle_seeds_naive</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Disagreements, naive padding: </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">disagreements_naive</span><span class="p">)</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="c1"># Disagreements, naive padding: 9058</span>
+<span class="c1"># Disagreements, naive padding: 9474</span>
 </pre></div>
 </div>
 </div>
