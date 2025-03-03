@@ -14,7 +14,7 @@ The book can be cited via the [bib citation](https://github.com/ebridge2/textboo
 ```
 @book{
     authors={Bridgeford, Eric W. and Loftus, Alexander R. and Vogelstein, Joshua T.},
-    title={Network Machine Learning},
+    title={Hands On Network Machine Learning with Python},
     publisher={Cambridge University Press},
     year={2025}
 }
@@ -22,7 +22,7 @@ The book can be cited via the [bib citation](https://github.com/ebridge2/textboo
 
 and a citation compliant with MLA 9th edition is:
 
-EW Bridgeford, AR Loftus, JT Vogelstein. *Network Machine Learning*. Cambridge University Press, 2025.
+EW Bridgeford, AR Loftus, JT Vogelstein. *Hands On Network Machine Learning with Python*. Cambridge University Press, 2025.
 
 # Usage
 
