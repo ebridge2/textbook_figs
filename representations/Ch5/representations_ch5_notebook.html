@@ -16,22 +16,20 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -39,11 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -69,7 +66,6 @@
     <link rel="prev" title="5.7 Estimating latent dimensionality and non positive semidefiniteness" href="Section57.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -85,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -94,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -101,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -118,8 +126,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -149,17 +156,21 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt="Network Machine Learning - Home"/>
-    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Network Machine Learning - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Network Machine Learning - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -443,16 +454,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -482,8 +501,8 @@
 <span id="ch5-code-repr"></span><h1>Code Reproducibility<a class="headerlink" href="#code-reproducibility" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">er_np</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">er_np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">p</span> <span class="o">=</span> <span class="mf">0.3</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">er_np</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
@@ -493,7 +512,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.models</span> <span class="kn">import</span> <span class="n">EREstimator</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">EREstimator</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">EREstimator</span><span class="p">(</span><span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -510,14 +529,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Difference between phat and p: 0.006
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Difference between phat and p: -0.001
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sbm</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> 
@@ -530,8 +549,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.models</span> <span class="kn">import</span> <span class="n">SBMEstimator</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">SBMEstimator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">heatmap</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">SBMEstimator</span><span class="p">(</span><span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">z</span><span class="p">)</span>
@@ -548,16 +567,16 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;$|\\hat B - B|$&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../../_images/aeb267c2ae031f3535667503833c2363563b43740e87cf048505ee2472087a50.png" src="../../_images/aeb267c2ae031f3535667503833c2363563b43740e87cf048505ee2472087a50.png" />
-<img alt="../../_images/5f18c0312ce3ea8a3c7e0fed89371a541f9a1c3f87fcb0fd6890427f7e889306.png" src="../../_images/5f18c0312ce3ea8a3c7e0fed89371a541f9a1c3f87fcb0fd6890427f7e889306.png" />
-<img alt="../../_images/20d4cd55a8d53803c60da546ccee5ad3cf8026bcf972761dc53de3d368754f5e.png" src="../../_images/20d4cd55a8d53803c60da546ccee5ad3cf8026bcf972761dc53de3d368754f5e.png" />
+<img alt="../../_images/c462ba0f7cfe9f4a865ce2bd25defe9339a07f020a27f861fd8c8546bb655a64.png" src="../../_images/c462ba0f7cfe9f4a865ce2bd25defe9339a07f020a27f861fd8c8546bb655a64.png" />
+<img alt="../../_images/2cfe94ce22902b7379b7b7e62e6694d503a4a89487db8a8f7f7257569222ad77.png" src="../../_images/2cfe94ce22902b7379b7b7e62e6694d503a4a89487db8a8f7f7257569222ad77.png" />
+<img alt="../../_images/cff7b0049d0d73b1b35b3f9328e2b47044500bc6b27e1f1847d2a8c32870dd94.png" src="../../_images/cff7b0049d0d73b1b35b3f9328e2b47044500bc6b27e1f1847d2a8c32870dd94.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">generate_sbm_pmtx</span><span class="p">,</span> <span class="n">lpm_from_sbm</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sbm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_sbm_pmtx</span><span class="p">,</span> <span class="n">lpm_from_sbm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="c1"># construct the block matrix B as described above</span>
@@ -576,7 +595,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
 
 <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># the latent dimensionality</span>
 <span class="c1"># estimate the latent position matrix with ase</span>
@@ -610,27 +629,27 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">pairplot</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">pairplot</span>
 
 <span class="n">pairplot</span><span class="p">(</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Pairs plot of $\hat X$&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/seaborn/axisgrid.py:1513: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/seaborn/axisgrid.py:1513: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
   func(x=vector, **plot_kwargs)
-/opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/seaborn/axisgrid.py:1513: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
+/opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/seaborn/axisgrid.py:1513: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
   func(x=vector, **plot_kwargs)
-/opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/seaborn/axisgrid.py:1615: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
+/opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/seaborn/axisgrid.py:1615: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
   func(x=x, y=y, **kwargs)
-/opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/seaborn/axisgrid.py:1615: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
+/opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/seaborn/axisgrid.py:1615: UserWarning: Ignoring `palette` because no `hue` variable has been assigned.
   func(x=x, y=y, **kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f4ae1604ce0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f163d2efd70&gt;
 </pre></div>
 </div>
-<img alt="../../_images/d59552f0c2e1c2272ee1a79a34815fea1ac3f48aca081a39d80971b3348585ee.png" src="../../_images/d59552f0c2e1c2272ee1a79a34815fea1ac3f48aca081a39d80971b3348585ee.png" />
+<img alt="../../_images/0f8eec7ff59000b115d72bc8061299aa02cbfb14baf5ef89d8d3d4baf9d2803d.png" src="../../_images/0f8eec7ff59000b115d72bc8061299aa02cbfb14baf5ef89d8d3d4baf9d2803d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -642,12 +661,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/654ecb8503cc532b5357c2f5332ee203c5c44076335a7ec9749367bf50292e43.png" src="../../_images/654ecb8503cc532b5357c2f5332ee203c5c44076335a7ec9749367bf50292e43.png" />
+<img alt="../../_images/4a0c15f0cfb93cfe4c01fbbbcf0b9bc11829a32b279828b5bca4b9b93ccf1382.png" src="../../_images/4a0c15f0cfb93cfe4c01fbbbcf0b9bc11829a32b279828b5bca4b9b93ccf1382.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance_matrix</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial</span><span class="w"> </span><span class="kn">import</span> <span class="n">distance_matrix</span>
 
 <span class="n">D</span> <span class="o">=</span> <span class="n">distance_matrix</span><span class="p">(</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">Xhat</span><span class="p">)</span>
 </pre></div>
@@ -656,8 +675,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">dcsbm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">dcsbm</span>
 
 <span class="n">nk</span> <span class="o">=</span> <span class="mi">150</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">nk</span><span class="p">)</span>
@@ -671,8 +690,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
-<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance_matrix</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial</span><span class="w"> </span><span class="kn">import</span> <span class="n">distance_matrix</span>
 
 <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># the latent dimensionality</span>
 <span class="c1"># estimate the latent position matrix with ase</span>
@@ -693,7 +712,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">LaplacianSpectralEmbed</span> <span class="k">as</span> <span class="n">lse</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaplacianSpectralEmbed</span> <span class="k">as</span> <span class="n">lse</span>
 
 <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># embed into two dimensions</span>
 <span class="n">Xhat_lapl</span> <span class="o">=</span> <span class="n">lse</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">svd_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -704,8 +723,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="c1"># compute the degrees for each node, using the</span>
 <span class="c1"># row-sums of the network</span>
@@ -721,7 +740,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Node degree&#39;, ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/f8e661548faa36be00b6b1ac732c58ec086b0486b0a303c3153f5d6d6f14f135.png" src="../../_images/f8e661548faa36be00b6b1ac732c58ec086b0486b0a303c3153f5d6d6f14f135.png" />
+<img alt="../../_images/2da68acaa7233daaccf4345a911c4ee8dce239cc515f406f566fe6030ec7152b.png" src="../../_images/2da68acaa7233daaccf4345a911c4ee8dce239cc515f406f566fe6030ec7152b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -736,9 +755,9 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sbm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># the number of nodes</span>
 <span class="n">M</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># the total number of networks</span>
@@ -766,7 +785,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
 
 <span class="c1"># embed the first network</span>
 <span class="n">Xhat</span> <span class="o">=</span> <span class="n">ase</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">svd_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">A_humans</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -851,7 +870,7 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">MultipleASE</span> <span class="k">as</span> <span class="n">mase</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultipleASE</span> <span class="k">as</span> <span class="n">mase</span>
 
 <span class="c1"># Use mase to embed everything</span>
 <span class="n">mase</span> <span class="o">=</span> <span class="n">mase</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">svd_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -863,7 +882,7 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
 
 <span class="n">dhat</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
 <span class="c1"># spectrally embed each network into ceil(log2(n)) dimensions with ASE</span>
@@ -882,7 +901,7 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">unscaled_embed</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">unscaled_embed</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
     <span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">U</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">d</span><span class="p">]</span>
@@ -904,7 +923,7 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">generate_sbm_pmtx</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_sbm_pmtx</span>
 
 <span class="n">Phum</span> <span class="o">=</span> <span class="n">generate_sbm_pmtx</span><span class="p">(</span><span class="n">zs</span><span class="p">,</span> <span class="n">Bhuman</span><span class="p">)</span>
 <span class="n">Palien</span> <span class="o">=</span> <span class="n">generate_sbm_pmtx</span><span class="p">(</span><span class="n">zs</span><span class="p">,</span> <span class="n">Balien</span><span class="p">)</span>
@@ -915,7 +934,7 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">MultipleASE</span> <span class="k">as</span> <span class="n">mase</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultipleASE</span> <span class="k">as</span> <span class="n">mase</span>
 
 <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">mase_embedder</span> <span class="o">=</span> <span class="n">mase</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
@@ -941,7 +960,7 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed.omni</span> <span class="kn">import</span> <span class="n">_get_omni_matrix</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed.omni</span><span class="w"> </span><span class="kn">import</span> <span class="n">_get_omni_matrix</span>
 <span class="n">omni_mtx</span> <span class="o">=</span> <span class="n">_get_omni_matrix</span><span class="p">(</span><span class="n">networks</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -949,7 +968,7 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
 
 <span class="n">dhat</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
 <span class="n">Xhat_omni</span> <span class="o">=</span> <span class="n">ase</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">dhat</span><span class="p">,</span> <span class="n">svd_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">omni_mtx</span><span class="p">)</span>
@@ -972,7 +991,7 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">OmnibusEmbed</span> <span class="k">as</span> <span class="n">omni</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">OmnibusEmbed</span> <span class="k">as</span> <span class="n">omni</span>
 
 <span class="c1"># obtain a tensor of the estimated latent positions</span>
 <span class="n">Xhat_tensor</span> <span class="o">=</span> <span class="n">omni</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">n</span><span class="p">)),</span> <span class="n">svd_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">networks</span><span class="p">)</span>
@@ -992,8 +1011,8 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sbm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># total number of nodes</span>
 <span class="c1"># first two communities are the ``core&#39;&#39; pages for statistics</span>
@@ -1034,7 +1053,7 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">embed</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function to embed a matrix.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1042,7 +1061,7 @@ Frob. norm(first human, alien) = 5.182462
     <span class="n">Lambda</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">V</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">d</span><span class="p">]</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Lambda</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">d</span><span class="p">])))</span>
 
-<span class="k">def</span> <span class="nf">pca</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pca</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function to perform a pca on a data matrix.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1056,7 +1075,7 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">to_laplacian</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_laplacian</span>
 
 <span class="c1"># compute the network Laplacian</span>
 <span class="n">L_wiki</span> <span class="o">=</span> <span class="n">to_laplacian</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s2">&quot;DAD&quot;</span><span class="p">)</span>
@@ -1071,9 +1090,9 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
 
-<span class="k">def</span> <span class="nf">case</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">case</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function for performing case.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1089,7 +1108,7 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">CovariateAssistedEmbed</span> <span class="k">as</span> <span class="n">case</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">CovariateAssistedEmbed</span> <span class="k">as</span> <span class="n">case</span>
 
 <span class="n">embedding</span> <span class="o">=</span> <span class="n">case</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">covariates</span><span class="o">=</span><span class="n">Y</span><span class="p">)</span>
 </pre></div>
@@ -1105,8 +1124,8 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sbm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># block matrix</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
@@ -1120,7 +1139,7 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">svdvals</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">svdvals</span>
 
 <span class="c1"># use scipy to obtain the singular values</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">svdvals</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -1130,12 +1149,12 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataFrame</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 
-<span class="k">def</span> <span class="nf">plot_scree</span><span class="p">(</span><span class="n">svs</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_scree</span><span class="p">(</span><span class="n">svs</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A utility to plot the scree plot for a list of singular values</span>
 <span class="sd">    svs.</span>
@@ -1153,12 +1172,12 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/754b20206b3103e0739a4691d91bb0ab237fdfea53d553bf0317896c830d2214.png" src="../../_images/754b20206b3103e0739a4691d91bb0ab237fdfea53d553bf0317896c830d2214.png" />
+<img alt="../../_images/c1f581f6b365e70d88dbb71fd8c8936b52ce166242061d31628dddb57823f7e7.png" src="../../_images/c1f581f6b365e70d88dbb71fd8c8936b52ce166242061d31628dddb57823f7e7.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
 
 <span class="c1"># use automatic elbow selection</span>
 <span class="n">Xhat_auto</span> <span class="o">=</span> <span class="n">ase</span><span class="p">(</span><span class="n">svd_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -1168,8 +1187,8 @@ Frob. norm(first human, alien) = 5.182462
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
-<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance_matrix</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span> <span class="k">as</span> <span class="n">ase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial</span><span class="w"> </span><span class="kn">import</span> <span class="n">distance_matrix</span>
 
 <span class="n">nk</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># the number of nodes in each community</span>
 <span class="n">B_indef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.2</span><span class="p">]])</span>
@@ -1281,8 +1300,8 @@ By Eric Bridgeford, Alex Loftus, and Joshua Vogelstein
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

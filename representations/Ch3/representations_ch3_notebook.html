@@ -16,22 +16,20 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -39,11 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -69,7 +66,6 @@
     <link rel="prev" title="3.8 Edge-weight global rescaling" href="Section38.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -85,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -94,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -101,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -118,8 +126,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -149,17 +156,21 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt="Network Machine Learning - Home"/>
-    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Network Machine Learning - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Network Machine Learning - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -443,16 +454,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -482,8 +501,8 @@
 <span id="ch3-code-repr"></span><h1>Code Reproducibility<a class="headerlink" href="#code-reproducibility" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
 
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
 <span class="c1"># add nodes to the network</span>
@@ -507,14 +526,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9d2942b734e432537f58ed3a3a15b5b30868e74bb01db3222354a7130cc2f7ae.png" src="../../_images/9d2942b734e432537f58ed3a3a15b5b30868e74bb01db3222354a7130cc2f7ae.png" />
+<img alt="../../_images/7522b16d00095896d3808984a20fb4e4ed27ed445cef383be30dc4d51a3bf704.png" src="../../_images/7522b16d00095896d3808984a20fb4e4ed27ed445cef383be30dc4d51a3bf704.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">heatmap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 
 <span class="c1"># convert the networkx graph to a numpy array</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
@@ -530,13 +549,13 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Adjacency matrix&#39;}, xlabel=&#39;Node&#39;, ylabel=&#39;Node&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/b91aba6a5950cd59cf84e90f41484060d6c445c8e4c07602accd8632c77eda75.png" src="../../_images/b91aba6a5950cd59cf84e90f41484060d6c445c8e4c07602accd8632c77eda75.png" />
+<img alt="../../_images/d9378e0d5974d3cf52215fbb3a8cff325bcd307a83729e51483eb21261e57683.png" src="../../_images/d9378e0d5974d3cf52215fbb3a8cff325bcd307a83729e51483eb21261e57683.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">heatmap</span>
 
 <span class="c1"># create an undirected network G</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
@@ -575,13 +594,13 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Borough&#39;, ylabel=&#39;Borough&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/71943de219d09c4bbf331b48af5da508db568a00ebc6a8d007c710ec4428dfe2.png" src="../../_images/71943de219d09c4bbf331b48af5da508db568a00ebc6a8d007c710ec4428dfe2.png" />
-<img alt="../../_images/be415a39cdda1c1e82bcced63543be7c113911bc6a9ca67ca900021a7fa81226.png" src="../../_images/be415a39cdda1c1e82bcced63543be7c113911bc6a9ca67ca900021a7fa81226.png" />
+<img alt="../../_images/600e7f42ea4fc8239bb5f5825dc32cb5a1d867dc2b74df77b63397c8a850cfea.png" src="../../_images/600e7f42ea4fc8239bb5f5825dc32cb5a1d867dc2b74df77b63397c8a850cfea.png" />
+<img alt="../../_images/91cd80f35bab0089c81f109dfa7f7233257c937a76407b2bf002d429274a979a.png" src="../../_images/91cd80f35bab0089c81f109dfa7f7233257c937a76407b2bf002d429274a979a.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
 
 <span class="n">G_dir</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_directed</span><span class="p">()</span>
 
@@ -594,12 +613,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7d70742b993b78198a93a938ff93827b1cc9f562228b4265a565fedf8356c1cd.png" src="../../_images/7d70742b993b78198a93a938ff93827b1cc9f562228b4265a565fedf8356c1cd.png" />
+<img alt="../../_images/ee8e61ad2b855e6dc7ae7b5337dbcc66cca0bd827c70b3011cb2ed8808aa5871.png" src="../../_images/ee8e61ad2b855e6dc7ae7b5337dbcc66cca0bd827c70b3011cb2ed8808aa5871.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">is_symmetric</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_symmetric</span>
 
 <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="n">is_symmetric</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -627,12 +646,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a87868143fc43f559d6e8a76c8ed6a5876025ee899c1ae22c269d5773238670f.png" src="../../_images/a87868143fc43f559d6e8a76c8ed6a5876025ee899c1ae22c269d5773238670f.png" />
+<img alt="../../_images/eefb36a29b7d4f3ee9887de901144846e9d1d123172ff22cb8a5b4b44d759a40.png" src="../../_images/eefb36a29b7d4f3ee9887de901144846e9d1d123172ff22cb8a5b4b44d759a40.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">is_loopless</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_loopless</span>
 <span class="n">is_loopless</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 <span class="c1"># True</span>
 <span class="n">A_loopy</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G_loopy</span><span class="p">)</span>
@@ -682,12 +701,12 @@
  (&#39;Q&#39;, &#39;BX&#39;): Text(6.0, 4.499991549295374, &#39;15&#39;)}
 </pre></div>
 </div>
-<img alt="../../_images/d97d50d1e9e4f902657a367dccb83d489088c78f346cc8dc4cdac724f573ea46.png" src="../../_images/d97d50d1e9e4f902657a367dccb83d489088c78f346cc8dc4cdac724f573ea46.png" />
+<img alt="../../_images/c9688a88dbabdc4f47cd072c52f70076421890a4c06af5ed156f8d79743a4935.png" src="../../_images/c9688a88dbabdc4f47cd072c52f70076421890a4c06af5ed156f8d79743a4935.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">is_unweighted</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_unweighted</span>
 
 <span class="n">A_weight</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G_weight</span><span class="p">)</span>
 <span class="n">is_unweighted</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -717,18 +736,18 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Weighted adjacency matrix&#39;}, xlabel=&#39;Borough&#39;, ylabel=&#39;Borough&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/a431f747b969933964764b03ff8f3028eb26dcb4993048e995479817ddb570fb.png" src="../../_images/a431f747b969933964764b03ff8f3028eb26dcb4993048e995479817ddb570fb.png" />
+<img alt="../../_images/687a7f82b1257d88a85e8af548ebcdb36726eae1656de6c7d4214efc175ff95b.png" src="../../_images/687a7f82b1257d88a85e8af548ebcdb36726eae1656de6c7d4214efc175ff95b.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">in_degrees</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">in_degrees</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function to compute the in-degrees for the nodes of an adjacency matrix.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">out_degrees</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_degrees</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function to compute the out-degrees for the nodes of an adjacency matrix.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -759,7 +778,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Distance matrix&#39;}, xlabel=&#39;Borough&#39;, ylabel=&#39;Borough&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/98e89b024344d625d8eb650a55538b90394b841cd5a2b8792d351a04f2b23b2b.png" src="../../_images/98e89b024344d625d8eb650a55538b90394b841cd5a2b8792d351a04f2b23b2b.png" />
+<img alt="../../_images/c6511b75f595241be565d15aaf9f7a0d828fa0d80f5f8347eab4718bc86af263.png" src="../../_images/c6511b75f595241be565d15aaf9f7a0d828fa0d80f5f8347eab4718bc86af263.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -798,7 +817,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/64350d5e345c561174269aa91842a1948e1f8b55cf88e0d5fcc0f29d449554c5.png" src="../../_images/64350d5e345c561174269aa91842a1948e1f8b55cf88e0d5fcc0f29d449554c5.png" />
+<img alt="../../_images/93a773b603cf75f33b0e9783703627620cb74a721b7b92582731799210ad87c5.png" src="../../_images/93a773b603cf75f33b0e9783703627620cb74a721b7b92582731799210ad87c5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -849,7 +868,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">to_laplacian</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_laplacian</span>
 <span class="n">L_sym</span> <span class="o">=</span> <span class="n">to_laplacian</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s2">&quot;I-DAD&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -879,7 +898,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/64350d5e345c561174269aa91842a1948e1f8b55cf88e0d5fcc0f29d449554c5.png" src="../../_images/64350d5e345c561174269aa91842a1948e1f8b55cf88e0d5fcc0f29d449554c5.png" />
+<img alt="../../_images/93a773b603cf75f33b0e9783703627620cb74a721b7b92582731799210ad87c5.png" src="../../_images/93a773b603cf75f33b0e9783703627620cb74a721b7b92582731799210ad87c5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -897,7 +916,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d333feed4d56a84d8a18dbfc1db7e80d5e52ebd64166b6c18ab1a1c0c60469f1.png" src="../../_images/d333feed4d56a84d8a18dbfc1db7e80d5e52ebd64166b6c18ab1a1c0c60469f1.png" />
+<img alt="../../_images/3825beb44241248d3d7f7c995075b92dc53d0afd17fc4fea11046441240081fd.png" src="../../_images/3825beb44241248d3d7f7c995075b92dc53d0afd17fc4fea11046441240081fd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -915,15 +934,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/71943de219d09c4bbf331b48af5da508db568a00ebc6a8d007c710ec4428dfe2.png" src="../../_images/71943de219d09c4bbf331b48af5da508db568a00ebc6a8d007c710ec4428dfe2.png" />
+<img alt="../../_images/600e7f42ea4fc8239bb5f5825dc32cb5a1d867dc2b74df77b63397c8a850cfea.png" src="../../_images/600e7f42ea4fc8239bb5f5825dc32cb5a1d867dc2b74df77b63397c8a850cfea.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">er_np</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">heatmap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">er_np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">A_bus</span> <span class="o">=</span> <span class="n">er_np</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
@@ -962,19 +981,19 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8be10688e97c0e8b5e65048fd1d58e993a76b74cd5b45de8aa61d137706f219a.png" src="../../_images/8be10688e97c0e8b5e65048fd1d58e993a76b74cd5b45de8aa61d137706f219a.png" />
-<img alt="../../_images/1472797cb6c37ec0bf2137287bdd7c6a0ab70e97507b0c2e0ca4306cd955687a.png" src="../../_images/1472797cb6c37ec0bf2137287bdd7c6a0ab70e97507b0c2e0ca4306cd955687a.png" />
+<img alt="../../_images/0070f494147c2602be1f947861ea1952b0881a9805c290e19444d8605159d969.png" src="../../_images/0070f494147c2602be1f947861ea1952b0881a9805c290e19444d8605159d969.png" />
+<img alt="../../_images/b03b59a6d745d3af0a9f0a258adbf5bf46b6574a99b0e816171fb2f8aa056836.png" src="../../_images/b03b59a6d745d3af0a9f0a258adbf5bf46b6574a99b0e816171fb2f8aa056836.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_degrees</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_degrees</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
     <span class="c1"># compute the degrees of the network A</span>
     <span class="c1"># since A is undirected, we can just sum</span>
     <span class="c1"># along an axis.</span>
     <span class="k">return</span> <span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">prune_low_degree</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">return_inds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">prune_low_degree</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">return_inds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="c1"># remove nodes which have a degree under a given</span>
     <span class="c1"># threshold. For a simple network, threshold=0 removes isolates,</span>
     <span class="c1"># and threshold=1 removes pendants</span>
@@ -1003,7 +1022,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c31f30a166480a1160fba0b1f6698279cee02e6a1ca7edc8d08ddc678a0acb78.png" src="../../_images/c31f30a166480a1160fba0b1f6698279cee02e6a1ca7edc8d08ddc678a0acb78.png" />
+<img alt="../../_images/762103d2e122bba5f3cc77656c27e8bbc5e9fd74dac2a1f8d77f0bb31a3b8d44.png" src="../../_images/762103d2e122bba5f3cc77656c27e8bbc5e9fd74dac2a1f8d77f0bb31a3b8d44.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1016,7 +1035,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">seaborn</span> <span class="kn">import</span> <span class="n">histplot</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="kn">import</span> <span class="n">histplot</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">histplot</span><span class="p">(</span><span class="n">degrees_before</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">binwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">binrange</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
@@ -1033,12 +1052,12 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Business Network, after pruning&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/c5bf64f2e922325b2bcade1374645c2cf73f488bb3bce4df62bf50cc40e2a13d.png" src="../../_images/c5bf64f2e922325b2bcade1374645c2cf73f488bb3bce4df62bf50cc40e2a13d.png" />
+<img alt="../../_images/aa2b1cd78afec57c81d0caecf9710fd933301c0754587f6fd86112893512d1eb.png" src="../../_images/aa2b1cd78afec57c81d0caecf9710fd933301c0754587f6fd86112893512d1eb.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prune_high_degree</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">return_inds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">prune_high_degree</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">return_inds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="c1"># remove nodes which have a degree over a given</span>
     <span class="c1"># threshold. For a simple network, threshold=A.shape[0] - 1</span>
     <span class="c1"># removes any pizza hut node</span>
@@ -1064,13 +1083,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e2aa8f074b964f2758d5e5264b857e181a510a37c716806b3f992b853e0b39c6.png" src="../../_images/e2aa8f074b964f2758d5e5264b857e181a510a37c716806b3f992b853e0b39c6.png" />
+<img alt="../../_images/5004a34ed7a9f674cd6d94102348febc9b1d8bc6ab3a747ab2808ed4849a9529.png" src="../../_images/5004a34ed7a9f674cd6d94102348febc9b1d8bc6ab3a747ab2808ed4849a9529.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sbm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">wtargsa</span> <span class="o">=</span> <span class="p">[[</span><span class="nb">dict</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">.09</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">.02</span><span class="p">)],</span>
           <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">.02</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">.06</span><span class="p">)]]</span>
@@ -1088,7 +1107,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">symmetrize</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">symmetrize</span>
 
 <span class="c1"># upper-triangle symmetrize the upper triangle</span>
 <span class="n">A_activity</span> <span class="o">=</span> <span class="n">symmetrize</span><span class="p">(</span><span class="n">A_activity_uppertri</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;triu&quot;</span><span class="p">)</span>
@@ -1106,7 +1125,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">augment_diagonal</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">augment_diagonal</span>
 
 <span class="n">A_friend_aug</span> <span class="o">=</span> <span class="n">augment_diagonal</span><span class="p">(</span><span class="n">A_friend</span><span class="p">)</span>
 </pre></div>
@@ -1115,7 +1134,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">discard_diagonal</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">discard_diagonal</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function that discards the diagonal of a matrix,</span>
 <span class="sd">    and returns its non-diagonal edge-weights.</span>
@@ -1138,12 +1157,12 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/f5e2b735cabe6e3b48d734dfd84355cb102183b6c3b138bd5f3425d50e1c8253.png" src="../../_images/f5e2b735cabe6e3b48d734dfd84355cb102183b6c3b138bd5f3425d50e1c8253.png" />
+<img alt="../../_images/242f49c4cc10c284e24239d4b5739396c5f55aff3bd617f91675663eb92954a3.png" src="../../_images/242f49c4cc10c284e24239d4b5739396c5f55aff3bd617f91675663eb92954a3.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">truncate_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">truncate_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
     <span class="n">A_cp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
     <span class="n">A_cp</span><span class="p">[</span><span class="n">A_cp</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">A_cp</span>
@@ -1167,7 +1186,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/72b637f3954cae83b7a6998837dceb8e285e4f2e27e49b4902a0e5761e47cb7d.png" src="../../_images/72b637f3954cae83b7a6998837dceb8e285e4f2e27e49b4902a0e5761e47cb7d.png" />
+<img alt="../../_images/0b9d0f2edee0a1546fad63da0e17bae2eac164e2fe95f4fc82f9286215b952cb.png" src="../../_images/0b9d0f2edee0a1546fad63da0e17bae2eac164e2fe95f4fc82f9286215b952cb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1182,7 +1201,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6197ee12e1dc2fefdd46c30c5f040ea08b5f74bda887efa1ee83bebb845ba54b.png" src="../../_images/6197ee12e1dc2fefdd46c30c5f040ea08b5f74bda887efa1ee83bebb845ba54b.png" />
+<img alt="../../_images/808af8549bbf86fa87b96b688c161bf35876b058e55cee6d2e557eb66f5a8932.png" src="../../_images/808af8549bbf86fa87b96b688c161bf35876b058e55cee6d2e557eb66f5a8932.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1195,21 +1214,21 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of edges less than or equal to tau: 742
-Number of edges greater than to tau: 483
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of edges less than or equal to tau: 754
+Number of edges greater than to tau: 471
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">copy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
 
-<span class="k">def</span> <span class="nf">min_difference</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">min_difference</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">b</span><span class="p">[</span><span class="n">b</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">quantile_threshold_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">quantile_threshold_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
     <span class="c1"># a function to threshold a network on the basis of the</span>
     <span class="c1"># fraction q</span>
     <span class="n">A_cp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -1237,9 +1256,9 @@ Number of edges greater than to tau: 483
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">is_unweighted</span><span class="p">,</span> <span class="n">is_loopless</span><span class="p">,</span> <span class="n">is_symmetric</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_unweighted</span><span class="p">,</span> <span class="n">is_loopless</span><span class="p">,</span> <span class="n">is_symmetric</span>
 
-<span class="k">def</span> <span class="nf">simple_network_dens</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">simple_network_dens</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
     <span class="c1"># make sure the network is simple</span>
     <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">is_unweighted</span><span class="p">(</span><span class="n">X</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">is_loopless</span><span class="p">(</span><span class="n">X</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">is_symmetric</span><span class="p">(</span><span class="n">X</span><span class="p">)):</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Network is not simple!&quot;</span><span class="p">)</span>
@@ -1265,10 +1284,10 @@ Number of edges greater than to tau: 483
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">is_loopless</span><span class="p">,</span> <span class="n">is_symmetric</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">zscore</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_loopless</span><span class="p">,</span> <span class="n">is_symmetric</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">zscore</span>
 
-<span class="k">def</span> <span class="nf">z_score_directed_loopless</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">undirected</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">z_score_directed_loopless</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">undirected</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">is_loopless</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The network has loops!&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">is_symmetric</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -1286,7 +1305,7 @@ Number of edges greater than to tau: 483
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">pass_to_ranks</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">pass_to_ranks</span>
 
 <span class="n">RA_friend</span> <span class="o">=</span> <span class="n">pass_to_ranks</span><span class="p">(</span><span class="n">A_friend</span><span class="p">)</span>
 </pre></div>
@@ -1302,14 +1321,14 @@ Number of edges greater than to tau: 483
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">augment_zeros</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">augment_zeros</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">X</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The logarithm is not defined for negative values!&quot;</span><span class="p">)</span>
     <span class="n">am</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">X</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)])</span>  <span class="c1"># the smallest non-zero entry of X</span>
     <span class="n">eps</span> <span class="o">=</span> <span class="n">am</span><span class="o">/</span><span class="n">base</span>  <span class="c1"># epsilon is one order of magnitude smaller than the smallest non-zero entry</span>
     <span class="k">return</span> <span class="n">X</span> <span class="o">+</span> <span class="n">eps</span>  <span class="c1"># augment all entries of X by epsilon</span>
 
-<span class="k">def</span> <span class="nf">log_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">log_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function to log transform an adjacency matrix X, which may</span>
 <span class="sd">    have zero-weight edges.</span>
@@ -1422,8 +1441,8 @@ By Eric Bridgeford, Alex Loftus, and Joshua Vogelstein
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

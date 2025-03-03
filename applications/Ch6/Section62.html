@@ -16,22 +16,20 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -39,11 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -69,7 +66,6 @@
     <link rel="prev" title="6.1 The community detection problem" href="Section61.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -85,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -94,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -101,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -118,8 +126,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -149,17 +156,21 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt="Network Machine Learning - Home"/>
-    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Network Machine Learning - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Network Machine Learning - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -443,16 +454,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -484,7 +503,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
 
 <span class="n">font</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span> <span class="p">:</span> <span class="s1">&#39;Dejavu Sans&#39;</span><span class="p">,</span>
         <span class="s1">&#39;weight&#39;</span> <span class="p">:</span> <span class="s1">&#39;normal&#39;</span><span class="p">,</span>
@@ -492,19 +511,19 @@
 
 <span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">font</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sample_edges</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">generate_sbm_pmtx</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sample_edges</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_sbm_pmtx</span>
     
-<span class="k">def</span> <span class="nf">academic_pmtx</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">nk</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">return_zs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">academic_pmtx</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">nk</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">return_zs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Produce probability matrix for academic example.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -530,7 +549,7 @@
         <span class="k">return</span> <span class="n">P</span><span class="p">,</span> <span class="n">zs</span>
     <span class="k">return</span> <span class="n">P</span>
 
-<span class="k">def</span> <span class="nf">academic_example</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">nk</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">return_zs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">academic_example</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">nk</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">return_zs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">P</span> <span class="o">=</span> <span class="n">academic_pmtx</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">nk</span><span class="o">=</span><span class="n">nk</span><span class="p">,</span> <span class="n">return_zs</span><span class="o">=</span><span class="n">return_zs</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">return_zs</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">sample_edges</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -542,7 +561,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">nrep</span> <span class="o">=</span> <span class="mi">50</span>
@@ -580,8 +599,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
 <span class="n">dash_patterns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Expected&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;Potential/1000&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">)}</span>
@@ -630,19 +649,19 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2470/764351246.py:8: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2792/764351246.py:8: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
   axs[0].plot([0, 440], [int(df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Potential/1000&quot;])]*2, color=&quot;#999999&quot;)
-/tmp/ipykernel_2470/764351246.py:9: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+/tmp/ipykernel_2792/764351246.py:9: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
   axs[0].plot([0, 440], [int(df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Expected&quot;])]*2, color=&quot;#999999&quot;)
-/tmp/ipykernel_2470/764351246.py:14: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
+/tmp/ipykernel_2792/764351246.py:14: FutureWarning: Calling int on a single element Series is deprecated and will raise a TypeError in the future. Use int(ser.iloc[0]) instead
   axs[0].annotate(&quot;Potential = {:d}&quot;.format(int(1000*df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Potential/1000&quot;])), xytext=(550, 100),
-/tmp/ipykernel_2470/764351246.py:16: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+/tmp/ipykernel_2792/764351246.py:16: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   axs[0].annotate(&quot;Expected = {:.1f}&quot;.format(float(df_wide[df_wide[&quot;#Nodes&quot;] == 440][&quot;Expected&quot;])), xytext=(50, 200),
-/opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/matplotlib/text.py:1467: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+/opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/text.py:1477: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   y = float(self.convert_yunits(y))
 </pre></div>
 </div>
-<img alt="../../_images/e3523e06ca6b724644c6aeea55328938fcce93675ed764acbe1b40a7295171dd.png" src="../../_images/e3523e06ca6b724644c6aeea55328938fcce93675ed764acbe1b40a7295171dd.png" />
+<img alt="../../_images/fca184c159ca94fad30842a2bbb0ddd2f40dba545839c62dfe1b11653d00ee10.png" src="../../_images/fca184c159ca94fad30842a2bbb0ddd2f40dba545839c62dfe1b11653d00ee10.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -687,7 +706,7 @@ Size in KB: 1000.000 KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sparse</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sparse</span>
 
 <span class="n">Btriu</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Size in KB: </span><span class="si">{</span><span class="n">Btriu</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> KB&quot;</span><span class="p">)</span>
@@ -718,7 +737,7 @@ Size in KB: 1000.000 KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">symmetrize</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">symmetrize</span>
 
 <span class="c1"># cast the sparse matrix back to a dense matrix,</span>
 <span class="c1"># and then triu symmetrize with graspologic</span>
@@ -735,8 +754,8 @@ Size in KB: 1000.000 KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 
 <span class="c1"># a naive full svd on the dense matrix</span>
 <span class="n">timestart</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -758,8 +777,8 @@ Size in KB: 1000.000 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive approach: 0.241080 seconds
-Sparse approach: 0.017665 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive approach: 0.243583 seconds
+Sparse approach: 0.006946 seconds
 </pre></div>
 </div>
 </div>
@@ -773,7 +792,7 @@ Sparse approach: 0.017665 seconds
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">heatmap</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
@@ -796,13 +815,13 @@ Sparse approach: 0.017665 seconds
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/150dc8c7d320e78fb13262f1dc40f1f0fcd120d15f6cf50642f14af7f4f204f4.png" src="../../_images/150dc8c7d320e78fb13262f1dc40f1f0fcd120d15f6cf50642f14af7f4f204f4.png" />
+<img alt="../../_images/5d99d45e8a168640a0aebff87ac9d6a7ddf796045d397a08528286e5185bdc2e.png" src="../../_images/5d99d45e8a168640a0aebff87ac9d6a7ddf796045d397a08528286e5185bdc2e.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">to_laplacian</span>
-<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">pairplot</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_laplacian</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">pairplot</span>
 
 <span class="c1"># use sparse svd, so that we don&#39;t need to compute</span>
 <span class="c1"># 1000 singular vectors and can just calculate the top 10</span>
@@ -819,7 +838,7 @@ Sparse approach: 0.017665 seconds
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e460e65105ee086458b4f8d4cfd656ed025a6d25312d21645ddfeccd1aac7f34.png" src="../../_images/e460e65105ee086458b4f8d4cfd656ed025a6d25312d21645ddfeccd1aac7f34.png" />
+<img alt="../../_images/77cf71c8a8ff2893ff1b65f59fc3795ad593b36ebb5d25da3d058e6ef1813b0b.png" src="../../_images/77cf71c8a8ff2893ff1b65f59fc3795ad593b36ebb5d25da3d058e6ef1813b0b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -837,7 +856,7 @@ Sparse approach: 0.017665 seconds
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5c9632b9e4549bafc0cc83738ed78d4fb3c69d09519348071fb88d465ac01fde.png" src="../../_images/5c9632b9e4549bafc0cc83738ed78d4fb3c69d09519348071fb88d465ac01fde.png" />
+<img alt="../../_images/1217a4dcf503f1581c088b0d2519f5edfcd1d35c61c76d3f55da577611036d81.png" src="../../_images/1217a4dcf503f1581c088b0d2519f5edfcd1d35c61c76d3f55da577611036d81.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -959,8 +978,8 @@ By Eric Bridgeford, Alex Loftus, and Joshua Vogelstein
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

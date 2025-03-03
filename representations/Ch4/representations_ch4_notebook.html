@@ -16,22 +16,20 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -39,11 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -69,7 +66,6 @@
     <link rel="prev" title="4.10 Models with Covariates" href="Section410.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -85,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -94,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -101,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -118,8 +126,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -149,17 +156,21 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt="Network Machine Learning - Home"/>
-    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Network Machine Learning - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Network Machine Learning - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -443,16 +454,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -482,10 +501,10 @@
 <span id="ch4-code-repr"></span><h1>Code Reproducibility<a class="headerlink" href="#code-reproducibility" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">heatmap</span>
 
-<span class="k">def</span> <span class="nf">generate_unit_circle</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_unit_circle</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
     <span class="n">diameter</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">radius</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">rx</span> <span class="o">=</span> <span class="n">ry</span> <span class="o">=</span> <span class="n">diameter</span><span class="o">/</span><span class="mi">2</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="n">diameter</span><span class="p">,</span> <span class="n">diameter</span><span class="p">))</span>
@@ -496,7 +515,7 @@
 
     <span class="k">return</span> <span class="n">less_than_half</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">add_smile</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_smile</span><span class="p">():</span>
     <span class="n">canvas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">51</span><span class="p">,</span> <span class="mi">51</span><span class="p">))</span>
     <span class="n">canvas</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">45</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_unit_circle</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">51</span><span class="p">,</span> <span class="mi">51</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
@@ -505,7 +524,7 @@
     <span class="n">canvas</span><span class="p">[</span><span class="n">upper_left</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">canvas</span>
     
-<span class="k">def</span> <span class="nf">smile_probability</span><span class="p">(</span><span class="n">upper_p</span><span class="p">,</span> <span class="n">lower_p</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">smile_probability</span><span class="p">(</span><span class="n">upper_p</span><span class="p">,</span> <span class="n">lower_p</span><span class="p">):</span>
     <span class="n">smiley</span> <span class="o">=</span> <span class="n">add_smile</span><span class="p">()</span>
     <span class="n">P</span> <span class="o">=</span> <span class="n">generate_unit_circle</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
     <span class="n">P</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">:</span><span class="mi">36</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_unit_circle</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -529,12 +548,12 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Probability matrix $P$&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../../_images/61288f5e0d36c5b3c2087ab8d8679003b869e7a70bd06b28391eb24a77da691a.png" src="../../_images/61288f5e0d36c5b3c2087ab8d8679003b869e7a70bd06b28391eb24a77da691a.png" />
+<img alt="../../_images/45550d2d6aca20c3c4b15bfcd22142e76bc9738cc866e3b36064ff0f6ec7d660.png" src="../../_images/45550d2d6aca20c3c4b15bfcd22142e76bc9738cc866e3b36064ff0f6ec7d660.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sample_edges</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sample_edges</span>
 
 <span class="n">A</span> <span class="o">=</span> <span class="n">sample_edges</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$IER_n(P)$ sample&quot;</span><span class="p">)</span>
@@ -545,13 +564,13 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;$IER_n(P)$ sample&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../../_images/fff5b7b1414b7ecb36466cef6351326499515b0a517e94681a2cf673503d6b90.png" src="../../_images/fff5b7b1414b7ecb36466cef6351326499515b0a517e94681a2cf673503d6b90.png" />
+<img alt="../../_images/cdaa852ed10692128cbab00fa01057ab9a74afa20ac58c5b98afb615a0f6328d.png" src="../../_images/cdaa852ed10692128cbab00fa01057ab9a74afa20ac58c5b98afb615a0f6328d.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">comb</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">comb</span>
 
 <span class="n">node_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">51</span><span class="p">)</span>
 <span class="n">log_unique_network_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">comb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node_count</span><span class="p">])</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -561,8 +580,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">draw_multiplot</span>
-<span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">er_np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">draw_multiplot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">er_np</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># network with 50 nodes</span>
 <span class="n">p</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># probability of an edge existing is .3</span>
@@ -579,7 +598,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;Axes: &gt;, &lt;Axes: &gt;], dtype=object)
 </pre></div>
 </div>
-<img alt="../../_images/e8a53b8d776082f75776c859e953c4e029bede4f31d6f20a4f602df8fd830f2c.png" src="../../_images/e8a53b8d776082f75776c859e953c4e029bede4f31d6f20a4f602df8fd830f2c.png" />
+<img alt="../../_images/bfbdc8b5dc3cb7679dbb56305180137a31771700dd6d2ce6fab030a795558d0a.png" src="../../_images/bfbdc8b5dc3cb7679dbb56305180137a31771700dd6d2ce6fab030a795558d0a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -594,8 +613,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">plot_vector</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_vector</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># number of students</span>
 
@@ -613,12 +632,12 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;$\\vec z$, Node Assignment Vector&#39;}, ylabel=&#39;Student&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/fe8a945dd8d34eb685d1bed73a8e2e90105a8e5c31889faee46afb6fb0d9d287.png" src="../../_images/fe8a945dd8d34eb685d1bed73a8e2e90105a8e5c31889faee46afb6fb0d9d287.png" />
+<img alt="../../_images/3a1b2557be4efe6e4f4fa17879880f930207493cad93186b05bfc364116c7b4b.png" src="../../_images/3a1b2557be4efe6e4f4fa17879880f930207493cad93186b05bfc364116c7b4b.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">heatmap</span>
 
 <span class="n">K</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># community count</span>
 <span class="c1"># construct the block matrix B as described above</span>
@@ -635,13 +654,13 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Block Matrix $B$&#39;}, xlabel=&#39;School&#39;, ylabel=&#39;School&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/d45cd38043617c2bce0cebf103f1f9d4de62f8c6d9bc610e433ba2048cb800d0.png" src="../../_images/d45cd38043617c2bce0cebf103f1f9d4de62f8c6d9bc610e433ba2048cb800d0.png" />
+<img alt="../../_images/b39f5ac3b62aa910a78f62713804fe42e01aeddca87b7907da7112bb88e88ed4.png" src="../../_images/b39f5ac3b62aa910a78f62713804fe42e01aeddca87b7907da7112bb88e88ed4.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">draw_multiplot</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sbm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">draw_multiplot</span>
 
 <span class="c1"># sample a graph from SBM_{100}(tau, B)</span>
 <span class="n">A</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">sbm</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="n">B</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -650,12 +669,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/79636d9a33a177b4514058baf68c2e4cb550051b2a05320a1c0c97bbd2e6a423.png" src="../../_images/79636d9a33a177b4514058baf68c2e4cb550051b2a05320a1c0c97bbd2e6a423.png" />
+<img alt="../../_images/5c8c02eebe7afd3cb7b477b393ee877cec5edb5d64b31d813d095e317ac50def.png" src="../../_images/5c8c02eebe7afd3cb7b477b393ee877cec5edb5d64b31d813d095e317ac50def.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># generate a reordering of the n nodes</span>
 <span class="n">permutation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -670,12 +689,12 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Nodes randomly reordered&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../../_images/b8b2247246d5d8335c77f4a0afbc938902e30c5013eae0354d69f491c12839fe.png" src="../../_images/b8b2247246d5d8335c77f4a0afbc938902e30c5013eae0354d69f491c12839fe.png" />
+<img alt="../../_images/3471ab26d374f5019563d92cd3ef1aa8005d4a630ae13b180f94c3f3ad2966dc.png" src="../../_images/3471ab26d374f5019563d92cd3ef1aa8005d4a630ae13b180f94c3f3ad2966dc.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ohe_comm_vec</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ohe_comm_vec</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function to generate the one-hot-encoded community</span>
 <span class="sd">    assignment matrix from a community assignment vector.</span>
@@ -692,8 +711,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">lpm_heatmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">lpm_heatmap</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># the number of nodes in our network</span>
 <span class="c1"># design the latent position matrix X according to </span>
@@ -712,13 +731,13 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Latent Position Matrix, X&#39;}, xlabel=&#39;Latent Dimension&#39;, ylabel=&#39;Person&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/f3248d563d246ad7ef9d1a042216b70a52c784b4b588e834005a007e944cc6a1.png" src="../../_images/f3248d563d246ad7ef9d1a042216b70a52c784b4b588e834005a007e944cc6a1.png" />
+<img alt="../../_images/4f0338cd584ad78b4e1dca8bfd9373d830cb40239ed8d47afdc2f1d6de48a774.png" src="../../_images/4f0338cd584ad78b4e1dca8bfd9373d830cb40239ed8d47afdc2f1d6de48a774.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">rdpg</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">rdpg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">heatmap</span>
 
 <span class="c1"># sample an RDPG with the latent position matrix</span>
 <span class="c1"># created above</span>
@@ -734,14 +753,14 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;$RDPG_{100}(X)$ Simulation&#39;}, xlabel=&#39;Person&#39;, ylabel=&#39;Person&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/f2851c1bec2eb092274f92596c7224cb769dc0cdb87ecf9cf2f900375cb78147.png" src="../../_images/f2851c1bec2eb092274f92596c7224cb769dc0cdb87ecf9cf2f900375cb78147.png" />
+<img alt="../../_images/cc972e398afa36d7270aa123b59cdb97403f713a24da8a208a0d3532500b1d79.png" src="../../_images/cc972e398afa36d7270aa123b59cdb97403f713a24da8a208a0d3532500b1d79.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">block_mtx_psd</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">block_mtx_psd</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function which indicates whether a matrix</span>
 <span class="sd">    B is positive semidefinite.</span>
@@ -753,8 +772,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">heatmap</span>
 
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> 
               <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]])</span>
@@ -768,7 +787,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<img alt="../../_images/1bf7096dbbc7f2b668f63dfa122bc7f1ea3e3005daebec51737443b7de47fd8b.png" src="../../_images/1bf7096dbbc7f2b668f63dfa122bc7f1ea3e3005daebec51737443b7de47fd8b.png" />
+<img alt="../../_images/3b4e04b3d25823ed9377dff63967d228893d1ee7d88378c7e7c5a5694cf398a0.png" src="../../_images/3b4e04b3d25823ed9377dff63967d228893d1ee7d88378c7e7c5a5694cf398a0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -871,9 +890,9 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">ohe_comm_vec</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">ohe_comm_vec</span>
 
-<span class="k">def</span> <span class="nf">lpm_from_sbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lpm_from_sbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function to produce a latent position matrix from a</span>
 <span class="sd">    community assignment vector and a block matrix.</span>
@@ -899,7 +918,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">generate_sbm_pmtx</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_sbm_pmtx</span>
 
 <span class="c1"># generate the probability matrices for an RDPG using X and SBM</span>
 <span class="n">P_rdpg</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span>
@@ -919,12 +938,12 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sample_edges</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span><span class="p">,</span> <span class="n">plot_vector</span><span class="p">,</span> \
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sample_edges</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">heatmap</span><span class="p">,</span> <span class="n">plot_vector</span><span class="p">,</span> \
     <span class="n">generate_sbm_pmtx</span>
 
-<span class="k">def</span> <span class="nf">dcsbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_prob</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dcsbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_prob</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function to sample a DCSBM.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -968,15 +987,15 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Sample of $DCSBM_n(\\vec z, \\vec \\theta, B)$&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../../_images/2351bace32aabdc0734b2d90808ea4646f52e3256a11bfff9f209bfb84931338.png" src="../../_images/2351bace32aabdc0734b2d90808ea4646f52e3256a11bfff9f209bfb84931338.png" />
-<img alt="../../_images/7e3a8e073560ae2568dc6d54841d16041267f2c5f5b272e0156f0bb55fd226f3.png" src="../../_images/7e3a8e073560ae2568dc6d54841d16041267f2c5f5b272e0156f0bb55fd226f3.png" />
-<img alt="../../_images/af95731c94f69ca006b20ec75911b6b23a413e20580dce36b4346039a18f4622.png" src="../../_images/af95731c94f69ca006b20ec75911b6b23a413e20580dce36b4346039a18f4622.png" />
-<img alt="../../_images/c772a73e48a28bd8412e5cea7eaf79891794f22f10bc376deff2e541a29bfeff.png" src="../../_images/c772a73e48a28bd8412e5cea7eaf79891794f22f10bc376deff2e541a29bfeff.png" />
+<img alt="../../_images/5db81ebe979cb7e218031061a95b14243d6afa9d4caaa13378a9cb40c9f21879.png" src="../../_images/5db81ebe979cb7e218031061a95b14243d6afa9d4caaa13378a9cb40c9f21879.png" />
+<img alt="../../_images/5250fbcf7b02e17b63dd75b46122d7ae04223d9e72d1c20fa442684fb61e7daf.png" src="../../_images/5250fbcf7b02e17b63dd75b46122d7ae04223d9e72d1c20fa442684fb61e7daf.png" />
+<img alt="../../_images/bc29e003053c47dda85e7e26cdf030e05e41ff3f727451ca1c42f4e09ef3831a.png" src="../../_images/bc29e003053c47dda85e7e26cdf030e05e41ff3f727451ca1c42f4e09ef3831a.png" />
+<img alt="../../_images/7971bf82cc97afdd32fbe2fdafb458b1ce7519d60cdabfd7433b0e7162c29375.png" src="../../_images/7971bf82cc97afdd32fbe2fdafb458b1ce7519d60cdabfd7433b0e7162c29375.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
@@ -991,7 +1010,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">heatmap</span>
 
 <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">],</span> <span class="n">repeats</span><span class="o">=</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">heatmap</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Cluster assignment matrix&quot;</span><span class="p">,</span> 
@@ -1003,12 +1022,12 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;Cluster assignment matrix&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../../_images/19e737a945f3ab176210c48b02eeac06e1a564e274b737e98eb93986130f10d0.png" src="../../_images/19e737a945f3ab176210c48b02eeac06e1a564e274b737e98eb93986130f10d0.png" />
+<img alt="../../_images/18a7f1eb4bbcc536e06c24ea0a115c02769ed4b8a82bdd80b3328228db91cc06.png" src="../../_images/18a7f1eb4bbcc536e06c24ea0a115c02769ed4b8a82bdd80b3328228db91cc06.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">siem</span><span class="p">,</span> <span class="n">plot_vector</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">siem</span><span class="p">,</span> <span class="n">plot_vector</span>
 
 <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">siem</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
@@ -1022,16 +1041,16 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;$SIEM_n(Z, \\vec p)$ sample&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../../_images/f960115c3ddc08ee991d5eda2a6421d9cc60aff9c31384c3a29ec51a7be7c33a.png" src="../../_images/f960115c3ddc08ee991d5eda2a6421d9cc60aff9c31384c3a29ec51a7be7c33a.png" />
-<img alt="../../_images/248f69bee513f2cdf8f48894535d7addbf2799aac0fe37711e3bbfaf8de8438b.png" src="../../_images/248f69bee513f2cdf8f48894535d7addbf2799aac0fe37711e3bbfaf8de8438b.png" />
+<img alt="../../_images/7805b66189ec4bd71785e096aca45a27e1b47b9c6e39bdfbea4138de653a57f3.png" src="../../_images/7805b66189ec4bd71785e096aca45a27e1b47b9c6e39bdfbea4138de653a57f3.png" />
+<img alt="../../_images/fbdb0201406dab32c6db853c7958b7cf472f84175e82e14e9c12aa627c76fb0c.png" src="../../_images/fbdb0201406dab32c6db853c7958b7cf472f84175e82e14e9c12aa627c76fb0c.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">dcsbm</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sbm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">dcsbm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
 
 <span class="c1"># Create block probability matrix B</span>
 <span class="n">K</span> <span class="o">=</span> <span class="mi">3</span>
@@ -1059,7 +1078,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">generate_sbm_pmtx</span><span class="p">,</span> <span class="n">heatmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_sbm_pmtx</span><span class="p">,</span> <span class="n">heatmap</span>
 
 <span class="c1"># we already returned P_linkedin for the linkedin</span>
 <span class="c1"># probability matrix from dcsbm() function</span>
@@ -1077,15 +1096,15 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../../_images/80d613e4a935c84278b27500d33ed4dc8468b16b4837bc9626612b7e14a4844b.png" src="../../_images/80d613e4a935c84278b27500d33ed4dc8468b16b4837bc9626612b7e14a4844b.png" />
-<img alt="../../_images/62d1c0bbb01ed29f6adb076a78305b2081e95aca11a06d90af5eb2b140aabf7f.png" src="../../_images/62d1c0bbb01ed29f6adb076a78305b2081e95aca11a06d90af5eb2b140aabf7f.png" />
-<img alt="../../_images/e9625e4f900681dddbb7bfda09c6edfc706afdc6531de1dae3da691f6f30dbef.png" src="../../_images/e9625e4f900681dddbb7bfda09c6edfc706afdc6531de1dae3da691f6f30dbef.png" />
+<img alt="../../_images/a03da0336f702f9b48eb6310c77e811ea80e8954971cc8af034c84c504f8b143.png" src="../../_images/a03da0336f702f9b48eb6310c77e811ea80e8954971cc8af034c84c504f8b143.png" />
+<img alt="../../_images/e2fd2c9c845f8f52de9a800243c99da3eeacd3078beb6ce5e4da10b4a9337d28.png" src="../../_images/e2fd2c9c845f8f52de9a800243c99da3eeacd3078beb6ce5e4da10b4a9337d28.png" />
+<img alt="../../_images/b7e2d0955f3260758b046ad74c64c848249f4a9a9f3e14ff063d708497241f9c.png" src="../../_images/b7e2d0955f3260758b046ad74c64c848249f4a9a9f3e14ff063d708497241f9c.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">MultipleASE</span> <span class="k">as</span> <span class="n">mase</span>
-<span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">lpm_heatmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultipleASE</span> <span class="k">as</span> <span class="n">mase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">lpm_heatmap</span>
 
 <span class="n">embedder</span> <span class="o">=</span> <span class="n">mase</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">svd_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="c1"># obtain shared latent positions</span>
@@ -1099,12 +1118,12 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../../_images/430afa9be28e5760e0f807b9cbb445fa01515d2e15e0b4d872d271d55f9ff6b7.png" src="../../_images/430afa9be28e5760e0f807b9cbb445fa01515d2e15e0b4d872d271d55f9ff6b7.png" />
+<img alt="../../_images/e8a7fd65fb9e8c4c886dae706804c0a957c15bc7d067c3b9e10ec00f3c1640f3.png" src="../../_images/e8a7fd65fb9e8c4c886dae706804c0a957c15bc7d067c3b9e10ec00f3c1640f3.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">R_facebook</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">scores_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">R_insta</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">scores_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -1125,12 +1144,12 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;left&#39;: &#39;LinkedIn score matrix&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../../_images/d150176eb0ca88aefc58ba46cfdca13457956993f43522a9293d0cc011867491.png" src="../../_images/d150176eb0ca88aefc58ba46cfdca13457956993f43522a9293d0cc011867491.png" />
+<img alt="../../_images/ab23e001dde7ffb1ff27368cff38d43ec9805674cffa753ecc0f844c092a3fe1.png" src="../../_images/ab23e001dde7ffb1ff27368cff38d43ec9805674cffa753ecc0f844c092a3fe1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">lpm_from_sbm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">lpm_from_sbm</span>
 <span class="n">X_facebook_insta</span> <span class="o">=</span> <span class="n">lpm_from_sbm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1138,7 +1157,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">rdpg_corr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">rdpg_corr</span>
 
 <span class="c1"># generate the network samples</span>
 <span class="n">rho</span> <span class="o">=</span> <span class="mf">0.7</span>
@@ -1175,8 +1194,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sample_edges</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sample_edges</span>
 
 <span class="n">nodenames</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;SI&quot;</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="s2">&quot;H/E&quot;</span><span class="p">,</span> 
@@ -1212,9 +1231,9 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../../_images/56a4ebdc88f49ff2dfaf9489f1e113faa6ed09f7080567e20cca1916ed750501.png" src="../../_images/56a4ebdc88f49ff2dfaf9489f1e113faa6ed09f7080567e20cca1916ed750501.png" />
-<img alt="../../_images/edf478e641a6c01328768b7dd1c1b072d4ea2d0463234f47ea76c64952d990d6.png" src="../../_images/edf478e641a6c01328768b7dd1c1b072d4ea2d0463234f47ea76c64952d990d6.png" />
-<img alt="../../_images/ce979a77c24bc1ae1bc1fcefd6aa42366f7fdc74c3f9b5e45c1f010bad8c3b79.png" src="../../_images/ce979a77c24bc1ae1bc1fcefd6aa42366f7fdc74c3f9b5e45c1f010bad8c3b79.png" />
+<img alt="../../_images/5e0017ff25aef9ab910ddaa54fd9e7c35394ab64ef5f20acd8da4095a484d7cc.png" src="../../_images/5e0017ff25aef9ab910ddaa54fd9e7c35394ab64ef5f20acd8da4095a484d7cc.png" />
+<img alt="../../_images/e9e4403c17e3405d2164673a1614cdb785dfe667b3d23e069ed313a368da4f0a.png" src="../../_images/e9e4403c17e3405d2164673a1614cdb785dfe667b3d23e069ed313a368da4f0a.png" />
+<img alt="../../_images/9fcaece1d076cb4c8f4a19219befc8ad88c91425d54ca7a3a981be3f1d22da00.png" src="../../_images/9fcaece1d076cb4c8f4a19219befc8ad88c91425d54ca7a3a981be3f1d22da00.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1225,7 +1244,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2a899ec7e469f31bdcb2f834ee49095a1b40b2ede32e278fabfa0431b4f58c5a.png" src="../../_images/2a899ec7e469f31bdcb2f834ee49095a1b40b2ede32e278fabfa0431b4f58c5a.png" />
+<img alt="../../_images/8a0493100ce2fbded1c04d23a869bc14d13340462fc517a21771731305649e91.png" src="../../_images/8a0493100ce2fbded1c04d23a869bc14d13340462fc517a21771731305649e91.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1345,8 +1364,8 @@ By Eric Bridgeford, Alex Loftus, and Joshua Vogelstein
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

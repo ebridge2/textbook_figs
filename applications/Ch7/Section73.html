@@ -16,22 +16,20 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -39,11 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -69,7 +66,6 @@
     <link rel="prev" title="7.2 Two-sample testing for SBMs" href="Section72.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -85,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -94,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -101,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -118,8 +126,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -149,17 +156,21 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt="Network Machine Learning - Home"/>
-    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Network Machine Learning - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Network Machine Learning - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -443,16 +454,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -484,7 +503,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
 
 <span class="n">font</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span> <span class="p">:</span> <span class="s1">&#39;Dejavu Sans&#39;</span><span class="p">,</span>
         <span class="s1">&#39;weight&#39;</span> <span class="p">:</span> <span class="s1">&#39;normal&#39;</span><span class="p">,</span>
@@ -492,15 +511,15 @@
 
 <span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">font</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
     <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
@@ -552,8 +571,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graphbook_code</span> <span class="kn">import</span> <span class="n">heatmap</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graphbook_code</span><span class="w"> </span><span class="kn">import</span> <span class="n">heatmap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
 <span class="c1"># Row A</span>
@@ -600,7 +619,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4c4b8e0e91cb9d3372ab10635af3fc57c05961ed2a60d45636cb1e4cbaf7c5f7.png" src="../../_images/4c4b8e0e91cb9d3372ab10635af3fc57c05961ed2a60d45636cb1e4cbaf7c5f7.png" />
+<img alt="../../_images/35aff0db5e1e87fda8b9ea6c13bbeb90ce88e1d434da924d93ce3b5752cdb8ca.png" src="../../_images/35aff0db5e1e87fda8b9ea6c13bbeb90ce88e1d434da924d93ce3b5752cdb8ca.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -657,12 +676,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c8ffbfa54cfe29a3b9d126e6fe9f38bebb0197eb9d674e555b8e9690b6e6f7c3.png" src="../../_images/c8ffbfa54cfe29a3b9d126e6fe9f38bebb0197eb9d674e555b8e9690b6e6f7c3.png" />
+<img alt="../../_images/b702160227508ce223375ed4084d0c49688bb1565c9fe39f2b9d6cdbbb7cfb95.png" src="../../_images/b702160227508ce223375ed4084d0c49688bb1565c9fe39f2b9d6cdbbb7cfb95.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_random_permutation</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_random_permutation</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function that generates a random permutation matric $P$ for n elements.</span>
 <span class="sd">    </span>
@@ -682,7 +701,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">er_np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">er_np</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">12</span>
 <span class="n">p</span> <span class="o">=</span> <span class="mf">0.5</span>
@@ -699,7 +718,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.match</span> <span class="kn">import</span> <span class="n">graph_match</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.match</span><span class="w"> </span><span class="kn">import</span> <span class="n">graph_match</span>
 
 <span class="n">gmp</span> <span class="o">=</span> <span class="n">graph_match</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -708,7 +727,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_unshuffler</span><span class="p">(</span><span class="n">destination_indices</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_unshuffler</span><span class="p">(</span><span class="n">destination_indices</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function which creates a permutation matrix P from a given permutation of the nodes.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -734,7 +753,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">match_ratio</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Pu</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">match_ratio</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Pu</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># the number of nodes</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Pu</span> <span class="o">@</span> <span class="n">P</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">n</span>
 
@@ -781,12 +800,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4a2d371dc322b248066e6a8eb220963225bd55400a45e5d024ff32c66b509de5.png" src="../../_images/4a2d371dc322b248066e6a8eb220963225bd55400a45e5d024ff32c66b509de5.png" />
+<img alt="../../_images/5a2399272b0183dd6e48bc6b4d6901b56e18479e45b0aff5f361184255696eb7.png" src="../../_images/5a2399272b0183dd6e48bc6b4d6901b56e18479e45b0aff5f361184255696eb7.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm_corr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.simulations</span><span class="w"> </span><span class="kn">import</span> <span class="n">sbm_corr</span>
 
 <span class="n">n_per_block</span> <span class="o">=</span> <span class="mi">75</span>
 <span class="n">n_blocks</span> <span class="o">=</span> <span class="mi">3</span>
@@ -855,7 +874,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/270dbb0924e06f21125aa58222d1ba7b77b5cfdb63d00c1dd172706dcd57dff1.png" src="../../_images/270dbb0924e06f21125aa58222d1ba7b77b5cfdb63d00c1dd172706dcd57dff1.png" />
+<img alt="../../_images/ce393a6ff9bc643f6d9ef8625fd8027eb214c70f5e93b45646a63915f66d7e8a.png" src="../../_images/ce393a6ff9bc643f6d9ef8625fd8027eb214c70f5e93b45646a63915f66d7e8a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -912,12 +931,12 @@ Disagreements, no seeds: 12866
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/185751a745b1ede3f8f91c3ded1b06661242978f099dafb091c028143e9613cb.png" src="../../_images/185751a745b1ede3f8f91c3ded1b06661242978f099dafb091c028143e9613cb.png" />
+<img alt="../../_images/de4de6ee15cf286fc932416bc59f0a473014ece354c729af5f7cc72b9717c280.png" src="../../_images/de4de6ee15cf286fc932416bc59f0a473014ece354c729af5f7cc72b9717c280.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_seeds</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">n_seeds</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gen_seeds</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">n_seeds</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function to generate n_seeds seeds for a pair of matrices A1 and P^TA2P</span>
 <span class="sd">    which are initially matched, but P has been applied to permute the nodes</span>
@@ -993,12 +1012,12 @@ Disagreements, seeds: 8041
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/462ba9d086498908fd12b945e72657c66e995b0b279a7648528fd6e1c0277aa8.png" src="../../_images/462ba9d086498908fd12b945e72657c66e995b0b279a7648528fd6e1c0277aa8.png" />
+<img alt="../../_images/aa799547ec34c60c6293a82e0e4de510111e053ffed001014f5e0cb978ffdaf8.png" src="../../_images/aa799547ec34c60c6293a82e0e4de510111e053ffed001014f5e0cb978ffdaf8.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">remove_vertices</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">graspologic.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">remove_vertices</span>
 
 <span class="n">nremove</span> <span class="o">=</span> <span class="mi">25</span>
 
@@ -1042,7 +1061,7 @@ Disagreements, seeds: 8041
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fd1f99621e401979a71f43fb82cba73a341235c05b8fa72b1ac8e046e4ab2212.png" src="../../_images/fd1f99621e401979a71f43fb82cba73a341235c05b8fa72b1ac8e046e4ab2212.png" />
+<img alt="../../_images/014749ce84e1af813766dff74824c8eac073261bd3fed1bc5c8a8e7675a4a476.png" src="../../_images/014749ce84e1af813766dff74824c8eac073261bd3fed1bc5c8a8e7675a4a476.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1066,9 +1085,9 @@ Disagreements, seeds: 8041
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nseeds_padded</span> <span class="o">=</span> <span class="mi">10</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="c1"># obtain which nodes of A2 will be the seeds to use, from the retained nodes in the network</span>
-<span class="n">seeds_A2_N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_nodes_A2_N</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">nseeds_padded</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">seeds_A2_N</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_nodes_A2_N</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">nseeds_padded</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># obtain the nodes in A1</span>
 <span class="n">seeds_A1</span> <span class="o">=</span> <span class="n">N</span><span class="p">[</span><span class="n">seeds_A2_N</span><span class="p">]</span>
@@ -1113,7 +1132,7 @@ Disagreements, seeds: 8041
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4ecc8cddc15842a8242b77111838eef15ec84e0f0f4fb6e5acad80efbf32983a.png" src="../../_images/4ecc8cddc15842a8242b77111838eef15ec84e0f0f4fb6e5acad80efbf32983a.png" />
+<img alt="../../_images/77723ce32c34d48315c20bb0c08a2d32477abad031bac4b0de7e78603dd2a5e0.png" src="../../_images/77723ce32c34d48315c20bb0c08a2d32477abad031bac4b0de7e78603dd2a5e0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1121,12 +1140,12 @@ Disagreements, seeds: 8041
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A1_induced</span> <span class="o">=</span> <span class="n">remove_vertices</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">nodes_to_remove</span><span class="p">)</span>
 <span class="n">disagreements_naive</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">A1_induced</span> <span class="o">-</span> <span class="n">A2_N_unshuffle_seeds_naive</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Disagreements, naive padding: </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">disagreements_naive</span><span class="p">)</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="c1"># Disagreements, naive padding: 9198</span>
+<span class="c1"># Disagreements, naive padding: 9058</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Disagreements, naive padding: 9434
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Disagreements, naive padding: 9474
 </pre></div>
 </div>
 </div>
@@ -1180,7 +1199,7 @@ Disagreements, seeds: 8041
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d42bdd28a5ecd708d2943ab020efb8beeb463724412fc0d28e5be5b38a5c87bc.png" src="../../_images/d42bdd28a5ecd708d2943ab020efb8beeb463724412fc0d28e5be5b38a5c87bc.png" />
+<img alt="../../_images/d47b7385476157cc749d72a8d495dd3f7fa382f3da0676a48d410a304891a200.png" src="../../_images/d47b7385476157cc749d72a8d495dd3f7fa382f3da0676a48d410a304891a200.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1302,8 +1321,8 @@ By Eric Bridgeford, Alex Loftus, and Joshua Vogelstein
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
